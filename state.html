@@ -162,10 +162,14 @@ function fa(n){return'$'+Math.abs(n).toLocaleString('en-US',{minimumFractionDigi
 // ── GET STATE FROM URL ──
 let currentStateCode='CA';
 function getStateFromURL(){
+  // First check ?state=CA query parameter (works locally + deployed)
+  const params=new URLSearchParams(window.location.search);
+  if(params.get('state')) return params.get('state').toUpperCase();
+  // Fallback: read from clean URL path (works on deployed site via _redirects)
   const path=window.location.pathname;
   const parts=path.split('/');
   const slug=parts[parts.length-1].replace('.html','');
-  return SLUG_MAP[slug]||new URLSearchParams(window.location.search).get('state')||'CA';
+  return SLUG_MAP[slug]||'CA';
 }
 
 // ── INIT PAGE ──
