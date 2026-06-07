@@ -457,16 +457,16 @@ footer{border-top:1px solid var(--bdr);padding:18px 20px;text-align:center;font-
     <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:700;letter-spacing:-.3px;margin-bottom:10px;color:var(--txt)">Paycheck Calculator by State</h2>
     <p style="font-size:13px;color:var(--mut);line-height:1.7;margin-bottom:10px">State income tax rates vary from 0% (Texas, Florida, Nevada) to over 13% (California). Select your state below for a detailed breakdown:</p>
     <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:24px">
-      <a href="/states/california-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">California</a>
-      <a href="/states/texas-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Texas</a>
-      <a href="/states/new-york-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">New York</a>
-      <a href="/states/florida-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Florida</a>
-      <a href="/states/illinois-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Illinois</a>
-      <a href="/states/pennsylvania-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Pennsylvania</a>
-      <a href="/states/ohio-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Ohio</a>
-      <a href="/states/georgia-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Georgia</a>
-      <a href="/states/north-carolina-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">North Carolina</a>
-      <a href="/states/washington-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Washington</a>
+      <a href="state.html?state=CA" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">California</a>
+      <a href="state.html?state=TX" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Texas</a>
+      <a href="state.html?state=NY" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">New York</a>
+      <a href="state.html?state=FL" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Florida</a>
+      <a href="state.html?state=IL" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Illinois</a>
+      <a href="state.html?state=PA" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Pennsylvania</a>
+      <a href="state.html?state=OH" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Ohio</a>
+      <a href="state.html?state=GA" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Georgia</a>
+      <a href="state.html?state=NC" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">North Carolina</a>
+      <a href="state.html?state=WA" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Washington</a>
     </div>
   </section>
 </main>
@@ -913,23 +913,54 @@ function toggleTheme(){
 }
 function copyLink(){
   const p=new URLSearchParams();
+  p.set('wt',wt);p.set('pt',pt);
+  // Income
   if(wt==='w2'&&pt==='salary'){const v=g('salI').value;if(v)p.set('s',v);}
   if(wt==='w2'&&pt==='hourly'){const r=g('hrI').value,h=g('hwI').value;if(r)p.set('hr',r);if(h)p.set('hw',h);}
-  if(wt==='1099'){const v=g('seI').value;if(v)p.set('se',v);}
-  p.set('state',g('stS').value);p.set('freq',g('frqS').value);
-  p.set('filing',g('filS').value);p.set('wt',wt);p.set('pt',pt);
-  const url='https://www.checknetpay.com/?'+p;
+  if(wt==='1099'){
+    const v=g('seI').value;if(v)p.set('se',v);
+    const ex=g('expI').value;if(ex&&ex!='0')p.set('exp',ex);
+    const mi=g('miI').value;if(mi&&mi!='0')p.set('mi',mi);
+  }
+  // Location & filing
+  p.set('state',g('stS').value);
+  p.set('freq',g('frqS').value);
+  p.set('filing',g('filS').value);
+  const lv=g('locS')?g('locS').value:'';if(lv)p.set('local',lv);
+  // Deductions — these were missing before, causing wrong values on share
+  const k4=g('k4I').value;if(k4&&k4!='0')p.set('k4',k4);
+  const hsa=g('hsaI').value;if(hsa&&hsa!='0')p.set('hsa',hsa);
+  const hi=g('hiI').value;if(hi&&hi!='0')p.set('hi',hi);
+  const ot=g('otI').value;if(ot&&ot!='0')p.set('ot',ot);
+  // Smart URL — works locally AND on deployed site
+  const isLive=location.hostname==='checknetpay.com'||location.hostname==='www.checknetpay.com';
+  const base=isLive?'https://www.checknetpay.com/':location.href.split('?')[0];
+  const url=base+'?'+p;
   navigator.clipboard.writeText(url).then(()=>showToast('🔗 Link copied!')).catch(()=>{
-    // Fallback for browsers without clipboard API
     const ta=document.createElement('textarea');ta.value=url;
     ta.style.position='fixed';ta.style.opacity='0';
     document.body.appendChild(ta);ta.select();
     try{document.execCommand('copy');showToast('🔗 Link copied!');}
-    catch(e){showToast('Link: checknetpay.com');}
+    catch(e){showToast('Copy failed — try again');}
     document.body.removeChild(ta);
   });
 }
-function updURL(){try{const p=new URLSearchParams();if(wt==='w2'&&pt==='salary'){const v=g('salI').value;if(v)p.set('s',v);}if(wt==='1099'){const v=g('seI').value;if(v)p.set('se',v);}p.set('state',g('stS').value);p.set('freq',g('frqS').value);p.set('filing',g('filS').value);p.set('wt',wt);p.set('pt',pt);history.replaceState({},'',location.pathname+'?'+p);}catch(e){}}
+function updURL(){
+  try{
+    const p=new URLSearchParams();
+    p.set('wt',wt);p.set('pt',pt);
+    if(wt==='w2'&&pt==='salary'){const v=g('salI').value;if(v)p.set('s',v);}
+    if(wt==='w2'&&pt==='hourly'){const r=g('hrI').value,h=g('hwI').value;if(r)p.set('hr',r);if(h)p.set('hw',h);}
+    if(wt==='1099'){const v=g('seI').value;if(v)p.set('se',v);const ex=g('expI').value;if(ex&&ex!='0')p.set('exp',ex);const mi=g('miI').value;if(mi&&mi!='0')p.set('mi',mi);}
+    p.set('state',g('stS').value);p.set('freq',g('frqS').value);p.set('filing',g('filS').value);
+    const lv=g('locS')?g('locS').value:'';if(lv)p.set('local',lv);
+    const k4=g('k4I').value;if(k4&&k4!='0')p.set('k4',k4);
+    const hsa=g('hsaI').value;if(hsa&&hsa!='0')p.set('hsa',hsa);
+    const hi=g('hiI').value;if(hi&&hi!='0')p.set('hi',hi);
+    const ot=g('otI').value;if(ot&&ot!='0')p.set('ot',ot);
+    history.replaceState({},'',location.pathname+'?'+p);
+  }catch(e){}
+}
 function showToast(m,d=2400){const t=g('tst');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),d);}
 // ── TOOLTIP DATA (avoids quote-escaping bugs in HTML attributes) ──
 const TIPS={
@@ -982,16 +1013,34 @@ document.addEventListener('DOMContentLoaded',()=>{
   populateSt(['stS','bSt','rSt']);
   ['salI','hrI','seI'].forEach(id=>{const e=g(id);if(e)e.addEventListener('keydown',ev=>{if(ev.key==='Enter')calc();});});
   g('bBon')?.addEventListener('keydown',ev=>{if(ev.key==='Enter')calcB();});
-  // Load from URL
+  // Load from URL — restores ALL fields when a shared link is opened
   const p=new URLSearchParams(location.search);
-  if(p.get('wt'))setWT(p.get('wt'));
-  if(p.get('pt'))setPT(p.get('pt'));
-  if(p.get('s'))g('salI').value=p.get('s');
-  if(p.get('se'))g('seI').value=p.get('se');
-  if(p.get('state')){g('stS').value=p.get('state');updLocal(p.get('state'));}
-  if(p.get('freq'))g('frqS').value=p.get('freq');
-  if(p.get('filing'))g('filS').value=p.get('filing');
-  if(p.get('s')||p.get('se'))calc();
+  if(p.toString()){
+    // Worker type and pay type first (must set before filling fields)
+    if(p.get('wt'))setWT(p.get('wt'));
+    if(p.get('pt'))setPT(p.get('pt'));
+    // Income fields
+    if(p.get('s'))g('salI').value=p.get('s');
+    if(p.get('hr'))g('hrI').value=p.get('hr');
+    if(p.get('hw'))g('hwI').value=p.get('hw');
+    if(p.get('se'))g('seI').value=p.get('se');
+    if(p.get('exp'))g('expI').value=p.get('exp');
+    if(p.get('mi'))g('miI').value=p.get('mi');
+    // State — set first, then trigger local tax dropdown
+    if(p.get('state')){g('stS').value=p.get('state');updLocal(p.get('state'));}
+    // Local tax — after dropdown is populated
+    if(p.get('local')&&g('locS'))g('locS').value=p.get('local');
+    // Frequency and filing
+    if(p.get('freq'))g('frqS').value=p.get('freq');
+    if(p.get('filing'))g('filS').value=p.get('filing');
+    // Deductions — these were missing before (the share link bug)
+    if(p.get('k4'))g('k4I').value=p.get('k4');
+    if(p.get('hsa'))g('hsaI').value=p.get('hsa');
+    if(p.get('hi'))g('hiI').value=p.get('hi');
+    if(p.get('ot'))g('otI').value=p.get('ot');
+    // Auto-calculate — works for salary, hourly, AND 1099
+    if(p.get('s')||p.get('se')||p.get('hr'))calc();
+  }
 });
 </script>
 </body>
