@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CheckNetPay — Free 2026 US Paycheck Calculator | All 50 States + Local Taxes</title>
+<meta name="description" content="Free 2026 US paycheck calculator. See your exact take-home pay after federal, state, and local taxes. All 50 states, W-2 & 1099 modes, bonus tax, raise simulator. Updated with IRS 2026 brackets.">
+<meta name="keywords" content="paycheck calculator, take home pay calculator, net pay calculator, salary calculator 2026, paycheck after taxes, how much will i take home, net pay after taxes, free paycheck calculator USA">
+<meta name="robots" content="index, follow">
+<meta name="author" content="CheckNetPay">
+<link rel="canonical" href="https://www.checknetpay.com/">
+
+<!-- Open Graph (Facebook, LinkedIn sharing) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="CheckNetPay — Free 2026 US Paycheck Calculator">
+<meta property="og:description" content="Calculate your exact take-home pay in seconds. All 50 states, W-2 & 1099 modes, local taxes, bonus calculator. Free, no sign-up.">
+<meta property="og:url" content="https://www.checknetpay.com/">
+<meta property="og:site_name" content="CheckNetPay">
+<meta property="og:image" content="https://www.checknetpay.com/og-image.png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CheckNetPay — Free 2026 US Paycheck Calculator">
+<meta name="twitter:description" content="Calculate your exact take-home pay. All 50 states, W-2 & 1099 modes. Free, no sign-up.">
+<meta name="twitter:image" content="https://www.checknetpay.com/og-image.png">
+
+<!-- Schema Markup — tells Google this is a financial calculator tool -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "CheckNetPay — US Paycheck Calculator",
+  "url": "https://www.checknetpay.com",
+  "description": "Free 2026 US paycheck calculator. Calculate take-home pay after federal, state, and local taxes for all 50 states. Supports W-2 employees and 1099 self-employed workers.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "2026 IRS federal tax brackets",
+    "All 50 US states plus Washington D.C.",
+    "City and county local tax support",
+    "W-2 salary and hourly calculator",
+    "1099 self-employed and gig worker calculator",
+    "Bonus tax calculator",
+    "Raise simulator",
+    "PDF export",
+    "Shareable results link"
+  ],
+  "provider": {
+    "@type": "Organization",
+    "name": "CheckNetPay",
+    "url": "https://www.checknetpay.com"
+  }
+}
+</script>
+
+<!-- Google AdSense — replace ca-pub-XXXXXXXXXXXXXXXX with your Publisher ID after approval -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F4EF;--sur:#FFF;--sur2:#EDECE7;--bdr:#E2E0D9;
+  --txt:#1A1917;--mut:#82807A;--fnt:#C0BDB6;
+  --acc:#1B6B42;--acc-bg:#EBF4EE;--acc-h:#146235;
+  --red:#B82D2D;--amb:#C07A22;--blu:#3A6FAD;--purp:#7250B8;
+  --shd:0 1px 3px rgba(0,0,0,.05),0 4px 14px rgba(0,0,0,.04);
+}
+[data-theme=dark]{
+  --bg:#111110;--sur:#1C1C1A;--sur2:#242422;--bdr:#2D2D2A;
+  --txt:#EDECEA;--mut:#68675F;--fnt:#3A3930;
+  --acc:#4DB87A;--acc-bg:#182B20;--acc-h:#62D490;
+  --red:#E07070;--amb:#E0A060;--blu:#7AADDC;--purp:#A888E0;
+  --shd:0 1px 3px rgba(0,0,0,.25),0 4px 14px rgba(0,0,0,.2);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);font-size:15px;line-height:1.6;min-height:100vh;transition:background .2s,color .2s}
+/* HEADER */
+header{background:var(--sur);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:100;transition:background .2s}
+.hdr{max-width:960px;margin:0 auto;padding:0 20px;height:52px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.3px}
+.logo em{color:var(--acc);font-style:normal}
+.hdr-r{display:flex;align-items:center;gap:8px}
+.badge{background:var(--acc-bg);color:var(--acc);font-size:11px;font-weight:600;padding:3px 9px;border-radius:100px}
+.thm{width:33px;height:33px;border-radius:50%;border:1px solid var(--bdr);background:var(--sur2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:border-color .2s}
+.thm:hover{border-color:var(--acc)}
+/* LAYOUT */
+main{max-width:960px;margin:0 auto;padding:32px 20px 72px}
+h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(21px,3.2vw,29px);font-weight:700;letter-spacing:-.5px;line-height:1.2;margin-bottom:5px}
+h1 span{color:var(--acc)}
+.sub{color:var(--mut);font-size:13px;margin-bottom:24px}
+/* TABS */
+.tnav{display:flex;gap:3px;background:var(--sur);border:1px solid var(--bdr);border-radius:12px;padding:3px;width:fit-content;margin-bottom:22px}
+.tbtn{padding:7px 16px;border-radius:9px;border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--mut);cursor:pointer;transition:all .15s;white-space:nowrap}
+.tbtn.on{background:var(--acc);color:#fff;box-shadow:0 2px 8px rgba(27,107,66,.28)}
+.tpane{display:none}.tpane.on{display:block}
+/* GRID */
+.grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:680px){.grid{grid-template-columns:1fr 1fr;align-items:start}}
+/* CARD */
+.card{background:var(--sur);border:1px solid var(--bdr);border-radius:16px;padding:20px;box-shadow:var(--shd);transition:background .2s}
+.clbl{font-size:11px;font-weight:600;letter-spacing:.7px;text-transform:uppercase;color:var(--mut);margin-bottom:16px}
+/* FORM */
+.fld{margin-bottom:12px}
+.lbl{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--mut);margin-bottom:4px}
+input[type=number],select{width:100%;background:var(--sur2);border:1px solid var(--bdr);border-radius:9px;padding:9px 12px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--txt);outline:none;transition:border-color .18s;-webkit-appearance:none;appearance:none}
+input:focus,select:focus{border-color:var(--acc);background:var(--sur)}
+input::placeholder{color:var(--fnt)}
+.px{position:relative}.px .p{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--mut);font-size:13px;pointer-events:none}
+.px input{padding-left:22px}
+.sx{position:relative}.sx .s{position:absolute;right:11px;top:50%;transform:translateY(-50%);color:var(--mut);font-size:12px;pointer-events:none}
+.sx input{padding-right:26px}
+.sw{position:relative}.sw::after{content:'▾';position:absolute;right:11px;top:50%;transform:translateY(-50%);color:var(--mut);font-size:11px;pointer-events:none}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:440px){.two{grid-template-columns:1fr}}
+.div{height:1px;background:var(--bdr);margin:14px 0}
+.slbl{font-size:11px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--mut);margin-bottom:9px}
+.chip{background:var(--sur2);border-radius:9px;padding:9px 12px;font-size:12px;color:var(--mut);line-height:1.5;margin-bottom:11px}
+.chip b{color:var(--txt)}
+/* SEGMENT */
+.seg{display:flex;background:var(--sur2);border:1px solid var(--bdr);border-radius:9px;padding:3px;gap:2px;margin-bottom:12px}
+.sbtn{flex:1;padding:7px 5px;border:none;background:transparent;border-radius:7px;font-family:'DM Sans',sans-serif;font-size:12.5px;font-weight:500;color:var(--mut);cursor:pointer;transition:all .15s;text-align:center}
+.sbtn.on{background:var(--sur);color:var(--txt);box-shadow:0 1px 4px rgba(0,0,0,.07)}
+/* TOOLTIP */
+.tip{width:20px;height:20px;border-radius:50%;background:var(--sur2);border:1px solid var(--bdr);color:var(--mut);font-size:10px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;transition:all .15s;flex-shrink:0;user-select:none;-webkit-tap-highlight-color:transparent}
+.tip:hover,.tip:active{background:var(--acc);border-color:var(--acc);color:#fff}
+.ttpop{position:fixed;background:var(--txt);color:var(--bg);font-size:12.5px;line-height:1.6;padding:12px 15px;border-radius:12px;width:268px;max-width:calc(100vw - 20px);z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,.28);pointer-events:auto;max-height:70vh;overflow-y:auto}
+/* BUTTONS */
+.btnp{width:100%;padding:12px;background:var(--acc);color:#fff;border:none;border-radius:11px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:opacity .18s,transform .1s;margin-top:5px}
+.btnp:hover{opacity:.9}.btnp:active{transform:scale(.99)}
+.btns{flex:1;padding:10px;background:var(--sur);border:1px solid var(--bdr);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:12.5px;font-weight:500;color:var(--mut);cursor:pointer;transition:all .18s;text-align:center}
+.btns:hover{border-color:var(--acc);color:var(--acc)}
+/* RESULTS */
+.empty{background:var(--sur);border:1.5px dashed var(--bdr);border-radius:16px;padding:36px 20px;text-align:center}
+.eico{font-size:28px;margin-bottom:8px}.etxt{color:var(--mut);font-size:13px}.esub{color:var(--fnt);font-size:12px;margin-top:3px}
+.rw{display:none}
+@keyframes fu{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+.an{animation:fu .32s ease forwards}
+.rhero{background:var(--acc-bg);border:1.5px solid var(--acc);border-radius:16px;padding:20px;text-align:center;margin-bottom:12px}
+.rlbl{font-size:11px;font-weight:600;letter-spacing:.7px;text-transform:uppercase;color:var(--acc);margin-bottom:4px}
+.ramt{font-family:'DM Mono',monospace;font-size:clamp(28px,6vw,44px);font-weight:500;letter-spacing:-1.5px;color:var(--txt);line-height:1;margin-bottom:3px}
+.rsub{font-size:12.5px;color:var(--mut)}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}
+.sc{background:var(--sur);border:1px solid var(--bdr);border-radius:12px;padding:12px 14px}
+.sn{font-size:11px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;color:var(--mut);margin-bottom:3px}
+.sv{font-family:'DM Mono',monospace;font-size:16px;font-weight:500;letter-spacing:-.4px}
+.sv.neg{color:var(--red)}.sv.pos{color:var(--acc)}.sv.n{color:var(--txt)}
+.sp{font-size:11px;color:var(--mut);margin-top:1px}
+.qb{background:var(--amb);color:#fff;border-radius:11px;padding:11px 14px;margin-bottom:12px;font-size:12.5px;line-height:1.5;display:none}
+.qb b{display:block;font-size:14px;font-family:'DM Mono',monospace;letter-spacing:-.4px;margin-bottom:1px}
+.cc{background:var(--sur);border:1px solid var(--bdr);border-radius:16px;padding:16px;margin-bottom:12px}
+.ct{font-size:11px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--mut);margin-bottom:12px}
+.cb{display:flex;align-items:center;gap:16px}
+.leg{flex:1;display:flex;flex-direction:column;gap:6px}
+.li{display:flex;align-items:center;gap:6px}
+.ld{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+.ln{flex:1;font-size:11.5px;color:var(--mut)}
+.lv{font-family:'DM Mono',monospace;font-size:11.5px;color:var(--txt);font-weight:500}
+.bt{background:var(--sur);border:1px solid var(--bdr);border-radius:15px;overflow:hidden;margin-bottom:12px}
+.br{display:flex;align-items:center;justify-content:space-between;padding:10px 15px;border-bottom:1px solid var(--bdr);transition:background .12s}
+.br:last-child{border-bottom:none}.br:hover{background:var(--sur2)}
+.bn{font-size:12.5px;color:var(--txt)}.bs{font-size:11px;color:var(--mut);margin-top:1px}
+.bra{text-align:right}
+.bp{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:500}
+.bp.neg{color:var(--red)}.bp.pos{color:var(--acc)}.bp.n{color:var(--txt)}
+.ba{font-size:11px;color:var(--mut);margin-top:1px}
+.btot{background:var(--acc-bg)}.btot .bn{font-weight:600}.btot .bp{color:var(--acc);font-size:14px}
+.ac{background:var(--sur);border:1px solid var(--bdr);border-radius:15px;padding:15px;margin-bottom:12px}
+.ar{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--bdr);font-size:12.5px}
+.ar:last-child{border-bottom:none}
+.ar .nm{color:var(--mut)}.ar .vl{font-family:'DM Mono',monospace;font-weight:500}
+.ar.neg .vl{color:var(--red)}.ar.pos .nm,.ar.pos .vl{color:var(--acc);font-weight:600}.ar.pos .vl{font-size:14px}
+.arow{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+/* COMPARE */
+.cmp{background:var(--sur);border:1px solid var(--bdr);border-radius:15px;overflow:hidden;margin-bottom:12px}
+.cr{display:grid;grid-template-columns:1.3fr 1fr 1fr;padding:10px 14px;border-bottom:1px solid var(--bdr);font-size:12.5px;align-items:center}
+.cr:last-child{border-bottom:none}
+.ch{background:var(--sur2);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;color:var(--mut)}
+.cl{color:var(--mut)}.ov,.nv{font-family:'DM Mono',monospace;font-size:12.5px;font-weight:500;text-align:right}
+.nv{color:var(--acc)}.nv.neg{color:var(--red)}
+.chl{background:var(--acc-bg)}.chl .cl{font-weight:600;color:var(--txt)}.chl .nv{font-size:14px}
+/* LOCAL */
+.loca{display:none}.loca.on{display:block}
+/* ── AD SLOTS ── */
+.ad-top{width:100%;text-align:center;padding:8px 0;background:var(--sur);border-bottom:1px solid var(--bdr);overflow:hidden}
+.ad-top ins{display:inline-block}
+.ad-results{width:100%;text-align:center;margin:14px 0;overflow:hidden;min-height:50px}
+.ad-sticky{display:none;position:fixed;bottom:0;left:0;width:100%;background:var(--sur);border-top:1px solid var(--bdr);text-align:center;padding:4px 0;z-index:200}
+.ad-sticky-close{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:var(--sur2);border:1px solid var(--bdr);border-radius:50%;width:20px;height:20px;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--mut)}
+@media(max-width:700px){.ad-sticky{display:block}body{padding-bottom:60px}}
+@media(min-width:701px){.ad-top ins{width:728px;height:90px}}
+@media(max-width:700px){.ad-top ins{width:320px;height:50px}}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(70px);background:var(--txt);color:var(--bg);padding:8px 16px;border-radius:100px;font-size:12.5px;font-weight:500;transition:transform .28s;z-index:9998;pointer-events:none;white-space:nowrap}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.disc{text-align:center;font-size:11px;color:var(--fnt);padding:0 20px 10px;line-height:1.5}
+footer{border-top:1px solid var(--bdr);padding:18px 20px;text-align:center;font-size:11.5px;color:var(--mut)}
+@media print{header,.tnav,.card.ic,.arow,footer,.disc{display:none!important}body{background:#fff;color:#000}.rw{display:block!important}.bt,.cc,.ac,.sc,.rhero{box-shadow:none;border:1px solid #ddd;break-inside:avoid}}
+@media(max-width:440px){.tnav{width:100%}.tbtn{padding:7px 10px;font-size:11.5px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="hdr">
+    <div class="logo">Check<em>Net</em>Pay</div>
+    <div class="hdr-r">
+      <span class="badge">✦ 2026 Data</span>
+      <button class="thm" onclick="toggleTheme()"><span id="tIco">🌙</span></button>
+    </div>
+  </div>
+</header>
+<!-- AD SLOT 1: Top Banner — 728x90 desktop / 320x50 mobile — Replace XXXXXXXXXX with your Ad Unit ID -->
+<div class="ad-top" id="adTop">
+  <ins class="adsbygoogle"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="XXXXXXXXXX"
+       data-ad-format="fixed"
+       data-full-width-responsive="false"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<main>
+  <h1>Free 2026 US <span>Paycheck Calculator</span></h1>
+  <p class="sub">See your exact take-home pay after all taxes · All 50 states + local taxes · W-2 &amp; 1099 · Bonus &amp; Raise tools · No sign-up needed</p>
+
+  <div class="tnav">
+    <button class="tbtn on" onclick="st('paycheck',this)">💵 Paycheck</button>
+    <button class="tbtn" onclick="st('bonus',this)">🎁 Bonus Tax</button>
+    <button class="tbtn" onclick="st('raise',this)">📈 Raise Simulator</button>
+  </div>
+
+  <!-- ▌PAYCHECK TAB -->
+  <div class="tpane on" id="tab-paycheck">
+    <div class="grid">
+      <div class="card ic">
+        <div class="clbl">Your Pay Details</div>
+
+        <div class="fld">
+          <div class="lbl">Worker Type <span class="tip" onclick="tip(this,'wt')">?</span></div>
+          <div class="seg">
+            <button class="sbtn on" id="bW2" onclick="setWT('w2')">💼 W-2 Employee</button>
+            <button class="sbtn" id="b99" onclick="setWT('1099')">🧾 Self-Employed / 1099</button>
+          </div>
+        </div>
+
+        <div id="ptF">
+          <div class="lbl">Pay Type <span class="tip" onclick="tip(this,'pt')">?</span></div>
+          <div class="seg" style="margin-bottom:12px">
+            <button class="sbtn on" id="bSal" onclick="setPT('salary')">📋 Annual Salary</button>
+            <button class="sbtn" id="bHr" onclick="setPT('hourly')">⏱ Hourly Rate</button>
+          </div>
+        </div>
+
+        <div class="fld" id="salF">
+          <div class="lbl">Annual Gross Salary <span class="tip" onclick="tip(this,'sal')">?</span></div>
+          <div class="px"><span class="p">$</span><input type="number" id="salI" placeholder="75,000" min="0"></div>
+        </div>
+
+        <div id="hrF" style="display:none">
+          <div class="two">
+            <div class="fld">
+              <div class="lbl">Hourly Rate <span class="tip" onclick="tip(this,'hr')">?</span></div>
+              <div class="px"><span class="p">$</span><input type="number" id="hrI" placeholder="22.00" step="0.01" min="0"></div>
+            </div>
+            <div class="fld">
+              <div class="lbl">Hours / Week <span class="tip" onclick="tip(this,'hw')">?</span></div>
+              <input type="number" id="hwI" placeholder="40" min="1" max="168" value="40">
+            </div>
+          </div>
+        </div>
+
+        <div id="seF" style="display:none">
+          <div class="fld">
+            <div class="lbl">Annual Gross Income (1099) <span class="tip" onclick="tip(this,'se')">?</span></div>
+            <div class="px"><span class="p">$</span><input type="number" id="seI" placeholder="50,000" min="0"></div>
+          </div>
+          <div class="fld">
+            <div class="lbl">Business Expenses (annual) <span class="tip" onclick="tip(this,'exp')">?</span></div>
+            <div class="px"><span class="p">$</span><input type="number" id="expI" placeholder="8,000" min="0"></div>
+          </div>
+          <div class="fld">
+            <div class="lbl">Business Miles / Year <span class="tip" onclick="tip(this,'mi')">?</span></div>
+            <input type="number" id="miI" placeholder="0 (optional)" min="0">
+          </div>
+        </div>
+
+        <div class="two">
+          <div class="fld">
+            <div class="lbl">State <span class="tip" onclick="tip(this,'state')">?</span></div>
+            <div class="sw"><select id="stS" onchange="updLocal(this.value)"></select></div>
+          </div>
+          <div class="fld" id="freqF">
+            <div class="lbl">Pay Frequency <span class="tip" onclick="tip(this,'freq')">?</span></div>
+            <div class="sw"><select id="frqS">
+              <option value="52">Weekly (52×/yr)</option>
+              <option value="26" selected>Bi-weekly (26×/yr)</option>
+              <option value="24">Semi-monthly (24×/yr)</option>
+              <option value="12">Monthly (12×/yr)</option>
+            </select></div>
+          </div>
+        </div>
+
+        <div class="loca" id="locA">
+          <div class="fld">
+            <div class="lbl" id="locLbl">City / County <span class="tip" onclick="tip(this,'local')">?</span></div>
+            <div class="sw"><select id="locS"></select></div>
+          </div>
+        </div>
+
+        <div class="fld">
+          <div class="lbl">Filing Status <span class="tip" onclick="tip(this,'filing')">?</span></div>
+          <div class="sw"><select id="filS">
+            <option value="single">Single</option>
+            <option value="married">Married Filing Jointly</option>
+            <option value="hoh">Head of Household</option>
+          </select></div>
+        </div>
+
+        <div class="div"></div>
+        <div class="slbl">Pre-Tax Deductions <small style="text-transform:none;letter-spacing:0;font-weight:400;font-style:italic"> — optional</small></div>
+        <div class="chip">💡 <b>Pre-tax</b> = taken out before taxes are calculated. Every dollar here lowers your taxable income — like a legal discount from the IRS.</div>
+
+        <div class="two">
+          <div class="fld">
+            <div class="lbl">401(k) / 403(b) <span class="tip" onclick="tip(this,'k401')">?</span></div>
+            <div class="sx"><input type="number" id="k4I" placeholder="0" min="0" max="100" step=".5"><span class="s">%</span></div>
+          </div>
+          <div class="fld">
+            <div class="lbl">HSA ($/year) <span class="tip" onclick="tip(this,'hsa')">?</span></div>
+            <div class="px"><span class="p">$</span><input type="number" id="hsaI" placeholder="0" min="0"></div>
+          </div>
+          <div class="fld">
+            <div class="lbl">Health Insurance <span class="tip" onclick="tip(this,'hi')">?</span></div>
+            <div class="px"><span class="p">$</span><input type="number" id="hiI" placeholder="$/paycheck" min="0"></div>
+          </div>
+          <div class="fld">
+            <div class="lbl">Other Pre-Tax <span class="tip" onclick="tip(this,'other')">?</span></div>
+            <div class="px"><span class="p">$</span><input type="number" id="otI" placeholder="$/paycheck" min="0"></div>
+          </div>
+        </div>
+
+        <button class="btnp" onclick="calc()">Calculate My Take-Home Pay →</button>
+      </div>
+
+      <!-- RESULTS PANEL -->
+      <div id="rPane">
+        <div class="empty" id="emSt">
+          <div class="eico">🧮</div>
+          <div class="etxt">Enter your details and hit Calculate</div>
+          <div class="esub">Full breakdown appears here — free, no sign-up</div>
+        </div>
+        <div class="rw" id="rCon">
+          <div class="rhero an">
+            <div class="rlbl" id="rLbl">Take-Home Per Paycheck</div>
+            <div class="ramt" id="rAmt">$0.00</div>
+            <div class="rsub" id="rSub">—</div>
+          </div>
+          <div class="sgrid">
+            <div class="sc an"><div class="sn">Gross Pay</div><div class="sv n" id="sGr">—</div><div class="sp">per paycheck</div></div>
+            <div class="sc an"><div class="sn" id="ficaNm">FICA Taxes</div><div class="sv neg" id="sFi">—</div><div class="sp" id="ficaSb">SS + Medicare</div></div>
+            <div class="sc an"><div class="sn">Federal Tax</div><div class="sv neg" id="sFd">—</div><div class="sp" id="sFdP">— effective rate</div></div>
+            <div class="sc an"><div class="sn">State Tax</div><div class="sv neg" id="sSt">—</div><div class="sp" id="sStP">—</div></div>
+          </div>
+          <div class="qb" id="qBnr"><b id="qAmt">—</b>Estimated quarterly tax payment · Due Apr 15, Jun 15, Sep 15, Jan 15</div>
+          <div class="cc an">
+            <div class="ct">WHERE YOUR MONEY GOES</div>
+            <div class="cb"><canvas id="dC" width="105" height="105"></canvas><div class="leg" id="legEl"></div></div>
+          </div>
+          <div class="bt an" id="bTbl"></div>
+          <div class="ac an" id="annS"></div>
+          <!-- AD SLOT 2: Results Rectangle — 300x250 — appears only after calculation -->
+          <div class="ad-results" id="adResults" style="display:none">
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:300px;height:250px"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+          <div class="arow an">
+            <button class="btns" onclick="window.print()">🖨 Print / PDF</button>
+            <button class="btns" onclick="copyLink()">🔗 Share Link</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▌BONUS TAB -->
+  <div class="tpane" id="tab-bonus">
+    <div class="grid">
+      <div class="card">
+        <div class="clbl">Bonus Tax Calculator</div>
+        <div class="chip">💡 Bonuses are taxed as "supplemental wages." Most employers withhold at a flat <b>22% federal rate</b> (37% if your bonus tops $1 million). State tax is also withheld on top.</div>
+        <div class="fld"><div class="lbl">Annual Salary <span class="tip" onclick="tip(this,'bsal')">?</span></div><div class="px"><span class="p">$</span><input type="number" id="bSal" placeholder="75,000"></div></div>
+        <div class="fld"><div class="lbl">Bonus Amount <span class="tip" onclick="tip(this,'bamt')">?</span></div><div class="px"><span class="p">$</span><input type="number" id="bBon" placeholder="5,000"></div></div>
+        <div class="two">
+          <div class="fld"><div class="lbl">State</div><div class="sw"><select id="bSt"></select></div></div>
+          <div class="fld"><div class="lbl">Filing Status</div><div class="sw"><select id="bFl"><option value="single">Single</option><option value="married">Married</option><option value="hoh">Head of Household</option></select></div></div>
+        </div>
+        <div class="fld">
+          <div class="lbl">Withholding Method <span class="tip" onclick="tip(this,'bmethod')">?</span></div>
+          <div class="seg">
+            <button class="sbtn on" id="bmF" onclick="setBM('flat')">Flat 22%</button>
+            <button class="sbtn" id="bmA" onclick="setBM('agg')">Aggregate</button>
+          </div>
+        </div>
+        <button class="btnp" onclick="calcB()">Calculate Bonus After Tax →</button>
+      </div>
+      <div>
+        <div class="empty" id="bEm"><div class="eico">🎁</div><div class="etxt">See how much of your bonus you keep</div><div class="esub">Most people are surprised by how much is withheld</div></div>
+        <div id="bRes" style="display:none">
+          <div class="rhero an"><div class="rlbl">You'll Take Home</div><div class="ramt" id="bNA">$0</div><div class="rsub" id="bNS">from your bonus</div></div>
+          <div class="bt an" id="bBT"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▌RAISE TAB -->
+  <div class="tpane" id="tab-raise">
+    <div class="grid">
+      <div class="card">
+        <div class="clbl">Raise Simulator</div>
+        <div class="chip">📌 A $10,000 raise is <b>never</b> $10,000 more in your pocket. Taxes take a share. See the real after-tax difference before negotiating.</div>
+        <div class="fld"><div class="lbl">Current Annual Salary</div><div class="px"><span class="p">$</span><input type="number" id="rCu" placeholder="60,000" oninput="syncPct()"></div></div>
+        <div class="fld"><div class="lbl">New Salary (after raise) <span class="tip" onclick="tip(this,'rnew')">?</span></div><div class="px"><span class="p">$</span><input type="number" id="rNw" placeholder="65,000" oninput="syncPct()"></div></div>
+        <div class="fld"><div class="lbl">OR — Raise %</div><div class="sx"><input type="number" id="rPc" placeholder="8.3" step="0.1" oninput="syncSal()"><span class="s">%</span></div></div>
+        <div class="two">
+          <div class="fld"><div class="lbl">State</div><div class="sw"><select id="rSt"></select></div></div>
+          <div class="fld"><div class="lbl">Pay Frequency</div><div class="sw"><select id="rFr"><option value="52">Weekly</option><option value="26" selected>Bi-weekly</option><option value="24">Semi-monthly</option><option value="12">Monthly</option></select></div></div>
+        </div>
+        <div class="fld"><div class="lbl">Filing Status</div><div class="sw"><select id="rFl"><option value="single">Single</option><option value="married">Married</option><option value="hoh">Head of Household</option></select></div></div>
+        <button class="btnp" onclick="calcR()">Show Real After-Tax Difference →</button>
+      </div>
+      <div>
+        <div class="empty" id="rEm"><div class="eico">📈</div><div class="etxt">Find out your real raise after taxes</div><div class="esub">See exactly how much more lands in your bank account</div></div>
+        <div id="rRes" style="display:none">
+          <div class="rhero an"><div class="rlbl">Extra Per Paycheck</div><div class="ramt" id="rXA">$0</div><div class="rsub" id="rXS">after taxes</div></div>
+          <div class="cmp an" id="rCmp"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="disc">⚠️ Estimates for planning only — not tax filing. Consult a tax professional or your paystub for exact figures. Local taxes shown for major jurisdictions only; your area may vary.</p>
+
+  <!-- SEO CONTENT — helps Google understand and rank this page -->
+  <section style="max-width:720px;margin:40px auto 0;padding:0 4px">
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:700;letter-spacing:-.3px;margin-bottom:10px;color:var(--txt)">How to Use This Paycheck Calculator</h2>
+    <p style="font-size:13px;color:var(--mut);line-height:1.7;margin-bottom:14px">Enter your annual salary or hourly rate, select your state, pick your pay frequency, and hit Calculate. The tool instantly shows your <strong style="color:var(--txt)">take-home pay per paycheck</strong> after federal income tax, state tax, Social Security (6.2% up to $184,500), and Medicare (1.45%). Add optional deductions like 401(k), HSA, or health insurance for a more accurate result.</p>
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:700;letter-spacing:-.3px;margin-bottom:10px;color:var(--txt)">2026 Federal Tax Brackets &amp; Standard Deductions</h2>
+    <p style="font-size:13px;color:var(--mut);line-height:1.7;margin-bottom:14px">Updated with <strong style="color:var(--txt)">IRS Rev. Proc. 2025-32</strong>. Standard deduction: <strong style="color:var(--txt)">$16,100 single / $32,200 married filing jointly / $24,150 head of household</strong>. Social Security wage base: <strong style="color:var(--txt)">$184,500</strong>. 401(k) limit: <strong style="color:var(--txt)">$24,500</strong>.</p>
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:700;letter-spacing:-.3px;margin-bottom:10px;color:var(--txt)">W-2 Employee vs 1099 Self-Employed</h2>
+    <p style="font-size:13px;color:var(--mut);line-height:1.7;margin-bottom:14px">W-2 employees have taxes automatically withheld each paycheck. <strong style="color:var(--txt)">Freelancers, contractors, Uber/DoorDash drivers, and Etsy sellers</strong> on 1099 owe an extra 15.3% self-employment tax plus quarterly estimated tax payments. This calculator handles both modes with full breakdowns.</p>
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:700;letter-spacing:-.3px;margin-bottom:10px;color:var(--txt)">Paycheck Calculator by State</h2>
+    <p style="font-size:13px;color:var(--mut);line-height:1.7;margin-bottom:10px">State income tax rates vary from 0% (Texas, Florida, Nevada) to over 13% (California). Select your state below for a detailed breakdown:</p>
+    <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:24px">
+      <a href="/states/california-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">California</a>
+      <a href="/states/texas-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Texas</a>
+      <a href="/states/new-york-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">New York</a>
+      <a href="/states/florida-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Florida</a>
+      <a href="/states/illinois-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Illinois</a>
+      <a href="/states/pennsylvania-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Pennsylvania</a>
+      <a href="/states/ohio-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Ohio</a>
+      <a href="/states/georgia-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Georgia</a>
+      <a href="/states/north-carolina-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">North Carolina</a>
+      <a href="/states/washington-paycheck-calculator" style="font-size:12px;padding:5px 10px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg)">Washington</a>
+    </div>
+  </section>
+</main>
+
+<footer>CheckNetPay.com — Free 2026 US Paycheck Calculator · IRS 2026 Data · SS Wage Base $184,500 · <a href="/privacy.html" style="color:var(--acc);text-decoration:none">Privacy Policy</a> · Informational use only</footer>
+
+<!-- AD SLOT 3: Sticky Bottom Mobile Banner — 320x50 — auto-hides on desktop -->
+<div class="ad-sticky" id="adSticky">
+  <ins class="adsbygoogle"
+       style="display:inline-block;width:320px;height:50px"
+       data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="XXXXXXXXXX"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  <button class="ad-sticky-close" onclick="document.getElementById('adSticky').style.display='none'" aria-label="Close ad">✕</button>
+</div>
+<div class="toast" id="tst">Copied!</div>
+
+<script>
+'use strict';
+// ── 2026 FEDERAL DATA ──
+const FED={
+  single: [{mn:0,mx:11925,r:.10},{mn:11925,mx:48475,r:.12},{mn:48475,mx:103350,r:.22},{mn:103350,mx:201775,r:.24},{mn:201775,mx:250525,r:.32},{mn:250525,mx:640600,r:.35},{mn:640600,mx:1/0,r:.37}],
+  married:[{mn:0,mx:23850,r:.10},{mn:23850,mx:96950,r:.12},{mn:96950,mx:206700,r:.22},{mn:206700,mx:403550,r:.24},{mn:403550,mx:501050,r:.32},{mn:501050,mx:768700,r:.35},{mn:768700,mx:1/0,r:.37}],
+  hoh:    [{mn:0,mx:17000,r:.10},{mn:17000,mx:64650,r:.12},{mn:64650,mx:103350,r:.22},{mn:103350,mx:201775,r:.24},{mn:201775,mx:250525,r:.32},{mn:250525,mx:640600,r:.35},{mn:640600,mx:1/0,r:.37}]
+};
+const SDED={single:16100,married:32200,hoh:24150};
+const SS_R=.062,SS_CAP=184500,MC_R=.0145,ADD_MC=.009;
+const ADD_MC_T={single:200000,married:250000,hoh:200000};
+const SE_R=.153,SE_F=.9235,RET_LIM=24500,HSA_LIM=4300,MILE=.70;
+
+// ── STATE DATA ──
+const ST=[
+  {c:'AL',n:'Alabama',r:.0500},{c:'AK',n:'Alaska',r:0,nt:1},{c:'AZ',n:'Arizona',r:.0250},
+  {c:'AR',n:'Arkansas',r:.0440},{c:'CA',n:'California',r:.0725},{c:'CO',n:'Colorado',r:.0425},
+  {c:'CT',n:'Connecticut',r:.0500},{c:'DE',n:'Delaware',r:.0660},{c:'FL',n:'Florida',r:0,nt:1},
+  {c:'GA',n:'Georgia',r:.0539},{c:'HI',n:'Hawaii',r:.0800},{c:'ID',n:'Idaho',r:.0580},
+  {c:'IL',n:'Illinois',r:.0495},{c:'IN',n:'Indiana',r:.0300},{c:'IA',n:'Iowa',r:.0380},
+  {c:'KS',n:'Kansas',r:.0570},{c:'KY',n:'Kentucky',r:.0400},{c:'LA',n:'Louisiana',r:.0300},
+  {c:'ME',n:'Maine',r:.0750},{c:'MD',n:'Maryland',r:.0575},{c:'MA',n:'Massachusetts',r:.0500},
+  {c:'MI',n:'Michigan',r:.0425},{c:'MN',n:'Minnesota',r:.0785},{c:'MS',n:'Mississippi',r:.0470},
+  {c:'MO',n:'Missouri',r:.0480},{c:'MT',n:'Montana',r:.0590},{c:'NE',n:'Nebraska',r:.0584},
+  {c:'NV',n:'Nevada',r:0,nt:1},{c:'NH',n:'New Hampshire',r:0,nt:1},{c:'NJ',n:'New Jersey',r:.0637},
+  {c:'NM',n:'New Mexico',r:.0590},{c:'NY',n:'New York',r:.0685},{c:'NC',n:'North Carolina',r:.0425},
+  {c:'ND',n:'North Dakota',r:.0250},{c:'OH',n:'Ohio',r:.0350},{c:'OK',n:'Oklahoma',r:.0475},
+  {c:'OR',n:'Oregon',r:.0990},{c:'PA',n:'Pennsylvania',r:.0307},{c:'RI',n:'Rhode Island',r:.0599},
+  {c:'SC',n:'South Carolina',r:.0640},{c:'SD',n:'South Dakota',r:0,nt:1},
+  {c:'TN',n:'Tennessee',r:0,nt:1},{c:'TX',n:'Texas',r:0,nt:1},{c:'UT',n:'Utah',r:.0465},
+  {c:'VT',n:'Vermont',r:.0875},{c:'VA',n:'Virginia',r:.0575},{c:'WA',n:'Washington',r:0,nt:1},
+  {c:'WV',n:'West Virginia',r:.0512},{c:'WI',n:'Wisconsin',r:.0765},{c:'WY',n:'Wyoming',r:0,nt:1},
+  {c:'DC',n:'Washington D.C.',r:.0850}
+];
+
+// ── LOCAL TAX DATA (focused on most-searched jurisdictions) ──
+const LOC={
+  NY:{lbl:'City',opts:[
+    {v:'',n:'Rest of New York (no local tax)',r:0},
+    {v:'nyc',n:'New York City',r:'nyc'},
+    {v:'yonkers',n:'Yonkers',r:.01648}
+  ]},
+  MD:{lbl:'County (required for accuracy)',opts:[
+    {v:'balt_city',n:'Baltimore City',r:.032},{v:'balt_co',n:'Baltimore County',r:.032},
+    {v:'montgomery',n:'Montgomery County',r:.032},{v:'pg',n:"Prince George's County",r:.032},
+    {v:'anne_arundel',n:'Anne Arundel County',r:.0281},{v:'howard',n:'Howard County',r:.032},
+    {v:'harford',n:'Harford County',r:.0306},{v:'frederick',n:'Frederick County',r:.0296},
+    {v:'carroll',n:'Carroll County',r:.0303},{v:'charles',n:'Charles County',r:.0303},
+    {v:'calvert',n:'Calvert County',r:.030},{v:'st_marys',n:"St. Mary's County",r:.030},
+    {v:'washington',n:'Washington County',r:.030},{v:'wicomico',n:'Wicomico County',r:.032},
+    {v:'worcester',n:'Worcester County',r:.0225},{v:'talbot',n:'Talbot County',r:.024},
+    {v:'garrett',n:'Garrett County',r:.0265},{v:'allegany',n:'Allegany County',r:.0305},
+    {v:'somerset',n:'Somerset County',r:.032},{v:'dorchester',n:'Dorchester County',r:.032},
+    {v:'caroline',n:'Caroline County',r:.032},{v:'kent',n:'Kent County',r:.032},
+    {v:'queen_annes',n:"Queen Anne's County",r:.032},{v:'cecil',n:'Cecil County',r:.030}
+  ]},
+  PA:{lbl:'City / Municipality',opts:[
+    {v:'gen',n:'Most PA municipalities (~1.975% EIT)',r:.01975},
+    {v:'phila',n:'Philadelphia — Resident (3.75%)',r:.0375},
+    {v:'phila_nr',n:'Philadelphia — Non-Resident (3.44%)',r:.0344},
+    {v:'pitt',n:'Pittsburgh (3%)',r:.030},
+    {v:'reading',n:'Reading (3.6%)',r:.036},
+    {v:'scranton',n:'Scranton (3.4%)',r:.034},
+    {v:'erie',n:'Erie (1.18%)',r:.0118},
+    {v:'other',n:'Other city — unsure (use 1.975%)',r:.01975}
+  ]},
+  OH:{lbl:'City (if applicable)',opts:[
+    {v:'',n:'Rural / No municipal tax',r:0},
+    {v:'cols',n:'Columbus (2.5%)',r:.025},{v:'clev',n:'Cleveland (2.5%)',r:.025},
+    {v:'cin',n:'Cincinnati (1.8%)',r:.018},{v:'tol',n:'Toledo (2.5%)',r:.025},
+    {v:'akr',n:'Akron (2.5%)',r:.025},{v:'day',n:'Dayton (2.5%)',r:.025},
+    {v:'canton',n:'Canton (2.5%)',r:.025},{v:'youngstown',n:'Youngstown (2.75%)',r:.0275},
+    {v:'parma',n:'Parma (2.5%)',r:.025},{v:'lorain',n:'Lorain (2.5%)',r:.025},
+    {v:'euclid',n:'Euclid (2.85%)',r:.0285},{v:'hamilton',n:'Hamilton (2%)',r:.020},
+    {v:'springfield',n:'Springfield (2.4%)',r:.024},{v:'kettering',n:'Kettering (2.25%)',r:.0225},
+    {v:'elyria',n:'Elyria (2.5%)',r:.025},{v:'lakewood',n:'Lakewood (1.5%)',r:.015},
+    {v:'newark',n:'Newark (1.75%)',r:.0175},{v:'mansfield',n:'Mansfield (2%)',r:.020},
+    {v:'findlay',n:'Findlay (1.5%)',r:.015},{v:'dublin',n:'Dublin (2%)',r:.020}
+  ]},
+  MI:{lbl:'City (if applicable)',opts:[
+    {v:'',n:'Rest of Michigan (no local tax)',r:0},
+    {v:'detroit',n:'Detroit — Resident (2.4%)',r:.024},
+    {v:'detroit_nr',n:'Detroit — Non-Resident (1.2%)',r:.012},
+    {v:'gr',n:'Grand Rapids — Resident (1.5%)',r:.015},
+    {v:'flint',n:'Flint (1%)',r:.01},{v:'lansing',n:'Lansing (1%)',r:.01},
+    {v:'saginaw',n:'Saginaw (1.5%)',r:.015},{v:'pontiac',n:'Pontiac (1%)',r:.01},
+    {v:'battle_creek',n:'Battle Creek (1%)',r:.01},{v:'east_lansing',n:'East Lansing (1%)',r:.01}
+  ]},
+  IN:{lbl:'County (select for accuracy)',opts:[
+    {v:'',n:'— Select Indiana County —',r:0},
+    {v:'marion',n:'Marion (Indianapolis) — 2.02%',r:.0202},
+    {v:'allen',n:'Allen (Fort Wayne) — 1.48%',r:.0148},
+    {v:'hamilton',n:'Hamilton (Carmel/Fishers) — 1.1%',r:.011},
+    {v:'lake',n:'Lake (Gary/Hammond) — 1.5%',r:.015},
+    {v:'st_joseph',n:'St. Joseph (South Bend) — 1.75%',r:.0175},
+    {v:'hendricks',n:'Hendricks (Plainfield/Avon) — 1.8%',r:.018},
+    {v:'johnson',n:'Johnson (Greenwood/Franklin) — 1.2%',r:.012},
+    {v:'elkhart',n:'Elkhart — 1.5%',r:.015},
+    {v:'tippecanoe',n:'Tippecanoe (Lafayette) — 1.28%',r:.0128},
+    {v:'delaware',n:'Delaware (Muncie) — 1.5%',r:.015},
+    {v:'vanderburgh',n:'Vanderburgh (Evansville) — 1.2%',r:.012},
+    {v:'porter',n:'Porter (Portage/Valparaiso) — 0.5%',r:.005},
+    {v:'madison',n:'Madison (Anderson) — 1.75%',r:.0175},
+    {v:'monroe',n:'Monroe (Bloomington) — 1.35%',r:.0135},
+    {v:'bartholomew',n:'Bartholomew (Columbus IN) — 1.75%',r:.0175},
+    {v:'vigo',n:'Vigo (Terre Haute) — 1.5%',r:.015},
+    {v:'floyd',n:'Floyd (New Albany) — 1.35%',r:.0135},
+    {v:'clark',n:'Clark (Jeffersonville) — 2%',r:.020},
+    {v:'other_in',n:'Other Indiana County (~1.75% avg)',r:.0175}
+  ]},
+  MO:{lbl:'City (if applicable)',opts:[
+    {v:'',n:'Rest of Missouri (no local tax)',r:0},
+    {v:'kc',n:'Kansas City (1% earnings tax)',r:.010},
+    {v:'stl',n:'St. Louis (1% earnings tax)',r:.010}
+  ]},
+  KY:{lbl:'City / County (if applicable)',opts:[
+    {v:'',n:'Rest of Kentucky (varies)',r:0},
+    {v:'lou',n:'Louisville / Jefferson County (2.2%)',r:.022},
+    {v:'lex',n:'Lexington / Fayette County (2.25%)',r:.0225},
+    {v:'cov',n:'Covington (2.45%)',r:.0245},
+    {v:'bowl',n:'Bowling Green (1.85%)',r:.0185},
+    {v:'owens',n:'Owensboro (1.39%)',r:.0139}
+  ]},
+  DE:{lbl:'City (if applicable)',opts:[
+    {v:'',n:'Rest of Delaware (no local tax)',r:0},
+    {v:'wilm',n:'Wilmington (1.25%)',r:.0125}
+  ]},
+  CO:{lbl:'City — Occupational Privilege Tax (flat/month)',opts:[
+    {v:'',n:'Rest of Colorado (no local income tax)',r:0,fl:0},
+    {v:'den',n:'Denver ($5.75/mo)',r:0,fl:5.75},
+    {v:'aur',n:'Aurora ($2/mo)',r:0,fl:2},
+    {v:'glen',n:'Glendale ($10/mo)',r:0,fl:10},
+    {v:'gv',n:'Greenwood Village ($4/mo)',r:0,fl:4},
+    {v:'sher',n:'Sheridan ($6/mo)',r:0,fl:6}
+  ]},
+  AL:{lbl:'City / County (if applicable)',opts:[
+    {v:'',n:'Rest of Alabama (no local income tax)',r:0},
+    {v:'bham',n:'Birmingham (1%)',r:.010},
+    {v:'bess',n:'Bessemer (1%)',r:.010},
+    {v:'gadsden',n:'Gadsden (2%)',r:.020},
+    {v:'jeff_co',n:'Jefferson County outside Birmingham (0.45%)',r:.0045}
+  ]},
+  WV:{lbl:'City (if applicable)',opts:[
+    {v:'',n:'Rest of West Virginia (no significant local tax)',r:0},
+    {v:'charl',n:'Charleston (~1%)',r:.010}
+  ]},
+  OR:{lbl:'Metro Area (if applicable)',opts:[
+    {v:'',n:'Rest of Oregon (no local income tax)',r:0},
+    {v:'pdx',n:'Portland Metro SHS Tax (1% over $125k single)',r:'pdx'},
+    {v:'mult',n:'Multnomah County PFA (1.5-3% over $125k)',r:'mult'}
+  ]}
+};
+
+// ── ENGINE ──
+function fedTax(ti,f){
+  const b=FED[f]||FED.single;let t=0;
+  for(const x of b){if(ti<=x.mn)break;t+=(Math.min(ti,x.mx)-x.mn)*x.r;}
+  return Math.max(0,t);
+}
+function margR(ti,f){const b=FED[f]||FED.single;for(const x of b)if(ti<x.mx)return x.r;return .37;}
+function fica(g,f){
+  const ss=Math.min(g,SS_CAP)*SS_R;
+  const mc=g*MC_R+(Math.max(0,g-(ADD_MC_T[f]||200000))*ADD_MC);
+  return{ss,mc,tot:ss+mc};
+}
+function stateTax(g,c){const s=ST.find(x=>x.c===c);return s&&!s.nt?g*s.r:0;}
+function localTax(g,c,v){
+  if(!v||!LOC[c])return 0;
+  const opt=LOC[c].opts.find(o=>o.v===v);
+  if(!opt)return 0;
+  if(opt.r==='nyc')return nycTax(g);
+  if(opt.r==='pdx')return g>125000?(g-125000)*.01:0;
+  if(opt.r==='mult'){if(g<=125000)return 0;if(g<=250000)return(g-125000)*.015;return 125000*.015+(g-250000)*.03;}
+  if(opt.fl)return opt.fl*12;
+  return g*(opt.r||0);
+}
+function nycTax(i){
+  if(i<=12000)return i*.03078;
+  if(i<=25000)return 369.36+(i-12000)*.03762;
+  if(i<=50000)return 858.42+(i-25000)*.03819;
+  return 1813.17+(i-50000)*.03876;
+}
+function calcW2(p){
+  const{g,f,sc,lv,n,k4,hsa,hi,ot}=p;
+  const ret=Math.min(g*(k4/100),RET_LIM);
+  const hsaA=Math.min(hsa||0,HSA_LIM);
+  const hiA=(hi||0)*n, otA=(ot||0)*n;
+  const pre=ret+hsaA+hiA+otA;
+  const ti=Math.max(0,g-pre-(SDED[f]||SDED.single));
+  const aFed=fedTax(ti,f);
+  const fc=fica(g,f);
+  const aSt=stateTax(g,sc);
+  const aLo=localTax(g,sc,lv);
+  const aNet=g-aFed-fc.tot-aSt-aLo-pre;
+  return{g,aNet,n,ppG:g/n,ppN:aNet/n,aFed,ppF:aFed/n,effF:g>0?aFed/g*100:0,
+    mr:margR(ti,f)*100,aFica:fc.tot,ppFi:fc.tot/n,ppSS:fc.ss/n,ppMC:fc.mc/n,
+    aSt,ppSt:aSt/n,stR:(ST.find(x=>x.c===sc)||{r:0}).r*100,
+    aLo,ppLo:aLo/n,ret,ppRet:ret/n,hsaA,ppHsa:hsaA/n,
+    hiA,ppHi:hi||0,otA,ppOt:ot||0,pre,w2:1};
+}
+function calc1099(p){
+  const{rev,exp,mi,f,sc,lv,n}=p;
+  const miD=(mi||0)*MILE;
+  const totExp=(exp||0)+miD;
+  const np=Math.max(0,rev-totExp);
+  const seBase=np*SE_F;
+  const seSS=Math.min(seBase,SS_CAP)*.124;
+  const seMC=seBase*.029+Math.max(0,seBase-(ADD_MC_T[f]||200000))*ADD_MC;
+  const se=seSS+seMC;
+  const seD=se/2;
+  const ti=Math.max(0,np-seD-(SDED[f]||SDED.single));
+  const aFed=fedTax(ti,f);
+  const aSt=stateTax(np,sc);
+  const aLo=localTax(np,sc,lv);
+  const aNet=np-aFed-se-aSt-aLo;
+  const qEst=Math.max(0,(aFed+se+aSt)/4);
+  return{g:rev,np,totExp,miD,aNet,n,ppG:rev/n,ppN:aNet/n,aFed,ppF:aFed/n,
+    effF:np>0?aFed/np*100:0,mr:margR(ti,f)*100,se,ppSe:se/n,
+    aSt,ppSt:aSt/n,stR:(ST.find(x=>x.c===sc)||{r:0}).r*100,
+    aLo,ppLo:aLo/n,qEst,pre:0,w2:0};
+}
+
+// ── UI STATE ──
+let wt='w2',pt='salary',bm='flat',last=null;
+const g=id=>document.getElementById(id);
+function setWT(t){
+  wt=t;tog('bW2','b99',t==='w2');
+  g('ptF').style.display=t==='w2'?'block':'none';
+  g('salF').style.display=(t==='w2'&&pt==='salary')?'block':'none';
+  g('hrF').style.display=(t==='w2'&&pt==='hourly')?'block':'none';
+  g('seF').style.display=t==='1099'?'block':'none';
+}
+function setPT(t){
+  pt=t;tog('bSal','bHr',t==='salary');
+  g('salF').style.display=t==='salary'?'block':'none';
+  g('hrF').style.display=t==='hourly'?'block':'none';
+}
+function tog(a,b,aOn){g(a).classList.toggle('on',aOn);g(b).classList.toggle('on',!aOn);}
+function setBM(m){bm=m;g('bmF').classList.toggle('on',m==='flat');g('bmA').classList.toggle('on',m==='agg');}
+function st(nm,btn){
+  document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  document.querySelectorAll('.tpane').forEach(p=>p.classList.remove('on'));
+  g('tab-'+nm).classList.add('on');
+}
+function updLocal(sc){
+  const la=g('locA'),ls=g('locS');
+  if(LOC[sc]){
+    la.className='loca on fld';
+    g('locLbl').childNodes[0].textContent=LOC[sc].lbl+' ';
+    ls.innerHTML=LOC[sc].opts.map(o=>`<option value="${o.v}">${o.n}</option>`).join('');
+  }else{la.className='loca';}
+}
+
+// ── CALCULATE ──
+function calc(){
+  const sc=g('stS').value,lv=g('locS')?g('locS').value:'';
+  const f=g('filS').value,n=parseInt(g('frqS').value);
+  const k4=parseFloat(g('k4I').value)||0,hsa=parseFloat(g('hsaI').value)||0;
+  const hi=parseFloat(g('hiI').value)||0,ot=parseFloat(g('otI').value)||0;
+  let r;
+  if(wt==='1099'){
+    const rev=parseFloat(g('seI').value)||0;
+    if(!rev){showToast('Enter your annual gross income');return;}
+    r=calc1099({rev,exp:parseFloat(g('expI').value)||0,mi:parseFloat(g('miI').value)||0,f,sc,lv,n});
+  }else{
+    let gr=0;
+    if(pt==='salary') gr=parseFloat(g('salI').value)||0;
+    else{const hr=parseFloat(g('hrI').value)||0,hw=parseFloat(g('hwI').value)||40;gr=(Math.min(hw,40)*hr+Math.max(0,hw-40)*hr*1.5)*52;}
+    if(!gr){showToast('Enter your salary or hourly rate');return;}
+    r=calcW2({g:gr,f,sc,lv,n,k4,hsa,hi,ot});
+  }
+  last=r;show(r,sc);updURL();
+}
+
+// ── DISPLAY ──
+const PL={52:'week',26:'two weeks',24:'semi-month',12:'month'};
+const PAL={52:'weekly',26:'bi-weekly',24:'semi-monthly',12:'monthly'};
+const COL={home:'#1B6B42',fed:'#B82D2D',fica:'#3A6FAD',st:'#C07A22',lo:'#7250B8',ded:'#8A8880'};
+function fm(n,d=2){return'$'+Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});}
+function fa(n){return'$'+Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});}
+function fp(n){return n.toFixed(1)+'%';}
+
+function show(r,sc){
+  g('emSt').style.display='none';g('rCon').style.display='block';
+  // Show results ad slot
+  const adR=g('adResults');if(adR)adR.style.display='block';
+  const si=ST.find(s=>s.c===sc)||{n:sc,r:0,nt:0};
+  const pl=PL[r.n]||'paycheck';
+  g('rLbl').textContent='Take-Home per '+pl.charAt(0).toUpperCase()+pl.slice(1);
+  aN('rAmt',r.ppN);
+  g('rSub').textContent=`${fa(r.aNet)}/year · Gross: ${fa(r.w2?r.g:r.np)} ${r.w2?'salary':'net profit'}`;
+  g('sGr').textContent=fm(r.ppG);
+  g('sFd').textContent='-'+fm(r.ppF);g('sFdP').textContent=fp(r.effF)+' effective';
+  if(r.w2){g('ficaNm').textContent='FICA Taxes';g('ficaSb').textContent='SS + Medicare';g('sFi').textContent='-'+fm(r.ppFi);}
+  else{g('ficaNm').textContent='Self-Emp. Tax';g('ficaSb').textContent='15.3% (you pay both halves)';g('sFi').textContent='-'+fm(r.ppSe);}
+  g('sSt').textContent=si.nt?'$0.00':'-'+fm(r.ppSt);
+  g('sStP').textContent=si.nt?si.n+' has no income tax 🎉':fp(r.stR)+' state rate';
+  if(!r.w2&&r.qEst>0){g('qBnr').style.display='block';g('qAmt').textContent=fm(r.qEst,0)+' quarterly tax estimated';}
+  else g('qBnr').style.display='none';
+  const ded=(r.ppRet||0)+(r.ppHsa||0)+(r.ppHi||0)+(r.ppOt||0);
+  dChart({home:r.ppN,fed:r.ppF,fica:r.w2?r.ppFi:(r.ppSe||0),st:r.ppSt,lo:r.ppLo||0,ded,gr:r.ppG});
+  bDown(r,si);annSum(r,si);
+}
+
+function bDown(r,si){
+  const pl='/'+PL[r.n];
+  let rows=[{nm:'Gross '+(r.w2?'Pay':'Revenue'),sb:r.w2?'Before any deductions':`Minus ${fa(r.totExp)} expenses = ${fa(r.np)} net profit`,pp:r.ppG,an:r.g,cl:'n'}];
+  if(!r.w2&&r.totExp>0)rows.push({nm:'Business Expenses',sb:r.miD>0?`Incl. ${fa(r.miD)} mileage @ 70¢/mi`:'Deductible costs',pp:-r.totExp/r.n,an:-r.totExp,cl:'neg'});
+  if((r.ppRet||0)>0)rows.push({nm:'401(k) Contribution',sb:'Pre-tax retirement savings',pp:-r.ppRet,an:-r.ret,cl:'neg'});
+  if((r.ppHsa||0)>0)rows.push({nm:'HSA Contribution',sb:'Triple tax-free medical savings',pp:-r.ppHsa,an:-r.hsaA,cl:'neg'});
+  if((r.ppHi||0)>0)rows.push({nm:'Health Insurance',sb:'Your share of premiums',pp:-r.ppHi,an:-r.hiA,cl:'neg'});
+  if((r.ppOt||0)>0)rows.push({nm:'Other Pre-Tax',sb:'Dental, vision, FSA, etc.',pp:-r.ppOt,an:-r.otA,cl:'neg'});
+  rows.push({nm:'Federal Income Tax',sb:`${fp(r.effF)} effective · ${fp(r.mr)} marginal bracket`,pp:-r.ppF,an:-r.aFed,cl:'neg'});
+  if(r.w2){rows.push({nm:'Social Security',sb:'6.2% up to $184,500 wage base (2026)',pp:-r.ppSS,an:-(r.ppSS*r.n),cl:'neg'});
+    rows.push({nm:'Medicare',sb:'1.45% + 0.9% over $200k',pp:-r.ppMC,an:-(r.ppMC*r.n),cl:'neg'});}
+  else rows.push({nm:'Self-Employment Tax',sb:'15.3% — you pay employee + employer share',pp:-r.ppSe,an:-r.se,cl:'neg'});
+  if(!si.nt)rows.push({nm:si.n+' State Tax',sb:`~${fp(r.stR)} estimated effective rate`,pp:-r.ppSt,an:-r.aSt,cl:'neg'});
+  if((r.ppLo||0)>0)rows.push({nm:'Local / Municipal Tax',sb:'City or county income tax',pp:-r.ppLo,an:-r.aLo,cl:'neg'});
+  let h=rows.map(x=>`<div class="br"><div><div class="bn">${x.nm}</div><div class="bs">${x.sb}</div></div><div class="bra"><div class="bp ${x.cl}">${x.pp<0?'−':''}${fm(Math.abs(x.pp))} <small style="font-family:sans-serif;font-size:10px;color:var(--mut)">${pl}</small></div><div class="ba">${x.an<0?'−':''}${fa(Math.abs(x.an))}/yr</div></div></div>`).join('');
+  h+=`<div class="br btot"><div><div class="bn">✅ Net Take-Home Pay</div><div class="bs">After all taxes &amp; deductions</div></div><div class="bra"><div class="bp pos">${fm(r.ppN)} <small style="font-family:sans-serif;font-size:10px;color:var(--mut)">/${PL[r.n]}</small></div><div class="ba">${fa(r.aNet)}/yr</div></div></div>`;
+  g('bTbl').innerHTML=h;
+}
+
+function annSum(r,si){
+  const rows=[
+    {nm:`Gross ${r.w2?'Salary':'Revenue'}`,v:fa(r.g),cl:''},
+    {nm:'Federal Income Tax',v:'−'+fa(r.aFed),cl:'neg'},
+    {nm:r.w2?'Social Security + Medicare':'Self-Employment Tax',v:'−'+fa(r.w2?r.aFica:r.se),cl:'neg'},
+    {nm:si.n+' State Tax',v:si.nt?'$0':'−'+fa(r.aSt),cl:si.nt?'':'neg'}
+  ];
+  if((r.aLo||0)>0)rows.push({nm:'Local / Municipal Tax',v:'−'+fa(r.aLo),cl:'neg'});
+  if((r.pre||0)>0)rows.push({nm:'Pre-Tax Deductions (401k, HSA, benefits)',v:'−'+fa(r.pre),cl:'neg'});
+  if(!r.w2&&r.totExp>0)rows.push({nm:'Business Expenses (deducted)',v:'−'+fa(r.totExp),cl:'neg'});
+  rows.push({nm:'Annual Take-Home Pay',v:fa(r.aNet),cl:'pos'});
+  const tot=(r.aFed||0)+(r.w2?(r.aFica||0):(r.se||0))+(r.aSt||0)+(r.aLo||0);
+  const base=r.w2?r.g:r.np;
+  rows.push({nm:'Your effective total tax rate',v:fp(base>0?tot/base*100:0),cl:''});
+  g('annS').innerHTML=`<div class="slbl" style="margin-bottom:9px">Annual Summary</div>`+rows.map(x=>`<div class="ar ${x.cl}"><span class="nm">${x.nm}</span><span class="vl">${x.v}</span></div>`).join('');
+}
+
+function dChart(d){
+  const cv=g('dC');if(!cv)return;
+  const ctx=cv.getContext('2d'),sz=105,cx=52,cy=52,ro=46,ri=27;
+  ctx.clearRect(0,0,sz,sz);
+  const segs=[{v:d.home,c:COL.home,l:'Take-Home'},{v:d.fed,c:COL.fed,l:'Federal Tax'},
+    {v:d.fica,c:COL.fica,l:'FICA/SE Tax'},{v:d.st,c:COL.st,l:'State Tax'},
+    {v:d.lo,c:COL.lo,l:'Local Tax'},{v:d.ded,c:COL.ded,l:'Pre-Tax Ded.'}].filter(s=>s.v>.001);
+  const tot=d.gr||segs.reduce((a,s)=>a+s.v,0);if(!tot)return;
+  let sa=-Math.PI/2,gap=.04;
+  segs.forEach(s=>{
+    const sw=(s.v/tot)*(Math.PI*2-gap*segs.length);
+    ctx.beginPath();ctx.moveTo(cx,cy);
+    ctx.arc(cx,cy,ro,sa+gap/2,sa+sw+gap/2);
+    ctx.arc(cx,cy,ri,sa+sw+gap/2,sa+gap/2,true);
+    ctx.closePath();ctx.fillStyle=s.c;ctx.fill();sa+=sw+gap;
+  });
+  const dk=document.documentElement.getAttribute('data-theme')==='dark';
+  ctx.fillStyle=dk?'#EDECEA':'#1A1917';ctx.font='600 10.5px DM Sans,sans-serif';
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillText(((d.home/tot)*100).toFixed(0)+'%',cx,cy-5);
+  ctx.font='400 8px DM Sans,sans-serif';ctx.fillStyle=dk?'#68675F':'#82807A';
+  ctx.fillText('yours',cx,cy+6);
+  g('legEl').innerHTML=segs.map(s=>`<div class="li"><div class="ld" style="background:${s.c}"></div><div class="ln">${s.l}</div><div class="lv">${((s.v/tot)*100).toFixed(1)}%</div></div>`).join('');
+}
+
+function aN(id,tgt){
+  const e=g(id);const dur=500,t0=performance.now();
+  function step(t){const p=Math.min((t-t0)/dur,1),ease=1-Math.pow(1-p,3);e.textContent=fm(tgt*ease);if(p<1)requestAnimationFrame(step);else e.textContent=fm(tgt);}
+  requestAnimationFrame(step);
+}
+
+// ── BONUS ──
+function calcB(){
+  const sal=parseFloat(g('bSal').value)||0,bon=parseFloat(g('bBon').value)||0;
+  const sc=g('bSt').value,f=g('bFl').value;
+  if(!bon){showToast('Enter a bonus amount');return;}
+  let fw=0;
+  if(bm==='flat') fw=bon>1e6?(1e6*.22+(bon-1e6)*.37):bon*.22;
+  else{const sd=SDED[f]||SDED.single;fw=Math.max(0,fedTax(Math.max(0,sal+bon-sd),f)-fedTax(Math.max(0,sal-sd),f));}
+  const ssw=Math.max(0,Math.min(bon,SS_CAP-Math.min(sal,SS_CAP)))*SS_R;
+  const mcw=bon*MC_R,stw=stateTax(bon,sc);
+  const net=bon-fw-ssw-mcw-stw;
+  const si=ST.find(s=>s.c===sc)||{n:sc,nt:0};
+  g('bEm').style.display='none';g('bRes').style.display='block';
+  aN('bNA',net);g('bNS').textContent=`You keep ${fp(net/bon*100)} of your ${fm(bon,0)} bonus`;
+  g('bBT').innerHTML=[
+    {nm:'Gross Bonus',sb:'Before any tax',pp:bon,cl:'n'},
+    {nm:'Federal Tax',sb:bm==='flat'?'Flat 22% IRS supplemental rate':'Aggregate — based on marginal rate',pp:-fw,cl:'neg'},
+    {nm:'Social Security',sb:'6.2% (up to $184,500 wage base)',pp:-ssw,cl:'neg'},
+    {nm:'Medicare',sb:'1.45%',pp:-mcw,cl:'neg'},
+    ...(si.nt?[]:[{nm:si.n+' State Tax',sb:`~${fp(si.r*100)} rate`,pp:-stw,cl:'neg'}]),
+    {nm:'✅ Net Bonus (You Keep)',sb:'',pp:net,cl:'pos'}
+  ].map((x,i,arr)=>`<div class="br${i===arr.length-1?' btot':''}">`+
+    `<div><div class="bn">${x.nm}</div>${x.sb?`<div class="bs">${x.sb}</div>`:''}</div>`+
+    `<div class="bra"><div class="bp ${x.cl}">${x.pp<0?'−':''}${fm(Math.abs(x.pp))}</div></div></div>`).join('');
+}
+
+// ── RAISE ──
+function syncPct(){const c=parseFloat(g('rCu').value)||0,n=parseFloat(g('rNw').value)||0;if(c&&n)g('rPc').value=((n-c)/c*100).toFixed(1);}
+function syncSal(){const c=parseFloat(g('rCu').value)||0,p=parseFloat(g('rPc').value)||0;if(c&&p)g('rNw').value=Math.round(c*(1+p/100));}
+function calcR(){
+  const cu=parseFloat(g('rCu').value)||0,nw=parseFloat(g('rNw').value)||0;
+  const sc=g('rSt').value,f=g('rFl').value,n=parseInt(g('rFr').value);
+  if(!cu||!nw){showToast('Enter both salaries');return;}
+  if(nw<=cu){showToast('New salary must be higher');return;}
+  const cs=s=>{const sd=SDED[f]||SDED.single,fd=fedTax(Math.max(0,s-sd),f),fc=fica(s,f),st=stateTax(s,sc);return{aNet:s-fd-fc.tot-st,ppN:(s-fd-fc.tot-st)/n,aFed:fd,aFica:fc.tot,aSt:st};};
+  const o=cs(cu),nww=cs(nw);
+  const ex=nww.ppN-o.ppN,exA=nww.aNet-o.aNet,gr=nw-cu;
+  const si=ST.find(s=>s.c===sc)||{n:sc};
+  g('rEm').style.display='none';g('rRes').style.display='block';
+  aN('rXA',ex);g('rXS').textContent=`+${fa(exA)}/year after taxes · You keep ${fp(exA/gr*100)} of the raise`;
+  g('rCmp').innerHTML=`
+    <div class="cr ch"><span></span><span style="text-align:right">Before</span><span style="text-align:right;color:var(--acc)">After Raise</span></div>
+    <div class="cr"><span class="cl">Gross Salary</span><span class="ov">${fa(cu)}</span><span class="nv">${fa(nw)}</span></div>
+    <div class="cr"><span class="cl">Federal Tax</span><span class="ov">−${fa(o.aFed)}</span><span class="nv neg">−${fa(nww.aFed)}</span></div>
+    <div class="cr"><span class="cl">FICA Taxes</span><span class="ov">−${fa(o.aFica)}</span><span class="nv neg">−${fa(nww.aFica)}</span></div>
+    <div class="cr"><span class="cl">${si.n} State Tax</span><span class="ov">−${fa(o.aSt)}</span><span class="nv neg">−${fa(nww.aSt)}</span></div>
+    <div class="cr chl"><span class="cl">Annual Take-Home</span><span class="ov">${fa(o.aNet)}</span><span class="nv">${fa(nww.aNet)}</span></div>
+    <div class="cr" style="background:var(--sur2)"><span class="cl" style="font-size:11.5px;color:var(--mut)">Of raise you actually keep</span><span></span><span style="text-align:right;color:var(--acc);font-weight:600">${fp(exA/gr*100)}</span></div>`;
+}
+
+// ── UTILITIES ──
+function toggleTheme(){
+  const d=document.documentElement,dk=d.getAttribute('data-theme')==='dark';
+  d.setAttribute('data-theme',dk?'light':'dark');g('tIco').textContent=dk?'🌙':'☀️';
+  if(last)setTimeout(()=>{const r=last;dChart({home:r.ppN,fed:r.ppF,fica:r.w2?r.ppFi:(r.ppSe||0),st:r.ppSt,lo:r.ppLo||0,ded:(r.ppRet||0)+(r.ppHsa||0)+(r.ppHi||0)+(r.ppOt||0),gr:r.ppG});},40);
+}
+function copyLink(){
+  const p=new URLSearchParams();
+  if(wt==='w2'&&pt==='salary'){const v=g('salI').value;if(v)p.set('s',v);}
+  if(wt==='w2'&&pt==='hourly'){const r=g('hrI').value,h=g('hwI').value;if(r)p.set('hr',r);if(h)p.set('hw',h);}
+  if(wt==='1099'){const v=g('seI').value;if(v)p.set('se',v);}
+  p.set('state',g('stS').value);p.set('freq',g('frqS').value);
+  p.set('filing',g('filS').value);p.set('wt',wt);p.set('pt',pt);
+  const url='https://www.checknetpay.com/?'+p;
+  navigator.clipboard.writeText(url).then(()=>showToast('🔗 Link copied!')).catch(()=>{
+    // Fallback for browsers without clipboard API
+    const ta=document.createElement('textarea');ta.value=url;
+    ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');showToast('🔗 Link copied!');}
+    catch(e){showToast('Link: checknetpay.com');}
+    document.body.removeChild(ta);
+  });
+}
+function updURL(){try{const p=new URLSearchParams();if(wt==='w2'&&pt==='salary'){const v=g('salI').value;if(v)p.set('s',v);}if(wt==='1099'){const v=g('seI').value;if(v)p.set('se',v);}p.set('state',g('stS').value);p.set('freq',g('frqS').value);p.set('filing',g('filS').value);p.set('wt',wt);p.set('pt',pt);history.replaceState({},'',location.pathname+'?'+p);}catch(e){}}
+function showToast(m,d=2400){const t=g('tst');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),d);}
+// ── TOOLTIP DATA (avoids quote-escaping bugs in HTML attributes) ──
+const TIPS={
+  wt:'<b>W-2 Employee</b> — Your employer withholds taxes from every paycheck automatically. You get a W-2 form each January.<br><br><b>Self-Employed / 1099</b> — You work for clients, run a side hustle, or drive for Uber/DoorDash. No taxes are withheld for you — you pay everything yourself, including an extra 15.3% Self-Employment Tax on top of regular income tax.',
+  pt:'<b>Salary</b> — A fixed yearly amount. You get the same paycheck each period regardless of hours.<br><br><b>Hourly</b> — Paid per hour worked. Hours over 40/week are paid at 1.5× your rate (overtime pay).',
+  sal:'Your total yearly pay <b>before</b> any taxes or deductions come out. This is the number on your offer letter or employment contract.<br><br>Example: If your offer says "$75,000/year," enter 75000. Do NOT enter your take-home amount.',
+  hr:'How much you earn per hour of work. Enter just the number — for example, if you make $22/hour, enter 22.<br><br>Overtime (hours over 40/week) is automatically calculated at 1.5× your rate.',
+  hw:'How many hours you work each week. Standard full-time = 40 hours. Part-time might be 20–30 hours.<br><br>Any hours over 40 are automatically paid at 1.5× your hourly rate (overtime).',
+  se:'Total money received from all clients, platforms, or sales <b>before</b> subtracting any expenses. Add up all your 1099 forms, invoices, PayPal/Venmo business income, etc.<br><br>Example: Uber paid $22,000 + freelance work $14,000 = enter 36000.',
+  exp:'Money you spent to earn your income — the IRS lets you deduct these to lower your taxable income. Common examples:<br>• Mileage (use the miles field below)<br>• Home office costs<br>• Equipment & software<br>• Health insurance premiums<br>• Supplies & materials<br><br>Keep receipts! Enter your estimated total for the year.',
+  mi:'If you drive for work (Uber, DoorDash, deliveries, client visits), the IRS lets you deduct <b>70¢ per mile</b> in 2026. This is automatically added to your expenses above.<br><br>Tip: Track miles daily using MileIQ or Stride app.',
+  state:'The US state where you <b>work</b> (not necessarily where you live). Each state sets its own income tax rate.<br><br>9 states have zero income tax — marked with ✦: Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington, Wyoming.',
+  freq:'How often you receive a paycheck:<br>• <b>Weekly</b> — 52 paychecks/year<br>• <b>Bi-weekly</b> — 26 paychecks (every 2 weeks, most common)<br>• <b>Semi-monthly</b> — 24 paychecks (on 1st & 15th of month)<br>• <b>Monthly</b> — 12 paychecks/year',
+  local:'Some cities and counties charge an extra local income tax on top of state tax. Select your city or county where you <b>work</b> for a more accurate result.<br><br>If your exact area is not listed, check your pay stub or ask your HR/payroll department for the local rate.',
+  filing:'How you file your tax return with the IRS:<br><br><b>Single</b> — You are not married, or you are married but filing separately<br><b>Married Filing Jointly</b> — You combine income with your spouse on one return (usually saves more tax)<br><b>Head of Household</b> — You are single but you financially support a child or other dependent living with you<br><br>When in doubt, select Single.',
+  k401:'Retirement savings through your employer. The percentage you contribute comes out <b>before taxes</b> are calculated — so every dollar you save also reduces your current tax bill.<br><br>2026 limit: <b>$24,500/year</b> (age 50+ can add $7,500 more)<br><br>Example: 5% on a $70,000 salary = $3,500/year saved pre-tax.',
+  hsa:'Health Savings Account — the only account that is tax-free going in, growing, AND coming out (for medical costs). Triple tax advantage!<br><br>2026 limits: <b>$4,300</b> individual / <b>$8,550</b> family<br>Requires a high-deductible health plan (HDHP).<br><br>Enter your annual contribution amount in dollars.',
+  hi:'The dollar amount deducted from <b>each paycheck</b> for your health insurance premium — this is your share, not the full premium (your employer pays most of it).<br><br>Typical range: $50–$400 per paycheck. Check your pay stub to find the exact amount.',
+  other:'Any other pre-tax deductions taken from each paycheck, such as:<br>• Dental or vision insurance<br>• FSA — Flexible Spending Account (2026 limit: $3,400/year)<br>• Commuter/transit benefits<br>• Life insurance premiums<br><br>Enter the combined total per paycheck.',
+  bsal:'Your regular annual gross salary — needed to calculate your tax bracket for the Aggregate withholding method. If you are unsure, enter 0.',
+  bamt:'The full bonus amount before any taxes are taken out. This could be a year-end performance bonus, signing bonus, holiday bonus, or commission payment.',
+  bmethod:'<b>Flat 22%</b> — The IRS requires a flat 22% federal withholding on supplemental pay (like bonuses). Simple and predictable. Most employers use this for separate bonus checks.<br><br><b>Aggregate</b> — Your bonus is added to your regular paycheck and taxed at your normal rate. Can result in higher or lower withholding depending on your income level.',
+  rnew:'Enter your new salary after the raise. Example: if your current salary is $60,000 and you got a $5,000 raise, enter 65000.<br><br>Or use the % field below and the new salary will calculate automatically.'
+};
+
+function tip(btn,key){
+  document.querySelectorAll('.ttpop').forEach(t=>t.remove());
+  const html=TIPS[key];if(!html)return;
+  const pop=document.createElement('div');pop.className='ttpop';pop.innerHTML=html;
+  document.body.appendChild(pop);
+  const r=btn.getBoundingClientRect();
+  const pw=268,ph=pop.offsetHeight||140;
+  // Horizontal — keep inside viewport
+  let left=r.left+r.width/2-pw/2;
+  left=Math.max(10,Math.min(left,window.innerWidth-pw-10));
+  // Vertical — show below button; flip above if too close to bottom
+  let top=r.bottom+8;
+  if(top+ph>window.innerHeight-16)top=r.top-ph-8;
+  top=Math.max(8,top);
+  pop.style.left=left+'px';pop.style.top=top+'px';
+  setTimeout(()=>{
+    const fn=e=>{if(!pop.contains(e.target)&&e.target!==btn){pop.remove();document.removeEventListener('click',fn);}};
+    document.addEventListener('click',fn);
+  },100);
+}
+
+// ── INIT ──
+function populateSt(ids){ids.forEach(id=>{const s=g(id);if(!s)return;ST.forEach(x=>{const o=document.createElement('option');o.value=x.c;o.textContent=x.nt?`${x.n} ✦ No tax`:x.n;if(x.c==='TX')o.selected=true;s.appendChild(o);});});}
+document.addEventListener('DOMContentLoaded',()=>{
+  populateSt(['stS','bSt','rSt']);
+  ['salI','hrI','seI'].forEach(id=>{const e=g(id);if(e)e.addEventListener('keydown',ev=>{if(ev.key==='Enter')calc();});});
+  g('bBon')?.addEventListener('keydown',ev=>{if(ev.key==='Enter')calcB();});
+  // Load from URL
+  const p=new URLSearchParams(location.search);
+  if(p.get('wt'))setWT(p.get('wt'));
+  if(p.get('pt'))setPT(p.get('pt'));
+  if(p.get('s'))g('salI').value=p.get('s');
+  if(p.get('se'))g('seI').value=p.get('se');
+  if(p.get('state')){g('stS').value=p.get('state');updLocal(p.get('state'));}
+  if(p.get('freq'))g('frqS').value=p.get('freq');
+  if(p.get('filing'))g('filS').value=p.get('filing');
+  if(p.get('s')||p.get('se'))calc();
+});
+</script>
+</body>
+</html>
