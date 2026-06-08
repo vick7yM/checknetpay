@@ -225,6 +225,19 @@ footer{border-top:1px solid var(--bdr);padding:18px 20px;text-align:center;font-
   <h1>Free 2026 US <span>Paycheck Calculator</span></h1>
   <p class="sub">See your exact take-home pay after all taxes · All 50 states + local taxes · W-2 &amp; 1099 · Bonus &amp; Raise tools · No sign-up needed</p>
 
+  <!-- QUICK EXAMPLES — boosts engagement, time-on-page, and conversions -->
+  <div style="margin-bottom:20px">
+    <p style="font-size:11.5px;color:var(--mut);margin-bottom:8px;font-weight:600;letter-spacing:.3px;text-transform:uppercase">Try a quick example:</p>
+    <div style="display:flex;flex-wrap:wrap;gap:7px">
+      <button onclick="quickEx('50000','TX','single','26','w2','salary')" style="font-size:12px;padding:6px 12px;border:1px solid var(--bdr);border-radius:100px;background:var(--sur);color:var(--txt);cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif" onmouseover="this.style.borderColor='var(--acc)';this.style.color='var(--acc)'" onmouseout="this.style.borderColor='var(--bdr)';this.style.color='var(--txt)'">$50k in Texas</button>
+      <button onclick="quickEx('75000','CA','single','26','w2','salary')" style="font-size:12px;padding:6px 12px;border:1px solid var(--bdr);border-radius:100px;background:var(--sur);color:var(--txt);cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif" onmouseover="this.style.borderColor='var(--acc)';this.style.color='var(--acc)'" onmouseout="this.style.borderColor='var(--bdr)';this.style.color='var(--txt)'">$75k in California</button>
+      <button onclick="quickEx('100000','NY','single','26','w2','salary')" style="font-size:12px;padding:6px 12px;border:1px solid var(--bdr);border-radius:100px;background:var(--sur);color:var(--txt);cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif" onmouseover="this.style.borderColor='var(--acc)';this.style.color='var(--acc)'" onmouseout="this.style.borderColor='var(--bdr)';this.style.color='var(--txt)'">$100k in New York</button>
+      <button onclick="quickEx('60000','FL','married','26','w2','salary')" style="font-size:12px;padding:6px 12px;border:1px solid var(--bdr);border-radius:100px;background:var(--sur);color:var(--txt);cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif" onmouseover="this.style.borderColor='var(--acc)';this.style.color='var(--acc)'" onmouseout="this.style.borderColor='var(--bdr)';this.style.color='var(--txt)'">$60k Married in Florida</button>
+      <button onclick="quickEx('45000','IL','single','26','1099','salary')" style="font-size:12px;padding:6px 12px;border:1px solid var(--bdr);border-radius:100px;background:var(--sur);color:var(--txt);cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif" onmouseover="this.style.borderColor='var(--acc)';this.style.color='var(--acc)'" onmouseout="this.style.borderColor='var(--bdr)';this.style.color='var(--txt)'">$45k Freelancer in Illinois</button>
+      <button onclick="quickEx('120000','WA','single','26','w2','salary')" style="font-size:12px;padding:6px 12px;border:1px solid var(--bdr);border-radius:100px;background:var(--sur);color:var(--txt);cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif" onmouseover="this.style.borderColor='var(--acc)';this.style.color='var(--acc)'" onmouseout="this.style.borderColor='var(--bdr)';this.style.color='var(--txt)'">$120k in Washington</button>
+    </div>
+  </div>
+
   <div class="tnav">
     <button class="tbtn on" onclick="st('paycheck',this)">💵 Paycheck</button>
     <button class="tbtn" onclick="st('bonus',this)">🎁 Bonus Tax</button>
@@ -369,6 +382,17 @@ footer{border-top:1px solid var(--bdr);padding:18px 20px;text-align:center;font-
             <div class="cb"><canvas id="dC" width="105" height="105"></canvas><div class="leg" id="legEl"></div></div>
           </div>
           <div class="bt an" id="bTbl"></div>
+          <!-- AD SLOT 2B: Mid-result inline ad — high attention placement -->
+          <div id="adMidResult" style="display:none;text-align:center;margin:10px 0;padding:8px 0;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)">
+            <div style="font-size:9px;color:var(--fnt);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px">Advertisement</div>
+            <ins class="adsbygoogle"
+                 style="display:block;text-align:center"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="fluid"
+                 data-ad-layout="in-article"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
           <div class="ac an" id="annS"></div>
           <!-- AD SLOT 2: Results Rectangle — 300x250 — appears only after calculation -->
           <div class="ad-results" id="adResults" style="display:none">
@@ -768,8 +792,9 @@ function fp(n){return n.toFixed(1)+'%';}
 
 function show(r,sc){
   g('emSt').style.display='none';g('rCon').style.display='block';
-  // Show results ad slot
+  // Show results ad slots
   const adR=g('adResults');if(adR)adR.style.display='block';
+  const adMR=g('adMidResult');if(adMR)adMR.style.display='block';
   const si=ST.find(s=>s.c===sc)||{n:sc,r:0,nt:0};
   const pl=PL[r.n]||'paycheck';
   g('rLbl').textContent='Take-Home per '+pl.charAt(0).toUpperCase()+pl.slice(1);
@@ -1007,7 +1032,23 @@ function tip(btn,key){
   },100);
 }
 
-// ── INIT ──
+// ── QUICK EXAMPLES ──
+function quickEx(salary,state,filing,freq,workerT,payT){
+  // Set worker type and pay type
+  setWT(workerT);setPT(payT);
+  // Fill income
+  if(workerT==='w2'&&payT==='salary')g('salI').value=salary;
+  if(workerT==='1099')g('seI').value=salary;
+  // Set state
+  g('stS').value=state;updLocal(state);
+  // Set filing and frequency
+  g('filS').value=filing;
+  g('frqS').value=freq;
+  // Scroll to calculator smoothly
+  document.querySelector('.grid').scrollIntoView({behavior:'smooth',block:'start'});
+  // Calculate after short delay to let scroll start
+  setTimeout(()=>calc(),300);
+}
 function populateSt(ids){ids.forEach(id=>{const s=g(id);if(!s)return;ST.forEach(x=>{const o=document.createElement('option');o.value=x.c;o.textContent=x.nt?`${x.n} ✦ No tax`:x.n;if(x.c==='TX')o.selected=true;s.appendChild(o);});});}
 document.addEventListener('DOMContentLoaded',()=>{
   populateSt(['stS','bSt','rSt']);
