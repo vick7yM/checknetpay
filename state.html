@@ -117,6 +117,12 @@ footer a{color:var(--acc);text-decoration:none}
 
   <!-- FAQ section for long-tail SEO -->
   <div style="margin-top:32px" id="stateFAQ"></div>
+
+  <!-- INTERNAL LINKING — helps Google crawl all state pages -->
+  <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--bdr)">
+    <p style="font-size:12px;font-weight:600;color:var(--mut);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px">Also popular:</p>
+    <div style="display:flex;flex-wrap:wrap;gap:7px" id="relatedStates"></div>
+  </div>
 </main>
 
 <footer>CheckNetPay.com — Free 2026 US Paycheck Calculator · <a href="/">Home</a> · <a href="/privacy.html">Privacy</a> · Informational use only</footer>
@@ -216,9 +222,24 @@ function initPage(){
       sd.faq.map(item=>`<div style="margin-bottom:14px;background:var(--sur);border:1px solid var(--bdr);border-radius:12px;padding:14px 16px"><div style="font-size:13.5px;font-weight:600;color:var(--txt);margin-bottom:5px">${item.q}</div><div style="font-size:13px;color:var(--mut);line-height:1.6">${item.a}</div></div>`).join('');
     document.getElementById('stateFAQ').innerHTML=faqHTML;
   }
+  // Build related states links (internal linking for SEO)
+  const ALL_STATES=[
+    {code:'CA',name:'California'},{code:'TX',name:'Texas'},{code:'NY',name:'New York'},
+    {code:'FL',name:'Florida'},{code:'IL',name:'Illinois'},{code:'PA',name:'Pennsylvania'},
+    {code:'OH',name:'Ohio'},{code:'GA',name:'Georgia'},{code:'NC',name:'North Carolina'},
+    {code:'WA',name:'Washington'},{code:'AZ',name:'Arizona'},{code:'MA',name:'Massachusetts'},
+    {code:'NJ',name:'New Jersey'},{code:'VA',name:'Virginia'},{code:'MI',name:'Michigan'},
+    {code:'CO',name:'Colorado'},{code:'TN',name:'Tennessee'},{code:'IN',name:'Indiana'},
+    {code:'MD',name:'Maryland'},{code:'NV',name:'Nevada'}
+  ];
+  const related=ALL_STATES.filter(s=>s.code!==currentStateCode).slice(0,8);
+  const relEl=document.getElementById('relatedStates');
+  if(relEl){
+    relEl.innerHTML=related.map(s=>
+      `<a href="state.html?state=${s.code}" style="font-size:12px;padding:5px 11px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg);white-space:nowrap">${s.name}</a>`
+    ).join('');
+  }
 }
-
-// ── STATE CALCULATOR ──
 function stateCalc(){
   const sal=parseFloat(document.getElementById('sSal').value)||0;
   if(!sal){alert('Please enter your annual salary');return;}
