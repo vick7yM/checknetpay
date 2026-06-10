@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>About CheckNetPay — Free 2026 US Paycheck Calculator</title>
+<meta name="description" content="CheckNetPay is a free US paycheck calculator built for everyday workers. See your exact take-home pay after all taxes — all 50 states, W-2 and 1099 modes.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.checknetpay.com/about.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F5F4EF;--sur:#FFF;--sur2:#EDECE7;--bdr:#E2E0D9;--txt:#1A1917;--mut:#82807A;--acc:#1B6B42;--acc-bg:#EBF4EE}
+[data-theme=dark]{--bg:#111110;--sur:#1C1C1A;--sur2:#242422;--bdr:#2D2D2A;--txt:#EDECEA;--mut:#68675F;--acc:#4DB87A;--acc-bg:#182B20}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);line-height:1.7;min-height:100vh;transition:background .2s}
+header{background:var(--sur);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:100}
+.hdr{max-width:960px;margin:0 auto;padding:0 20px;height:52px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.3px;text-decoration:none;color:var(--txt)}
+.logo em{color:var(--acc);font-style:normal}
+.nav{display:flex;align-items:center;gap:6px}
+.nav a{font-size:13px;color:var(--mut);text-decoration:none;font-weight:500;padding:5px 10px;border-radius:8px;transition:color .15s}
+.nav a:hover,.nav a.on{color:var(--acc)}
+.badge{background:var(--acc-bg);color:var(--acc);font-size:11px;font-weight:600;padding:3px 9px;border-radius:100px}
+.thm{width:33px;height:33px;border-radius:50%;border:1px solid var(--bdr);background:var(--sur2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px}
+main{max-width:720px;margin:0 auto;padding:48px 20px 80px}
+h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(26px,4vw,36px);font-weight:700;letter-spacing:-.5px;line-height:1.2;margin-bottom:10px}
+h1 span{color:var(--acc)}
+.intro{font-size:15.5px;color:var(--mut);line-height:1.7;margin-bottom:36px;padding-bottom:28px;border-bottom:1px solid var(--bdr)}
+h2{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;margin:32px 0 12px}
+p{font-size:14.5px;color:var(--txt);line-height:1.75;margin-bottom:14px}
+ul{font-size:14.5px;line-height:1.75;padding-left:20px;margin-bottom:14px;color:var(--txt)}
+li{margin-bottom:6px}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 32px}
+@media(max-width:500px){.feature-grid{grid-template-columns:1fr}}
+.feature-card{background:var(--sur);border:1px solid var(--bdr);border-radius:14px;padding:18px}
+.feature-card .icon{font-size:22px;margin-bottom:8px}
+.feature-card h3{font-size:14.5px;font-weight:600;margin-bottom:5px}
+.feature-card p{font-size:13px;color:var(--mut);margin:0}
+.cta-box{background:var(--acc);border-radius:16px;padding:24px;text-align:center;margin:32px 0}
+.cta-box p{color:rgba(255,255,255,.85);font-size:14px;margin-bottom:12px}
+.cta-box a{display:inline-block;background:#fff;color:var(--acc);font-weight:700;padding:11px 24px;border-radius:100px;text-decoration:none;font-size:14px}
+.limitation-list{background:var(--sur2);border-radius:12px;padding:16px 20px;margin:14px 0}
+footer{border-top:1px solid var(--bdr);padding:20px;text-align:center;font-size:12px;color:var(--mut);margin-top:40px}
+footer a{color:var(--acc);text-decoration:none}
+</style>
+</head>
+<body>
+<header>
+  <div class="hdr">
+    <a href="/" class="logo">Check<em>Net</em>Pay</a>
+    <div class="nav">
+      <a href="/">Calculator</a>
+      <a href="/blog/">Blog</a>
+      <a href="/about.html" class="on">About</a>
+      <span class="badge">✦ 2026</span>
+      <button class="thm" onclick="document.documentElement.setAttribute('data-theme',document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');this.textContent=document.documentElement.getAttribute('data-theme')==='dark'?'☀️':'🌙'">🌙</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <h1>About <span>CheckNetPay</span></h1>
+  <p class="intro">CheckNetPay is a free online paycheck calculator built for everyday American workers, job seekers, freelancers, and anyone who wants to understand exactly what they take home after taxes — before the money hits their bank account.</p>
+
+  <h2>Our Mission</h2>
+  <p>Most people are offered a salary, handed a number, and left to figure out on their own how much of it they'll actually see. Federal income tax, state income tax, Social Security, Medicare, and benefit deductions can silently take 25–40% of a paycheck — often more.</p>
+  <p>We built CheckNetPay to change that. Our goal is simple: give anyone — from a new graduate accepting their first job offer to a seasoned professional comparing two positions across different states — an immediate, accurate picture of their real take-home pay.</p>
+  <p>No registration required. No ads blocking the calculator. No upsells. Just your number.</p>
+
+  <h2>What We Offer</h2>
+  <div class="feature-grid">
+    <div class="feature-card"><div class="icon">💵</div><h3>Paycheck Calculator</h3><p>Salary or hourly. All 50 states plus city and county local taxes. W-2 and 1099 modes.</p></div>
+    <div class="feature-card"><div class="icon">🎁</div><h3>Bonus Tax Calculator</h3><p>See exactly how much of your bonus you keep after flat-rate or aggregate federal withholding.</p></div>
+    <div class="feature-card"><div class="icon">📈</div><h3>Raise Simulator</h3><p>Find out the real after-tax difference of any raise before you negotiate. A $10k raise is never $10k.</p></div>
+    <div class="feature-card"><div class="icon">🧾</div><h3>1099 / Gig Worker Mode</h3><p>Freelancers, Uber/DoorDash drivers, Etsy sellers — calculates self-employment tax and quarterly estimates.</p></div>
+  </div>
+
+  <h2>Who Uses CheckNetPay</h2>
+  <ul>
+    <li><strong>Job seekers</strong> comparing offers across different salary levels and states</li>
+    <li><strong>New employees</strong> who want to understand their first paycheck before it arrives</li>
+    <li><strong>Freelancers and contractors</strong> estimating their self-employment tax obligations</li>
+    <li><strong>Gig workers</strong> (Uber, DoorDash, Instacart) calculating how much to set aside for taxes</li>
+    <li><strong>HR professionals</strong> quickly estimating net pay for salary discussions</li>
+    <li><strong>Personal finance enthusiasts</strong> building accurate budgets based on real take-home pay</li>
+  </ul>
+
+  <h2>Accuracy and Limitations</h2>
+  <p>CheckNetPay uses current 2026 federal tax brackets, FICA rates, standard deductions, and state income tax rates updated with <strong>IRS Rev. Proc. 2025-32</strong>. Social Security wage base: $184,500. 401(k) limit: $24,500.</p>
+  <p>Your actual net pay may differ because our calculator does not account for:</p>
+  <div class="limitation-list">
+    <ul style="margin:0;padding-left:16px">
+      <li>Itemized deductions beyond the standard deduction</li>
+      <li>Tax credits (Child Tax Credit, Earned Income Credit, etc.)</li>
+      <li>All local city and county taxes — major jurisdictions are included, smaller municipalities may vary</li>
+      <li>Wage garnishments or mandatory post-tax deductions</li>
+      <li>Multiple jobs or variable income</li>
+    </ul>
+  </div>
+  <p>For payroll decisions affecting real paychecks, always verify with your actual pay stub or consult a qualified tax professional.</p>
+
+  <div class="cta-box">
+    <p>Ready to see your real take-home pay?</p>
+    <a href="/">Use the Free Calculator →</a>
+  </div>
+
+  <h2>Contact</h2>
+  <p>Found an error in our calculations? Have a feature suggestion? We'd love to hear from you.</p>
+  <p>Email: <a href="mailto:hello@checknetpay.com" style="color:var(--acc)">hello@checknetpay.com</a></p>
+</main>
+
+<footer>© 2026 CheckNetPay.com · <a href="/">Calculator</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/blog/">Blog</a> · Free 2026 US Paycheck Calculator</footer>
+</body>
+</html>
