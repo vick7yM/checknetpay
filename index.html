@@ -60,7 +60,9 @@
 
 <!-- Google AdSense — replace ca-pub-7169888048118999 with your Publisher ID after approval -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7169888048118999" crossorigin="anonymous"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -82,7 +84,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);font
 /* HEADER */
 header{background:var(--sur);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:100;transition:background .2s}
 .hdr{max-width:960px;margin:0 auto;padding:0 20px;height:52px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.3px}
+.logo{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.3px;color:var(--txt)}
 .logo em{color:var(--acc);font-style:normal}
 .hdr-r{display:flex;align-items:center;gap:8px}
 .badge{background:var(--acc-bg);color:var(--acc);font-size:11px;font-weight:600;padding:3px 9px;border-radius:100px}
@@ -205,18 +207,20 @@ footer{border-top:1px solid var(--bdr);padding:18px 20px;text-align:center;font-
 <body>
 <header>
   <div class="hdr">
-    <div class="logo">Check<em>Net</em>Pay</div>
+    <a href="/" style="text-decoration:none" class="logo">Check<em>Net</em>Pay</a>
     <div class="hdr-r">
+      <a href="/about.html" style="font-size:13px;color:var(--mut);text-decoration:none;font-weight:500;padding:5px 10px;border-radius:8px;transition:color .15s" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--mut)'">About</a>
+      <a href="/blog/" style="font-size:13px;color:var(--mut);text-decoration:none;font-weight:500;padding:5px 10px;border-radius:8px;transition:color .15s" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--mut)'">Blog</a>
       <span class="badge">✦ 2026 Data</span>
       <button class="thm" onclick="toggleTheme()"><span id="tIco">🌙</span></button>
     </div>
   </div>
 </header>
-<!-- AD SLOT 1: Top Banner — 728x90 desktop / 320x50 mobile — Replace XXXXXXXXXX with your Ad Unit ID -->
+<!-- AD SLOT 1: Top Banner — 728x90 desktop / 320x50 mobile -->
 <div class="ad-top" id="adTop">
   <ins class="adsbygoogle"
        data-ad-client="ca-pub-7169888048118999"
-       data-ad-slot="XXXXXXXXXX"
+       data-ad-slot="2611548596"
        data-ad-format="fixed"
        data-full-width-responsive="false"></ins>
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
@@ -382,24 +386,13 @@ footer{border-top:1px solid var(--bdr);padding:18px 20px;text-align:center;font-
             <div class="cb"><canvas id="dC" width="105" height="105"></canvas><div class="leg" id="legEl"></div></div>
           </div>
           <div class="bt an" id="bTbl"></div>
-          <!-- AD SLOT 2B: Mid-result inline ad — high attention placement -->
-          <div id="adMidResult" style="display:none;text-align:center;margin:10px 0;padding:8px 0;border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)">
-            <div style="font-size:9px;color:var(--fnt);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px">Advertisement</div>
-            <ins class="adsbygoogle"
-                 style="display:block;text-align:center"
-                 data-ad-client="ca-pub-7169888048118999"
-                 data-ad-slot="XXXXXXXXXX"
-                 data-ad-format="fluid"
-                 data-ad-layout="in-article"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-          </div>
           <div class="ac an" id="annS"></div>
           <!-- AD SLOT 2: Results Rectangle — 300x250 — appears only after calculation -->
           <div class="ad-results" id="adResults" style="display:none">
             <ins class="adsbygoogle"
                  style="display:inline-block;width:300px;height:250px"
                  data-ad-client="ca-pub-7169888048118999"
-                 data-ad-slot="XXXXXXXXXX"></ins>
+                 data-ad-slot="5440736388"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
           </div>
           <div class="arow an">
@@ -495,14 +488,55 @@ footer{border-top:1px solid var(--bdr);padding:18px 20px;text-align:center;font-
   </section>
 </main>
 
-<footer>CheckNetPay.com — Free 2026 US Paycheck Calculator · IRS 2026 Data · SS Wage Base $184,500 · <a href="/privacy.html" style="color:var(--acc);text-decoration:none">Privacy Policy</a> · Informational use only</footer>
+<footer>
+  <div style="max-width:960px;margin:0 auto;padding:0 20px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;padding:28px 0;border-bottom:1px solid var(--bdr);text-align:left">
+      <div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;margin-bottom:8px">Check<span style="color:var(--acc)">Net</span>Pay</div>
+        <p style="font-size:12px;color:var(--mut);line-height:1.6">Free 2026 US paycheck calculator. Federal tax, state tax, FICA deductions — all 50 states.</p>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:var(--mut);margin-bottom:10px">Tools</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <a href="/" style="font-size:13px;color:var(--txt);text-decoration:none" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--txt)'">Paycheck Calculator</a>
+          <a href="/?wt=1099" style="font-size:13px;color:var(--txt);text-decoration:none" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--txt)'">1099 Tax Estimator</a>
+          <a href="/?tab=bonus" style="font-size:13px;color:var(--txt);text-decoration:none" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--txt)'">Bonus Tax Calculator</a>
+          <a href="/?tab=raise" style="font-size:13px;color:var(--txt);text-decoration:none" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--txt)'">Raise Simulator</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:var(--mut);margin-bottom:10px">Top States</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <a href="state.html?state=CA" style="font-size:13px;color:var(--txt);text-decoration:none" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--txt)'">California</a>
+          <a href="state.html?state=TX" style="font-size:13px;color:var(--txt);text-decoration:none" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--txt)'">Texas</a>
+          <a href="state.html?state=NY" style="font-size:13px;color:var(--txt);text-decoration:none" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--txt)'">New York</a>
+          <a href="state.html?state=FL" style="font-size:13px;color:var(--txt);text-decoration:none" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--txt)'">Florida</a>
+          <a href="state.html?state=WA" style="font-size:13px;color:var(--txt);text-decoration:none" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--txt)'">Washington</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:var(--mut);margin-bottom:10px">Company</div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <a href="/about.html" style="font-size:13px;color:var(--txt);text-decoration:none" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--txt)'">About</a>
+          <a href="/blog/" style="font-size:13px;color:var(--txt);text-decoration:none" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--txt)'">Blog</a>
+          <a href="/privacy.html" style="font-size:13px;color:var(--txt);text-decoration:none" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--txt)'">Privacy Policy</a>
+          <a href="mailto:hello@checknetpay.com" style="font-size:13px;color:var(--txt);text-decoration:none" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--txt)'">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 0;flex-wrap:wrap;gap:8px">
+      <span style="font-size:12px;color:var(--mut)">© 2026 CheckNetPay.com — Free 2026 US Paycheck Calculator</span>
+      <span style="font-size:12px;color:var(--mut)">Updated with IRS 2026 data · SS Wage Base $184,500</span>
+    </div>
+  </div>
+</footer>
 
 <!-- AD SLOT 3: Sticky Bottom Mobile Banner — 320x50 — auto-hides on desktop -->
 <div class="ad-sticky" id="adSticky">
   <ins class="adsbygoogle"
        style="display:inline-block;width:320px;height:50px"
        data-ad-client="ca-pub-7169888048118999"
-       data-ad-slot="XXXXXXXXXX"></ins>
+       data-ad-slot="3936083024"></ins>
   <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   <button class="ad-sticky-close" onclick="document.getElementById('adSticky').style.display='none'" aria-label="Close ad">✕</button>
 </div>
@@ -792,9 +826,8 @@ function fp(n){return n.toFixed(1)+'%';}
 
 function show(r,sc){
   g('emSt').style.display='none';g('rCon').style.display='block';
-  // Show results ad slots
+  // Show results ad slot
   const adR=g('adResults');if(adR)adR.style.display='block';
-  const adMR=g('adMidResult');if(adMR)adMR.style.display='block';
   const si=ST.find(s=>s.c===sc)||{n:sc,r:0,nt:0};
   const pl=PL[r.n]||'paycheck';
   g('rLbl').textContent='Take-Home per '+pl.charAt(0).toUpperCase()+pl.slice(1);
