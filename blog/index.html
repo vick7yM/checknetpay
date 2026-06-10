@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Paycheck & Tax Guides — CheckNetPay Blog</title>
+<title>Paycheck & Tax Guides -- CheckNetPay Blog</title>
 <meta name="description" content="Free guides on paycheck calculations, tax deductions, W-4 withholding, FICA taxes, and how to understand your take-home pay. Updated for 2026.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.checknetpay.com/blog/">
@@ -77,64 +77,79 @@ footer a{color:var(--acc);text-decoration:none}
   </div>
 
   <div class="cat-tags">
-    <span class="cat-tag active">All Articles</span>
-    <span class="cat-tag">Guides</span>
-    <span class="cat-tag">Taxes &amp; Deductions</span>
-    <span class="cat-tag">Calculations</span>
-    <span class="cat-tag">Pay Stubs</span>
+    <span class="cat-tag active" data-cat="all">All Articles</span>
+    <span class="cat-tag" data-cat="guides">Guides</span>
+    <span class="cat-tag" data-cat="tax">Taxes &amp; Deductions</span>
+    <span class="cat-tag" data-cat="calc">Calculations</span>
+    <span class="cat-tag" data-cat="stubs">Pay Stubs</span>
   </div>
 
   <div class="articles-grid" id="articleGrid">
-    <!-- Articles are added here as you publish them -->
-    <!-- EXAMPLE ARTICLE CARD — copy this pattern for each new post -->
-    <a href="/blog/what-are-fica-taxes.html" class="article-card">
+    <a href="/blog/what-are-fica-taxes.html" class="article-card" data-cat="tax">
       <div class="card-top"><span class="tag tax">Taxes &amp; Deductions</span><span class="read-time">7 min read</span></div>
       <div class="card-title">What Are FICA Taxes and How Are They Calculated?</div>
       <div class="card-desc">FICA funds Social Security and Medicare. Learn the 2026 rates, the $184,500 wage base, and how self-employed workers pay both halves.</div>
       <div class="card-link">Read article →</div>
     </a>
 
-    <a href="/blog/how-to-read-your-pay-stub.html" class="article-card">
-      <div class="card-top"><span class="tag guides">Guides</span><span class="read-time">8 min read</span></div>
+    <a href="/blog/how-to-read-your-pay-stub.html" class="article-card" data-cat="stubs">
+      <div class="card-top"><span class="tag pay-stubs">Pay Stubs</span><span class="read-time">8 min read</span></div>
       <div class="card-title">How to Read Your Pay Stub: A Complete Guide</div>
-      <div class="card-desc">Learn every line on your earnings statement — gross pay, pre-tax deductions, FICA, state tax, and net pay — with real worked examples.</div>
+      <div class="card-desc">Learn every line on your earnings statement -- gross pay, pre-tax deductions, FICA, state tax, and net pay -- with real worked examples.</div>
       <div class="card-link">Read article →</div>
     </a>
 
-    <a href="/blog/federal-vs-state-income-tax.html" class="article-card">
+    <a href="/blog/federal-vs-state-income-tax.html" class="article-card" data-cat="tax">
       <div class="card-top"><span class="tag tax">Taxes &amp; Deductions</span><span class="read-time">8 min read</span></div>
       <div class="card-title">Federal vs. State Income Tax: What's the Difference?</div>
       <div class="card-desc">How federal progressive brackets work, which 9 states have zero income tax, and how employers estimate your withholding each paycheck.</div>
       <div class="card-link">Read article →</div>
     </a>
 
-    <a href="/blog/w4-withholding-explained.html" class="article-card">
+    <a href="/blog/w4-withholding-explained.html" class="article-card" data-cat="guides">
       <div class="card-top"><span class="tag guides">Guides</span><span class="read-time">9 min read</span></div>
       <div class="card-title">W-4 Withholding Explained: How to Fill It Out</div>
       <div class="card-desc">The 2020 W-4 redesign removed allowances entirely. Learn Steps 1–5, how each step affects your paycheck, and when to submit an updated W-4.</div>
       <div class="card-link">Read article →</div>
     </a>
 
-    <a href="/blog/how-much-take-home-75000-texas.html" class="article-card">
+    <a href="/blog/how-much-take-home-75000-texas.html" class="article-card" data-cat="calc">
       <div class="card-top"><span class="tag calc">Calculations</span><span class="read-time">5 min read</span></div>
       <div class="card-title">How Much Do You Take Home Making $75,000 in Texas?</div>
-      <div class="card-desc">Exact 2026 breakdown of a $75,000 Texas salary — federal tax, FICA, zero state tax, and your real bi-weekly take-home paycheck.</div>
+      <div class="card-desc">Exact 2026 breakdown of a $75,000 Texas salary -- federal tax, FICA, zero state tax, and your real bi-weekly take-home paycheck.</div>
       <div class="card-link">Read article →</div>
     </a>
 
-    <a href="/blog/salary-vs-hourly.html" class="article-card">
+    <a href="/blog/salary-vs-hourly.html" class="article-card" data-cat="guides">
       <div class="card-top"><span class="tag guides">Guides</span><span class="read-time">7 min read</span></div>
       <div class="card-title">Salary vs. Hourly Pay: What's the Real Difference After Tax?</div>
       <div class="card-desc">How overtime affects hourly workers, how salary divides across pay periods, and why a $50,000 salary isn't always better than $24/hour.</div>
       <div class="card-link">Read article →</div>
     </a>
   </div>
-
-  <div style="text-align:center;margin-top:32px;padding:24px;border:1px dashed var(--bdr);border-radius:14px">
-    <p style="font-size:13.5px;color:var(--mut)">More articles coming soon — published 2× per week</p>
-  </div>
 </main>
 
 <footer>© 2026 CheckNetPay.com · <a href="/">Calculator</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/about.html">About</a> · Free 2026 US Paycheck Calculator</footer>
+
+<script>
+  document.querySelectorAll('.cat-tag').forEach(btn => {
+    btn.addEventListener('click', () => {
+      // 1. Switch the active visual appearance across tabs
+      document.querySelectorAll('.cat-tag').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      const targetCat = btn.dataset.cat;
+      
+      // 2. Dynamically show or hide matched article cards
+      document.querySelectorAll('.article-card').forEach(card => {
+        if (targetCat === 'all' || card.dataset.cat === targetCat) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
 </body>
 </html>
