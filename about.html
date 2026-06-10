@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>About CheckNetPay — Free 2026 US Paycheck Calculator</title>
-<meta name="description" content="CheckNetPay is a free US paycheck calculator built for everyday workers. See your exact take-home pay after all taxes — all 50 states, W-2 and 1099 modes.">
+<title>About CheckNetPay -- Free 2026 US Paycheck Calculator</title>
+<meta name="description" content="CheckNetPay is a free US paycheck calculator built for everyday workers. See your exact take-home pay after all taxes -- all 50 states, W-2 and 1099 modes.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.checknetpay.com/about.html">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -34,9 +34,10 @@ ul{font-size:14.5px;line-height:1.75;padding-left:20px;margin-bottom:14px;color:
 li{margin-bottom:6px}
 .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 32px}
 @media(max-width:500px){.feature-grid{grid-template-columns:1fr}}
-.feature-card{background:var(--sur);border:1px solid var(--bdr);border-radius:14px;padding:18px}
+.feature-card{background:var(--sur);border:1px solid var(--bdr);border-radius:14px;padding:18px;display:block;text-decoration:none;color:var(--txt);transition:border-color .2s,box-shadow .2s}
+.feature-card:hover{border-color:var(--acc);box-shadow:0 4px 14px rgba(0,0,0,.04)}
 .feature-card .icon{font-size:22px;margin-bottom:8px}
-.feature-card h3{font-size:14.5px;font-weight:600;margin-bottom:5px}
+.feature-card h3{font-size:14.5px;font-weight:600;margin-bottom:5px;color:var(--txt)}
 .feature-card p{font-size:13px;color:var(--mut);margin:0}
 .cta-box{background:var(--acc);border-radius:16px;padding:24px;text-align:center;margin:32px 0}
 .cta-box p{color:rgba(255,255,255,.85);font-size:14px;margin-bottom:12px}
@@ -49,11 +50,11 @@ footer a{color:var(--acc);text-decoration:none}
 <body>
 <header>
   <div class="hdr">
-    <a href="/" class="logo">Check<em>Net</em>Pay</a>
+    <a href="index.html" class="logo">Check<em>Net</em>Pay</a>
     <div class="nav">
-      <a href="/">Calculator</a>
-      <a href="/blog/">Blog</a>
-      <a href="/about.html" class="on">About</a>
+      <a href="index.html">Calculator</a>
+      <a href="blog-index.html">Blog</a>
+      <a href="about.html" class="on">About</a>
       <span class="badge">✦ 2026</span>
       <button class="thm" onclick="document.documentElement.setAttribute('data-theme',document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');this.textContent=document.documentElement.getAttribute('data-theme')==='dark'?'☀️':'🌙'">🌙</button>
     </div>
@@ -62,19 +63,35 @@ footer a{color:var(--acc);text-decoration:none}
 
 <main>
   <h1>About <span>CheckNetPay</span></h1>
-  <p class="intro">CheckNetPay is a free online paycheck calculator built for everyday American workers, job seekers, freelancers, and anyone who wants to understand exactly what they take home after taxes — before the money hits their bank account.</p>
+  <p class="intro">CheckNetPay is a free online paycheck calculator built for everyday American workers, job seekers, freelancers, and anyone who wants to understand exactly what they take home after taxes -- before the money hits their bank account.</p>
 
   <h2>Our Mission</h2>
-  <p>Most people are offered a salary, handed a number, and left to figure out on their own how much of it they'll actually see. Federal income tax, state income tax, Social Security, Medicare, and benefit deductions can silently take 25–40% of a paycheck — often more.</p>
-  <p>We built CheckNetPay to change that. Our goal is simple: give anyone — from a new graduate accepting their first job offer to a seasoned professional comparing two positions across different states — an immediate, accurate picture of their real take-home pay.</p>
+  <p>Most people are offered a salary, handed a number, and left to figure out on their own how much of it they'll actually see. Federal income tax, state income tax, Social Security, Medicare, and benefit deductions can silently take 25–40% of a paycheck -- often more.</p>
+  <p>We built CheckNetPay to change that. Our goal is simple: give anyone -- from a new graduate accepting their first job offer to a seasoned professional comparing two positions across different states -- an immediate, accurate picture of their real take-home pay.</p>
   <p>No registration required. No ads blocking the calculator. No upsells. Just your number.</p>
 
   <h2>What We Offer</h2>
   <div class="feature-grid">
-    <div class="feature-card"><div class="icon">💵</div><h3>Paycheck Calculator</h3><p>Salary or hourly. All 50 states plus city and county local taxes. W-2 and 1099 modes.</p></div>
-    <div class="feature-card"><div class="icon">🎁</div><h3>Bonus Tax Calculator</h3><p>See exactly how much of your bonus you keep after flat-rate or aggregate federal withholding.</p></div>
-    <div class="feature-card"><div class="icon">📈</div><h3>Raise Simulator</h3><p>Find out the real after-tax difference of any raise before you negotiate. A $10k raise is never $10k.</p></div>
-    <div class="feature-card"><div class="icon">🧾</div><h3>1099 / Gig Worker Mode</h3><p>Freelancers, Uber/DoorDash drivers, Etsy sellers — calculates self-employment tax and quarterly estimates.</p></div>
+    <a href="index.html" class="feature-card">
+      <div class="icon">💵</div>
+      <h3>Paycheck Calculator</h3>
+      <p>Salary or hourly. All 50 states plus city and county local taxes. W-2 and 1099 modes.</p>
+    </a>
+    <a href="index.html?tab=bonus" class="feature-card">
+      <div class="icon">🎁</div>
+      <h3>Bonus Tax Calculator</h3>
+      <p>See exactly how much of your bonus you keep after flat-rate or aggregate federal withholding.</p>
+    </a>
+    <a href="index.html?tab=raise" class="feature-card">
+      <div class="icon">📈</div>
+      <h3>Raise Simulator</h3>
+      <p>Find out the real after-tax difference of any raise before you negotiate. A $10k raise is never $10k.</p>
+    </a>
+    <a href="index.html?wt=1099" class="feature-card">
+      <div class="icon">🧾</div>
+      <h3>1099 / Gig Worker Mode</h3>
+      <p>Freelancers, Uber/DoorDash drivers, Etsy sellers -- calculates self-employment tax and quarterly estimates.</p>
+    </a>
   </div>
 
   <h2>Who Uses CheckNetPay</h2>
@@ -94,7 +111,7 @@ footer a{color:var(--acc);text-decoration:none}
     <ul style="margin:0;padding-left:16px">
       <li>Itemized deductions beyond the standard deduction</li>
       <li>Tax credits (Child Tax Credit, Earned Income Credit, etc.)</li>
-      <li>All local city and county taxes — major jurisdictions are included, smaller municipalities may vary</li>
+      <li>All local city and county taxes -- major jurisdictions are included, smaller municipalities may vary</li>
       <li>Wage garnishments or mandatory post-tax deductions</li>
       <li>Multiple jobs or variable income</li>
     </ul>
@@ -103,7 +120,7 @@ footer a{color:var(--acc);text-decoration:none}
 
   <div class="cta-box">
     <p>Ready to see your real take-home pay?</p>
-    <a href="/">Use the Free Calculator →</a>
+    <a href="index.html">Use the Free Calculator →</a>
   </div>
 
   <h2>Contact</h2>
@@ -111,6 +128,6 @@ footer a{color:var(--acc);text-decoration:none}
   <p>Email: <a href="mailto:hello@checknetpay.com" style="color:var(--acc)">hello@checknetpay.com</a></p>
 </main>
 
-<footer>© 2026 CheckNetPay.com · <a href="/">Calculator</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/blog/">Blog</a> · Free 2026 US Paycheck Calculator</footer>
+<footer>© 2026 CheckNetPay.com · <a href="index.html">Calculator</a> · <a href="privacy.html">Privacy Policy</a> · <a href="blog-index.html">Blog</a> · Free 2026 US Paycheck Calculator</footer>
 </body>
 </html>
