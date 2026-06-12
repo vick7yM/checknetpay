@@ -6,22 +6,8 @@
 # ── STATE PAGES — all served by state.html, URL stays clean ──
 /states/*  /state.html  200
 
-# ── BLOG POSTS — clean URLs (no .html) ──
-/blog/what-are-fica-taxes              /blog/what-are-fica-taxes.html              200
-/blog/how-to-read-your-pay-stub        /blog/how-to-read-your-pay-stub.html        200
-/blog/federal-vs-state-income-tax      /blog/federal-vs-state-income-tax.html      200
-/blog/w4-withholding-explained         /blog/w4-withholding-explained.html         200
-/blog/how-much-take-home-75000-texas   /blog/how-much-take-home-75000-texas.html   200
-/blog/salary-vs-hourly                 /blog/salary-vs-hourly.html                 200
-
-# ── BLOG — future blog posts (fallback) ──
-/blog/*    /blog/:splat  200
-
 # ── COMMON TYPOS / REDIRECTS ──
 /calculator          /             301
 /paycheck-calculator /             301
 /take-home-pay       /             301
 /takehome            /             301
-
-# ── PRIVACY ──
-/privacy             /privacy.html  200
