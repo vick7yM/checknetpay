@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script>(function(){try{var t=localStorage.getItem('cnp-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <title>CheckNetPay — Free 2026 US Paycheck Calculator | All 50 States + Local Taxes</title>
 <meta name="description" content="Free 2026 US paycheck calculator. See your exact take-home pay after federal, state, and local taxes. All 50 states, W-2 & 1099 modes, bonus tax, raise simulator. Updated with IRS 2026 brackets.">
 <meta name="keywords" content="paycheck calculator, take home pay calculator, net pay calculator, salary calculator 2026, paycheck after taxes, how much will i take home, net pay after taxes, free paycheck calculator USA">
@@ -350,11 +351,11 @@ footer{border-top:1px solid var(--bdr);padding:18px 20px;text-align:center;font-
           </div>
           <div class="fld">
             <div class="lbl">Health Insurance <span class="tip" onclick="tip(this,'hi')">?</span></div>
-            <div class="px"><span class="p">$</span><input type="number" id="hiI" placeholder="$/paycheck" min="0"></div>
+            <div class="px"><span class="p">$</span><input type="number" id="hiI" placeholder="0.00 / paycheck" min="0"></div>
           </div>
           <div class="fld">
             <div class="lbl">Other Pre-Tax <span class="tip" onclick="tip(this,'other')">?</span></div>
-            <div class="px"><span class="p">$</span><input type="number" id="otI" placeholder="$/paycheck" min="0"></div>
+            <div class="px"><span class="p">$</span><input type="number" id="otI" placeholder="0.00 / paycheck" min="0"></div>
           </div>
         </div>
 
@@ -786,6 +787,12 @@ function st(nm,btn){
   document.querySelectorAll('.tpane').forEach(p=>p.classList.remove('on'));
   g('tab-'+nm).classList.add('on');
 }
+function stByName(nm){
+  const idx={paycheck:0,bonus:1,raise:2}[nm];
+  const btns=document.querySelectorAll('.tbtn');
+  if(idx===undefined||!btns[idx])return;
+  st(nm,btns[idx]);
+}
 function updLocal(sc){
   const la=g('locA'),ls=g('locS');
   if(LOC[sc]){
@@ -966,7 +973,9 @@ function calcR(){
 // ── UTILITIES ──
 function toggleTheme(){
   const d=document.documentElement,dk=d.getAttribute('data-theme')==='dark';
-  d.setAttribute('data-theme',dk?'light':'dark');g('tIco').textContent=dk?'🌙':'☀️';
+  const nt=dk?'light':'dark';
+  d.setAttribute('data-theme',nt);g('tIco').textContent=dk?'🌙':'☀️';
+  try{localStorage.setItem('cnp-theme',nt);}catch(e){}
   if(last)setTimeout(()=>{const r=last;dChart({home:r.ppN,fed:r.ppF,fica:r.w2?r.ppFi:(r.ppSe||0),st:r.ppSt,lo:r.ppLo||0,ded:(r.ppRet||0)+(r.ppHsa||0)+(r.ppHi||0)+(r.ppOt||0),gr:r.ppG});},40);
 }
 function copyLink(){
@@ -1088,6 +1097,7 @@ function quickEx(salary,state,filing,freq,workerT,payT){
 }
 function populateSt(ids){ids.forEach(id=>{const s=g(id);if(!s)return;ST.forEach(x=>{const o=document.createElement('option');o.value=x.c;o.textContent=x.nt?`${x.n} ✦ No tax`:x.n;if(x.c==='TX')o.selected=true;s.appendChild(o);});});}
 document.addEventListener('DOMContentLoaded',()=>{
+  if(document.documentElement.getAttribute('data-theme')==='dark')g('tIco').textContent='☀️';
   populateSt(['stS','bSt','rSt']);
 
   // ── ENTER KEY — Paycheck tab (all income + deduction fields) ──
@@ -1107,6 +1117,8 @@ document.addEventListener('DOMContentLoaded',()=>{
   // Load from URL — restores ALL fields when a shared link is opened
   const p=new URLSearchParams(location.search);
   if(p.toString()){
+    // Tab — switch to bonus/raise tab if requested
+    if(p.get('tab'))stByName(p.get('tab'));
     // Worker type and pay type first (must set before filling fields)
     if(p.get('wt'))setWT(p.get('wt'));
     if(p.get('pt'))setPT(p.get('pt'));
