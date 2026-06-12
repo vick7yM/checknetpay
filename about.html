@@ -1,8 +1,9 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script>(function(){try{var t=localStorage.getItem('cnp-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <title>About CheckNetPay -- Free 2026 US Paycheck Calculator</title>
 <meta name="description" content="CheckNetPay is a free US paycheck calculator built for everyday workers. See your exact take-home pay after all taxes -- all 50 states, W-2 and 1099 modes.">
 <meta name="robots" content="index, follow">
@@ -56,7 +57,7 @@ footer a{color:var(--acc);text-decoration:none}
       <a href="blog-index.html">Blog</a>
       <a href="about.html" class="on">About</a>
       <span class="badge">✦ 2026</span>
-      <button class="thm" onclick="document.documentElement.setAttribute('data-theme',document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');this.textContent=document.documentElement.getAttribute('data-theme')==='dark'?'☀️':'🌙'">🌙</button>
+      <button class="thm" onclick="cnpToggleTheme(this)">🌙</button>
     </div>
   </div>
 </header>
@@ -129,5 +130,18 @@ footer a{color:var(--acc);text-decoration:none}
 </main>
 
 <footer>© 2026 CheckNetPay.com · <a href="index.html">Calculator</a> · <a href="privacy.html">Privacy Policy</a> · <a href="blog-index.html">Blog</a> · Free 2026 US Paycheck Calculator</footer>
+<script>
+function cnpToggleTheme(btn){
+  const d=document.documentElement,dk=d.getAttribute('data-theme')==='dark';
+  const nt=dk?'light':'dark';
+  d.setAttribute('data-theme',nt);btn.textContent=dk?'☀️':'🌙';
+  try{localStorage.setItem('cnp-theme',nt);}catch(e){}
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  if(document.documentElement.getAttribute('data-theme')==='dark'){
+    const b=document.querySelector('.thm');if(b)b.textContent='☀️';
+  }
+});
+</script>
 </body>
 </html>
