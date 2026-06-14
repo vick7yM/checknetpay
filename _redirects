@@ -1,7 +1,7 @@
 # Cloudflare Pages URL Routing
 # This file makes clean SEO URLs work without a backend server
 # Format: /incoming-url  /actual-file  status-code
-# 200 = serve the file silently (URL stays clean in browser)
+# 200 = serve the file silently (URL stays clean in browser) ← perfect for SEO
 
 # ── STATE PAGES — all served by state.html, URL stays clean ──
 /states/*  /state.html  200
@@ -11,6 +11,3 @@
 /paycheck-calculator /             301
 /take-home-pay       /             301
 /takehome            /             301
-
-# ── PRIVACY ──
-/privacy             /privacy.html  200
