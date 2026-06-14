@@ -14,9 +14,6 @@
 /blog/how-much-take-home-75000-texas   /blog/how-much-take-home-75000-texas.html   200
 /blog/salary-vs-hourly                 /blog/salary-vs-hourly.html                 200
 
-# ── BLOG — future blog posts (fallback) ──
-/blog/*    /blog/:splat  200
-
 # ── COMMON TYPOS / REDIRECTS ──
 /calculator          /             301
 /paycheck-calculator /             301
