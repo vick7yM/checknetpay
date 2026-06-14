@@ -411,7 +411,7 @@ footer{border-top:1px solid var(--bdr);padding:18px 20px;text-align:center;font-
       <div class="card">
         <div class="clbl">Bonus Tax Calculator</div>
         <div class="chip">💡 Bonuses are taxed as "supplemental wages." Most employers withhold at a flat <b>22% federal rate</b> (37% if your bonus tops $1 million). State tax is also withheld on top.</div>
-        <div class="fld"><div class="lbl">Annual Salary <span class="tip" onclick="tip(this,'bsal')">?</span></div><div class="px"><span class="p">$</span><input type="number" id="bSal" placeholder="75,000"></div></div>
+        <div class="fld"><div class="lbl">Annual Salary <span class="tip" onclick="tip(this,'bsal')">?</span></div><div class="px"><span class="p">$</span><input type="number" id="bSalI" placeholder="75,000"></div></div>
         <div class="fld"><div class="lbl">Bonus Amount <span class="tip" onclick="tip(this,'bamt')">?</span></div><div class="px"><span class="p">$</span><input type="number" id="bBon" placeholder="5,000"></div></div>
         <div class="two">
           <div class="fld"><div class="lbl">State</div><div class="sw"><select id="bSt"></select></div></div>
@@ -922,7 +922,7 @@ function aN(id,tgt){
 
 // ── BONUS ──
 function calcB(){
-  const sal=parseFloat(g('bSal').value)||0,bon=parseFloat(g('bBon').value)||0;
+  const sal=parseFloat(g('bSalI').value)||0,bon=parseFloat(g('bBon').value)||0;
   const sc=g('bSt').value,f=g('bFl').value;
   if(!bon){showToast('Enter a bonus amount');return;}
   let fw=0;
@@ -1106,7 +1106,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   });
 
   // ── ENTER KEY — Bonus tab (both salary and bonus fields) ──
-  ['bSal','bBon'].forEach(id=>{
+  ['bSalI','bBon'].forEach(id=>{
     const e=g(id);if(e)e.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();calcB();}});
   });
 
