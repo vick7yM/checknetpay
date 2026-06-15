@@ -8,25 +8,7 @@
 <title id="pageTitle">State Paycheck Calculator — CheckNetPay</title>
 <meta name="description" id="pageDesc" content="Free 2026 paycheck calculator for any US state. See your exact take-home pay after federal tax, state tax, and FICA.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" id="pageCanon" href="https://www.checknetpay.com/states/">
-<script>
-// Synchronous canonical fix — runs during head parsing so crawlers see correct URL
-(function(){
-  var path = window.location.pathname;
-  var slug = path.split('/').pop();
-  if(slug && slug.indexOf('paycheck-calculator') !== -1){
-    var links = document.querySelectorAll ? document.querySelectorAll('link[rel="canonical"]') : [];
-    // querySelectorAll may not be ready yet in head — use direct id approach at interactive
-    document.addEventListener('readystatechange', function f(){
-      if(document.readyState !== 'loading'){
-        var el = document.getElementById('pageCanon');
-        if(el) el.href = 'https://www.checknetpay.com/states/' + slug;
-        document.removeEventListener('readystatechange', f);
-      }
-    });
-  }
-})();
-</script>
+<link rel="canonical" id="pageCanon" href="https://www.checknetpay.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CheckNetPay">
 <meta property="og:title" id="ogTitle" content="State Paycheck Calculator — CheckNetPay">
@@ -167,7 +149,47 @@ const STATE_DATA={
   OH:{name:'Ohio',code:'OH',rate:.035,noTax:false,facts:{income:'Up to 3.5%',fica:'7.65%',municipal:'0–2.85%'},desc:'Ohio has a graduated income tax system with rates up to 3.5%. Most Ohio cities also charge a municipal income tax ranging from 1% to 2.85%, meaning your total state+local rate can reach 6% or more.',faq:[{q:'What is Ohio state income tax?',a:'Ohio state income tax goes up to 3.5%. Additionally, most Ohio cities charge a municipal income tax of 1–2.85% on your wages.'}]},
   GA:{name:'Georgia',code:'GA',rate:.0539,noTax:false,facts:{income:'5.39% flat',fica:'7.65%',standard:'$5,400 single'},desc:'Georgia converted to a flat 5.39% income tax rate in 2026, replacing its previous graduated system. The rate is set to reduce gradually over the coming years under current state law.',faq:[{q:'What is Georgia income tax rate in 2026?',a:'Georgia has a flat 5.39% income tax rate in 2026, reduced from the previous graduated system.'}]},
   NC:{name:'North Carolina',code:'NC',rate:.0425,noTax:false,facts:{income:'4.25% flat',fica:'7.65%',standard:'$10,750 single'},desc:'North Carolina has a flat 4.25% income tax rate in 2026, reduced from previous years. The state has been progressively lowering its rate each year.',faq:[{q:'What is North Carolina income tax in 2026?',a:'North Carolina has a flat 4.25% income tax in 2026, one of the lower flat rates among states that do tax income.'}]},
-  WA:{name:'Washington',code:'WA',rate:0,noTax:true,facts:{income:'0%',fica:'7.65%',sales:'10.4% avg'},desc:'Washington state has no personal income tax, making it very tax-friendly for workers. However, Washington has some of the highest sales tax rates in the US, averaging around 10.4% combined state and local.',faq:[{q:'Does Washington state have income tax?',a:'No. Washington state has no personal income tax. You only pay federal income tax and FICA on your wages.'}]}
+  WA:{name:'Washington',code:'WA',rate:0,noTax:true,facts:{income:'0%',fica:'7.65%',sales:'10.4% avg'},desc:'Washington state has no personal income tax, making it very tax-friendly for workers. However, Washington has some of the highest sales tax rates in the US, averaging around 10.4% combined state and local.',faq:[{q:'Does Washington state have income tax?',a:'No. Washington state has no personal income tax. You only pay federal income tax and FICA on your wages.'}]},
+  AL:{name:'Alabama',code:'AL',rate:.05,noTax:false,facts:{income:'2%–5%',fica:'7.65%',standard:'$3,000 single'},desc:'Alabama has a graduated income tax with rates from 2% to 5%. The top rate of 5% applies to income above $3,000 for single filers, meaning most full-time workers quickly reach the maximum rate.',faq:[{q:'What is Alabama income tax rate?',a:'Alabama income tax ranges from 2% to 5%. The top rate of 5% kicks in at just $3,000 of taxable income, so most workers pay close to the maximum rate.'}]},
+  AK:{name:'Alaska',code:'AK',rate:0,noTax:true,facts:{income:'0%',fica:'7.65%',notes:'No sales tax either'},desc:'Alaska has no state income tax and no statewide sales tax, making it one of the most tax-friendly states in the US. Some municipalities charge local sales taxes, but wages are untaxed at the state level.',faq:[{q:'Does Alaska have state income tax?',a:'No. Alaska has zero state income tax and no statewide sales tax. You only pay federal income tax and FICA on your wages.'}]},
+  AZ:{name:'Arizona',code:'AZ',rate:.025,noTax:false,facts:{income:'2.5% flat',fica:'7.65%',standard:'$14,600 single'},desc:'Arizona moved to a flat 2.5% income tax rate in 2023, making it one of the lowest flat income tax states in the country. All wage earners pay the same rate regardless of income level.',faq:[{q:'What is Arizona state income tax rate?',a:'Arizona has a flat 2.5% income tax rate for all earners, one of the lowest flat rates in the US.'}]},
+  AR:{name:'Arkansas',code:'AR',rate:.039,noTax:false,facts:{income:'Up to 3.9%',fica:'7.65%',top_bracket:'$89,600+'},desc:'Arkansas has a graduated income tax with a top rate of 3.9% in 2026, reduced from prior years as part of ongoing tax reform. The state has been progressively lowering rates.',faq:[{q:'What is Arkansas income tax rate?',a:'Arkansas has a graduated income tax with a top rate of 3.9% in 2026. The rate has been reduced in recent years as part of state tax reform.'}]},
+  CO:{name:'Colorado',code:'CO',rate:.044,noTax:false,facts:{income:'4.4% flat',fica:'7.65%',standard:'$14,600 single'},desc:'Colorado has a flat 4.4% income tax rate that applies to all income levels equally. The rate was reduced from 4.55% in recent years.',faq:[{q:'What is Colorado income tax rate?',a:'Colorado has a flat 4.4% income tax rate for all earners, reduced from 4.55% in prior years.'}]},
+  CT:{name:'Connecticut',code:'CT',rate:.0699,noTax:false,facts:{income:'3%–6.99%',fica:'7.65%',top_bracket:'$500,000+'},desc:'Connecticut has a progressive income tax with rates from 3% to 6.99%. The state is one of the higher-taxed in New England, though it also has some exemptions for lower earners.',faq:[{q:'What is Connecticut income tax rate?',a:'Connecticut income tax ranges from 3% to 6.99% depending on income. Most middle-income workers pay an effective rate of around 5–6%.'}]},
+  DE:{name:'Delaware',code:'DE',rate:.066,noTax:false,facts:{income:'2.2%–6.6%',fica:'7.65%',no_sales:'No sales tax'},desc:'Delaware has a progressive income tax with rates from 2.2% to 6.6%. Delaware is notable for having no state sales tax, which offsets the income tax burden somewhat.',faq:[{q:'What is Delaware income tax rate?',a:'Delaware income tax ranges from 2.2% to 6.6%. Delaware has no state sales tax, making the overall tax picture more balanced than the income tax rate alone suggests.'}]},
+  HI:{name:'Hawaii',code:'HI',rate:.11,noTax:false,facts:{income:'1.4%–11%',fica:'7.65%',top_bracket:'$400,000+'},desc:'Hawaii has one of the highest top income tax rates in the US at 11%, with a progressive system starting at 1.4%. The high cost of living and taxes make Hawaii one of the most expensive states for workers.',faq:[{q:'What is Hawaii income tax rate?',a:'Hawaii income tax ranges from 1.4% to 11%, one of the highest top rates in the US. Most middle-income workers pay an effective rate of 6–8%.'}]},
+  ID:{name:'Idaho',code:'ID',rate:.058,noTax:false,facts:{income:'5.8% flat',fica:'7.65%',standard:'$14,600 single'},desc:'Idaho moved to a flat 5.8% income tax rate, simplifying its previously graduated system. The rate is applied to all taxable income.',faq:[{q:'What is Idaho income tax rate?',a:'Idaho has a flat 5.8% income tax rate for all earners as of 2026.'}]},
+  IN:{name:'Indiana',code:'IN',rate:.0305,noTax:false,facts:{income:'3.05% flat',fica:'7.65%',county:'+0.5%–3% county tax'},desc:'Indiana has a flat 3.05% state income tax rate. Additionally, most Indiana counties charge their own income tax of 0.5% to 3%, so your total rate depends on which county you work in.',faq:[{q:'What is Indiana income tax rate?',a:'Indiana has a flat 3.05% state income tax. Most counties add their own income tax of 0.5–3% on top, so the combined rate varies by location.'}]},
+  IA:{name:'Iowa',code:'IA',rate:.057,noTax:false,facts:{income:'4.4%–5.7%',fica:'7.65%',note:'Rate reducing'},desc:'Iowa is transitioning to a flat 3.9% income tax by 2026 as part of major tax reform. Current rates range from 4.4% to 5.7% for most earners.',faq:[{q:'What is Iowa income tax rate?',a:'Iowa income tax ranges from 4.4% to 5.7% in 2026, with ongoing reform moving toward a flat 3.9% rate in future years.'}]},
+  KS:{name:'Kansas',code:'KS',rate:.057,noTax:false,facts:{income:'3.1%–5.7%',fica:'7.65%',top_bracket:'$30,000+'},desc:'Kansas has a two-bracket progressive income tax with rates of 3.1% and 5.7%. The top bracket kicks in at a relatively low income level of $30,000.',faq:[{q:'What is Kansas income tax rate?',a:'Kansas has two income tax brackets: 3.1% and 5.7%. The 5.7% top rate applies to income over $30,000 for single filers.'}]},
+  KY:{name:'Kentucky',code:'KY',rate:.04,noTax:false,facts:{income:'4% flat',fica:'7.65%',standard:'$2,980 single'},desc:'Kentucky has a flat 4% income tax rate for all earners. The state lowered its rate from 4.5% in recent years and may continue reducing it under current law.',faq:[{q:'What is Kentucky income tax rate?',a:'Kentucky has a flat 4% income tax rate for all earners in 2026, reduced from 4.5% in prior years.'}]},
+  LA:{name:'Louisiana',code:'LA',rate:.03,noTax:false,facts:{income:'3% flat',fica:'7.65%',note:'2025 reform'},desc:'Louisiana overhauled its income tax in 2025, moving to a flat 3% rate for most earners. The new flat system simplifies withholding significantly.',faq:[{q:'What is Louisiana income tax rate?',a:'Louisiana moved to a flat 3% income tax rate in 2025, simplifying its previous graduated system.'}]},
+  ME:{name:'Maine',code:'ME',rate:.0715,noTax:false,facts:{income:'5.8%–7.15%',fica:'7.65%',top_bracket:'$58,050+'},desc:'Maine has a progressive income tax with rates from 5.8% to 7.15%. It is one of the higher-taxed states in New England.',faq:[{q:'What is Maine income tax rate?',a:'Maine income tax ranges from 5.8% to 7.15%. The top rate of 7.15% applies to income above $58,050 for single filers.'}]},
+  MD:{name:'Maryland',code:'MD',rate:.0575,noTax:false,facts:{income:'2%–5.75%',fica:'7.65%',county:'+2.25%–3.2% county'},desc:'Maryland has a progressive income tax from 2% to 5.75%, plus a mandatory county income tax of 2.25% to 3.2% depending on where you live. The combined rate for most Maryland workers is 7–8%.',faq:[{q:'What is Maryland income tax rate?',a:'Maryland state income tax ranges from 2% to 5.75%, plus a county tax of 2.25–3.2%. Most workers pay a combined state+county rate of around 7–8%.'}]},
+  MA:{name:'Massachusetts',code:'MA',rate:.05,noTax:false,facts:{income:'5% / 9% millionaire',fica:'7.65%',note:'Surtax above $1M'},desc:'Massachusetts has a flat 5% income tax for most earners. A 4% surtax applies to income above $1 million (effective 9%), passed by voters in 2022.',faq:[{q:'What is Massachusetts income tax rate?',a:'Massachusetts has a flat 5% income tax for most workers. Income above $1 million is taxed at 9% due to a 4% millionaire surtax.'}]},
+  MI:{name:'Michigan',code:'MI',rate:.0425,noTax:false,facts:{income:'4.25% flat',fica:'7.65%',city:'Detroit: +2.4%'},desc:'Michigan has a flat 4.25% income tax rate. Detroit residents pay an additional 2.4% city income tax on top of the state rate.',faq:[{q:'What is Michigan income tax rate?',a:'Michigan has a flat 4.25% income tax. Detroit residents pay an extra 2.4% city tax, bringing their combined rate to 6.65%.'}]},
+  MN:{name:'Minnesota',code:'MN',rate:.0985,noTax:false,facts:{income:'5.35%–9.85%',fica:'7.65%',top_bracket:'$183,340+'},desc:'Minnesota has a progressive income tax with rates from 5.35% to 9.85%, one of the highest top rates in the Midwest.',faq:[{q:'What is Minnesota income tax rate?',a:'Minnesota income tax ranges from 5.35% to 9.85%. The 9.85% top rate applies to income above $183,340 for single filers.'}]},
+  MS:{name:'Mississippi',code:'MS',rate:.047,noTax:false,facts:{income:'4.7% flat',fica:'7.65%',note:'Phasing to 0%'},desc:'Mississippi is phasing out its income tax entirely. The current rate is 4.7% and is set to reduce to 0% by 2030 under current law.',faq:[{q:'What is Mississippi income tax rate?',a:'Mississippi has a 4.7% flat income tax in 2026, but the state is phasing it out entirely — reducing it each year until it reaches 0% by 2030.'}]},
+  MO:{name:'Missouri',code:'MO',rate:.048,noTax:false,facts:{income:'Up to 4.8%',fica:'7.65%',top_bracket:'$9,072+'},desc:'Missouri has a graduated income tax with a top rate of 4.8%, reduced from 5.3% in recent years. The top bracket starts at a low income level.',faq:[{q:'What is Missouri income tax rate?',a:'Missouri income tax tops out at 4.8% in 2026. The top rate applies to income above $9,072, so most workers pay close to the maximum rate.'}]},
+  MT:{name:'Montana',code:'MT',rate:.059,noTax:false,facts:{income:'4.7%–5.9%',fica:'7.65%',note:'Reformed 2024'},desc:'Montana reformed its income tax in 2024, moving to a simpler 2-bracket system with rates of 4.7% and 5.9%.',faq:[{q:'What is Montana income tax rate?',a:'Montana has two income tax brackets: 4.7% and 5.9%, after reforming from a more complex system in 2024.'}]},
+  NE:{name:'Nebraska',code:'NE',rate:.0584,noTax:false,facts:{income:'Up to 5.84%',fica:'7.65%',note:'Reducing to 3.99%'},desc:'Nebraska has a progressive income tax with a top rate of 5.84% in 2026, scheduled to drop to 3.99% by 2027 under current law.',faq:[{q:'What is Nebraska income tax rate?',a:'Nebraska income tax tops out at 5.84% in 2026, but the state is cutting rates — the top rate is scheduled to fall to 3.99% by 2027.'}]},
+  NV:{name:'Nevada',code:'NV',rate:0,noTax:true,facts:{income:'0%',fica:'7.65%',sales:'8.23% avg'},desc:'Nevada has no state income tax. The state funds itself primarily through gaming taxes, sales tax, and tourism revenue.',faq:[{q:'Does Nevada have state income tax?',a:'No. Nevada has no state income tax. You only pay federal income tax and FICA on your wages.'}]},
+  NH:{name:'New Hampshire',code:'NH',rate:0,noTax:true,facts:{income:'0% on wages',fica:'7.65%',note:'Dividends tax gone 2025'},desc:'New Hampshire has no income tax on wages or salaries. A historic tax on interest and dividends was fully eliminated in 2025, making NH a true zero-income-tax state.',faq:[{q:'Does New Hampshire have state income tax?',a:"No. New Hampshire has no income tax on wages. The state's tax on interest and dividends was eliminated in 2025, making it fully income-tax-free."}]},
+  NJ:{name:'New Jersey',code:'NJ',rate:.1075,noTax:false,facts:{income:'1.4%–10.75%',fica:'7.65%',top_bracket:'$1M+'},desc:'New Jersey has a progressive income tax from 1.4% to 10.75%, one of the highest top rates in the US. The top bracket applies to income above $1 million.',faq:[{q:'What is New Jersey income tax rate?',a:'New Jersey income tax ranges from 1.4% to 10.75%. Most middle-income workers pay an effective rate of around 5–6%.'}]},
+  NM:{name:'New Mexico',code:'NM',rate:.059,noTax:false,facts:{income:'1.7%–5.9%',fica:'7.65%',top_bracket:'$210,000+'},desc:'New Mexico has a progressive income tax with rates from 1.7% to 5.9%.',faq:[{q:'What is New Mexico income tax rate?',a:'New Mexico income tax ranges from 1.7% to 5.9%. Most middle-income workers pay an effective rate of around 4–5%.'}]},
+  ND:{name:'North Dakota',code:'ND',rate:.025,noTax:false,facts:{income:'Up to 2.5%',fica:'7.65%',note:'Very low rates'},desc:'North Dakota has one of the lowest income tax rates in the US, with a top rate of just 2.5% and income below $44,725 taxed at 0% for single filers.',faq:[{q:'What is North Dakota income tax rate?',a:'North Dakota has very low income taxes — a top rate of 2.5%, with income below $44,725 taxed at 0% for single filers after recent reforms.'}]},
+  OK:{name:'Oklahoma',code:'OK',rate:.0475,noTax:false,facts:{income:'0.25%–4.75%',fica:'7.65%',top_bracket:'$12,200+'},desc:'Oklahoma has a graduated income tax with a top rate of 4.75%. The top bracket starts at the relatively low income of $12,200, so most full-time workers reach the maximum rate.',faq:[{q:'What is Oklahoma income tax rate?',a:'Oklahoma income tax tops out at 4.75%, applying to income above $12,200 for single filers. Most full-time workers pay close to the top rate.'}]},
+  OR:{name:'Oregon',code:'OR',rate:.099,noTax:false,facts:{income:'4.75%–9.9%',fica:'7.65%',no_sales:'No sales tax'},desc:'Oregon has a progressive income tax with rates up to 9.9%, one of the highest in the US. Oregon has no sales tax, which offsets the high income tax for consumers.',faq:[{q:'What is Oregon income tax rate?',a:"Oregon income tax ranges from 4.75% to 9.9%. The state has no sales tax, which somewhat offsets the high income tax burden."}]},
+  RI:{name:'Rhode Island',code:'RI',rate:.0599,noTax:false,facts:{income:'3.75%–5.99%',fica:'7.65%',top_bracket:'$176,050+'},desc:'Rhode Island has a three-bracket progressive income tax with rates from 3.75% to 5.99%.',faq:[{q:'What is Rhode Island income tax rate?',a:'Rhode Island income tax ranges from 3.75% to 5.99%, with the top rate applying to income above $176,050.'}]},
+  SC:{name:'South Carolina',code:'SC',rate:.064,noTax:false,facts:{income:'Up to 6.4%',fica:'7.65%',note:'Reducing to 6%'},desc:'South Carolina has a graduated income tax with a top rate of 6.4% in 2026, on a path to reduce to 6% by 2027.',faq:[{q:'What is South Carolina income tax rate?',a:'South Carolina income tax tops out at 6.4% in 2026, scheduled to reduce to 6% by 2027.'}]},
+  SD:{name:'South Dakota',code:'SD',rate:0,noTax:true,facts:{income:'0%',fica:'7.65%',sales:'4.5% base'},desc:'South Dakota has no state income tax, funded primarily by sales tax and other revenue sources.',faq:[{q:'Does South Dakota have state income tax?',a:'No. South Dakota has no state income tax. You only pay federal income tax and FICA on your wages.'}]},
+  TN:{name:'Tennessee',code:'TN',rate:0,noTax:true,facts:{income:'0%',fica:'7.65%',sales:'9.55% avg'},desc:"Tennessee has no income tax on wages or salaries. The Hall Income Tax on investment income was fully repealed in 2021. Tennessee has some of the highest combined sales tax rates in the US.",faq:[{q:'Does Tennessee have state income tax?',a:"No. Tennessee has no income tax on wages. The state's investment income tax was repealed in 2021. You only pay federal taxes and FICA."}]},
+  UT:{name:'Utah',code:'UT',rate:.0465,noTax:false,facts:{income:'4.65% flat',fica:'7.65%',standard:'$886 credit'},desc:'Utah has a flat 4.65% income tax rate for all earners.',faq:[{q:'What is Utah income tax rate?',a:'Utah has a flat 4.65% income tax rate for all earners in 2026.'}]},
+  VT:{name:'Vermont',code:'VT',rate:.0875,noTax:false,facts:{income:'3.35%–8.75%',fica:'7.65%',top_bracket:'$242,150+'},desc:'Vermont has a progressive income tax with rates from 3.35% to 8.75%, one of the higher rates in New England.',faq:[{q:'What is Vermont income tax rate?',a:'Vermont income tax ranges from 3.35% to 8.75%. The top rate of 8.75% applies to income above $242,150 for single filers.'}]},
+  VA:{name:'Virginia',code:'VA',rate:.0575,noTax:false,facts:{income:'2%–5.75%',fica:'7.65%',top_bracket:'$17,000+'},desc:'Virginia has a progressive income tax from 2% to 5.75%. The top bracket of 5.75% starts at the very low threshold of $17,000, meaning most workers reach the top rate quickly.',faq:[{q:'What is Virginia income tax rate?',a:'Virginia income tax ranges from 2% to 5.75%. The top rate of 5.75% kicks in at just $17,000 of taxable income, so most workers pay close to the maximum rate.'}]},
+  WV:{name:'West Virginia',code:'WV',rate:.0512,noTax:false,facts:{income:'Up to 5.12%',fica:'7.65%',note:'Reducing annually'},desc:'West Virginia is reducing its income tax significantly. The top rate is 5.12% in 2026, scheduled to drop further as the state moves toward a flat tax.',faq:[{q:'What is West Virginia income tax rate?',a:'West Virginia income tax tops out at 5.12% in 2026. The state is reducing its rates and moving toward a flat tax structure.'}]},
+  WI:{name:'Wisconsin',code:'WI',rate:.0765,noTax:false,facts:{income:'3.5%–7.65%',fica:'7.65%',top_bracket:'$315,650+'},desc:'Wisconsin has a progressive income tax with rates from 3.5% to 7.65%.',faq:[{q:'What is Wisconsin income tax rate?',a:'Wisconsin income tax ranges from 3.5% to 7.65%. The top rate applies to income above $315,650 for single filers.'}]},
+  WY:{name:'Wyoming',code:'WY',rate:0,noTax:true,facts:{income:'0%',fica:'7.65%',sales:'4% base'},desc:'Wyoming has no state income tax, funded primarily by mineral extraction taxes. It is consistently ranked one of the most tax-friendly states in the US.',faq:[{q:'Does Wyoming have state income tax?',a:'No. Wyoming has no state income tax. You only pay federal income tax and FICA on your wages.'}]}
 };
 
 // ── SLUG TO STATE CODE ──
@@ -181,7 +203,47 @@ const SLUG_MAP={
   'ohio-paycheck-calculator':'OH','ohio-take-home-pay':'OH',
   'georgia-paycheck-calculator':'GA','georgia-take-home-pay':'GA',
   'north-carolina-paycheck-calculator':'NC','north-carolina-take-home-pay':'NC',
-  'washington-paycheck-calculator':'WA','washington-take-home-pay':'WA'
+  'washington-paycheck-calculator':'WA','washington-take-home-pay':'WA',
+  'alabama-paycheck-calculator':'AL','alabama-take-home-pay':'AL',
+  'alaska-paycheck-calculator':'AK','alaska-take-home-pay':'AK',
+  'arizona-paycheck-calculator':'AZ','arizona-take-home-pay':'AZ',
+  'arkansas-paycheck-calculator':'AR','arkansas-take-home-pay':'AR',
+  'colorado-paycheck-calculator':'CO','colorado-take-home-pay':'CO',
+  'connecticut-paycheck-calculator':'CT','connecticut-take-home-pay':'CT',
+  'delaware-paycheck-calculator':'DE','delaware-take-home-pay':'DE',
+  'hawaii-paycheck-calculator':'HI','hawaii-take-home-pay':'HI',
+  'idaho-paycheck-calculator':'ID','idaho-take-home-pay':'ID',
+  'indiana-paycheck-calculator':'IN','indiana-take-home-pay':'IN',
+  'iowa-paycheck-calculator':'IA','iowa-take-home-pay':'IA',
+  'kansas-paycheck-calculator':'KS','kansas-take-home-pay':'KS',
+  'kentucky-paycheck-calculator':'KY','kentucky-take-home-pay':'KY',
+  'louisiana-paycheck-calculator':'LA','louisiana-take-home-pay':'LA',
+  'maine-paycheck-calculator':'ME','maine-take-home-pay':'ME',
+  'maryland-paycheck-calculator':'MD','maryland-take-home-pay':'MD',
+  'massachusetts-paycheck-calculator':'MA','massachusetts-take-home-pay':'MA',
+  'michigan-paycheck-calculator':'MI','michigan-take-home-pay':'MI',
+  'minnesota-paycheck-calculator':'MN','minnesota-take-home-pay':'MN',
+  'mississippi-paycheck-calculator':'MS','mississippi-take-home-pay':'MS',
+  'missouri-paycheck-calculator':'MO','missouri-take-home-pay':'MO',
+  'montana-paycheck-calculator':'MT','montana-take-home-pay':'MT',
+  'nebraska-paycheck-calculator':'NE','nebraska-take-home-pay':'NE',
+  'nevada-paycheck-calculator':'NV','nevada-take-home-pay':'NV',
+  'new-hampshire-paycheck-calculator':'NH','new-hampshire-take-home-pay':'NH',
+  'new-jersey-paycheck-calculator':'NJ','new-jersey-take-home-pay':'NJ',
+  'new-mexico-paycheck-calculator':'NM','new-mexico-take-home-pay':'NM',
+  'north-dakota-paycheck-calculator':'ND','north-dakota-take-home-pay':'ND',
+  'oklahoma-paycheck-calculator':'OK','oklahoma-take-home-pay':'OK',
+  'oregon-paycheck-calculator':'OR','oregon-take-home-pay':'OR',
+  'rhode-island-paycheck-calculator':'RI','rhode-island-take-home-pay':'RI',
+  'south-carolina-paycheck-calculator':'SC','south-carolina-take-home-pay':'SC',
+  'south-dakota-paycheck-calculator':'SD','south-dakota-take-home-pay':'SD',
+  'tennessee-paycheck-calculator':'TN','tennessee-take-home-pay':'TN',
+  'utah-paycheck-calculator':'UT','utah-take-home-pay':'UT',
+  'vermont-paycheck-calculator':'VT','vermont-take-home-pay':'VT',
+  'virginia-paycheck-calculator':'VA','virginia-take-home-pay':'VA',
+  'west-virginia-paycheck-calculator':'WV','west-virginia-take-home-pay':'WV',
+  'wisconsin-paycheck-calculator':'WI','wisconsin-take-home-pay':'WI',
+  'wyoming-paycheck-calculator':'WY','wyoming-take-home-pay':'WY'
 };
 
 // ── TAX ENGINE (simplified) ──
@@ -250,13 +312,56 @@ function initPage(){
   }
   // Build related states links (internal linking for SEO)
   const ALL_STATES=[
-    {code:'CA',name:'California'},{code:'TX',name:'Texas'},{code:'NY',name:'New York'},
-    {code:'FL',name:'Florida'},{code:'IL',name:'Illinois'},{code:'PA',name:'Pennsylvania'},
-    {code:'OH',name:'Ohio'},{code:'GA',name:'Georgia'},{code:'NC',name:'North Carolina'},
-    {code:'WA',name:'Washington'},{code:'AZ',name:'Arizona'},{code:'MA',name:'Massachusetts'},
-    {code:'NJ',name:'New Jersey'},{code:'VA',name:'Virginia'},{code:'MI',name:'Michigan'},
-    {code:'CO',name:'Colorado'},{code:'TN',name:'Tennessee'},{code:'IN',name:'Indiana'},
-    {code:'MD',name:'Maryland'},{code:'NV',name:'Nevada'}
+    {code:'AL',name:'Alabama',slug:'alabama-paycheck-calculator'},
+    {code:'AK',name:'Alaska',slug:'alaska-paycheck-calculator'},
+    {code:'AZ',name:'Arizona',slug:'arizona-paycheck-calculator'},
+    {code:'AR',name:'Arkansas',slug:'arkansas-paycheck-calculator'},
+    {code:'CA',name:'California',slug:'california-paycheck-calculator'},
+    {code:'CO',name:'Colorado',slug:'colorado-paycheck-calculator'},
+    {code:'CT',name:'Connecticut',slug:'connecticut-paycheck-calculator'},
+    {code:'DE',name:'Delaware',slug:'delaware-paycheck-calculator'},
+    {code:'FL',name:'Florida',slug:'florida-paycheck-calculator'},
+    {code:'GA',name:'Georgia',slug:'georgia-paycheck-calculator'},
+    {code:'HI',name:'Hawaii',slug:'hawaii-paycheck-calculator'},
+    {code:'ID',name:'Idaho',slug:'idaho-paycheck-calculator'},
+    {code:'IL',name:'Illinois',slug:'illinois-paycheck-calculator'},
+    {code:'IN',name:'Indiana',slug:'indiana-paycheck-calculator'},
+    {code:'IA',name:'Iowa',slug:'iowa-paycheck-calculator'},
+    {code:'KS',name:'Kansas',slug:'kansas-paycheck-calculator'},
+    {code:'KY',name:'Kentucky',slug:'kentucky-paycheck-calculator'},
+    {code:'LA',name:'Louisiana',slug:'louisiana-paycheck-calculator'},
+    {code:'ME',name:'Maine',slug:'maine-paycheck-calculator'},
+    {code:'MD',name:'Maryland',slug:'maryland-paycheck-calculator'},
+    {code:'MA',name:'Massachusetts',slug:'massachusetts-paycheck-calculator'},
+    {code:'MI',name:'Michigan',slug:'michigan-paycheck-calculator'},
+    {code:'MN',name:'Minnesota',slug:'minnesota-paycheck-calculator'},
+    {code:'MS',name:'Mississippi',slug:'mississippi-paycheck-calculator'},
+    {code:'MO',name:'Missouri',slug:'missouri-paycheck-calculator'},
+    {code:'MT',name:'Montana',slug:'montana-paycheck-calculator'},
+    {code:'NE',name:'Nebraska',slug:'nebraska-paycheck-calculator'},
+    {code:'NV',name:'Nevada',slug:'nevada-paycheck-calculator'},
+    {code:'NH',name:'New Hampshire',slug:'new-hampshire-paycheck-calculator'},
+    {code:'NJ',name:'New Jersey',slug:'new-jersey-paycheck-calculator'},
+    {code:'NM',name:'New Mexico',slug:'new-mexico-paycheck-calculator'},
+    {code:'NY',name:'New York',slug:'new-york-paycheck-calculator'},
+    {code:'NC',name:'North Carolina',slug:'north-carolina-paycheck-calculator'},
+    {code:'ND',name:'North Dakota',slug:'north-dakota-paycheck-calculator'},
+    {code:'OH',name:'Ohio',slug:'ohio-paycheck-calculator'},
+    {code:'OK',name:'Oklahoma',slug:'oklahoma-paycheck-calculator'},
+    {code:'OR',name:'Oregon',slug:'oregon-paycheck-calculator'},
+    {code:'PA',name:'Pennsylvania',slug:'pennsylvania-paycheck-calculator'},
+    {code:'RI',name:'Rhode Island',slug:'rhode-island-paycheck-calculator'},
+    {code:'SC',name:'South Carolina',slug:'south-carolina-paycheck-calculator'},
+    {code:'SD',name:'South Dakota',slug:'south-dakota-paycheck-calculator'},
+    {code:'TN',name:'Tennessee',slug:'tennessee-paycheck-calculator'},
+    {code:'TX',name:'Texas',slug:'texas-paycheck-calculator'},
+    {code:'UT',name:'Utah',slug:'utah-paycheck-calculator'},
+    {code:'VT',name:'Vermont',slug:'vermont-paycheck-calculator'},
+    {code:'VA',name:'Virginia',slug:'virginia-paycheck-calculator'},
+    {code:'WA',name:'Washington',slug:'washington-paycheck-calculator'},
+    {code:'WV',name:'West Virginia',slug:'west-virginia-paycheck-calculator'},
+    {code:'WI',name:'Wisconsin',slug:'wisconsin-paycheck-calculator'},
+    {code:'WY',name:'Wyoming',slug:'wyoming-paycheck-calculator'}
   ];
   const related=ALL_STATES.filter(s=>s.code!==currentStateCode).slice(0,8);
   const relEl=document.getElementById('relatedStates');
