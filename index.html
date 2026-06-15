@@ -475,13 +475,15 @@ footer{border-top:1px solid var(--bdr);padding:18px 20px;text-align:center;font-
           <div class="fld"><div class="lbl">Overtime Hours/Week <span class="tip" onclick="tip(this,'ototh')">?</span></div><div class="sx"><input type="number" id="otOH" placeholder="8" min="0" max="128" oninput="calcOT()"><span class="s">hrs</span></div></div>
         </div>
         <div class="two">
-          <div class="fld"><div class="lbl">Overtime Multiplier</div><div class="sw"><select id="otMx" onchange="calcOT()"><option value="1.5" selected>1.5× (standard)</option><option value="2.0">2× (double time)</option><option value="2.5">2.5× (holiday)</option></select></div></div>
+          <div class="fld"><div class="lbl">Overtime Multiplier <span class="tip" onclick="tip(this,'otmx')">?</span></div><div class="sw"><select id="otMx" onchange="calcOT()"><option value="1.5" selected>1.5× (standard)</option><option value="2.0">2× (double time)</option><option value="2.5">2.5× (holiday)</option></select></div></div>
           <div class="fld"><div class="lbl">Pay Frequency</div><div class="sw"><select id="otFr" onchange="calcOT()"><option value="52">Weekly</option><option value="26" selected>Bi-weekly</option><option value="24">Semi-monthly</option><option value="12">Monthly</option></select></div></div>
         </div>
         <div class="two">
           <div class="fld"><div class="lbl">State</div><div class="sw"><select id="otSt" onchange="calcOT()"></select></div></div>
           <div class="fld"><div class="lbl">Filing Status</div><div class="sw"><select id="otFl" onchange="calcOT()"><option value="single">Single</option><option value="married">Married</option><option value="hoh">Head of Household</option></select></div></div>
         </div>
+
+        <button class="btnp" onclick="calcOT()">Calculate Overtime Pay →</button>
       </div>
       <div>
         <div class="empty" id="otEm"><div class="eico">⏰</div><div class="etxt">See your overtime take-home pay</div><div class="esub">Enter your hourly rate and overtime hours above</div></div>
@@ -1081,6 +1083,7 @@ const TIPS={
   otreg:'Your base hourly pay rate — not including overtime. Enter what you earn for a standard hour of work.',
   othrs:'How many regular (non-overtime) hours you work each week. Usually 40 for full-time workers.',
   ototh:'How many hours per week you work beyond your regular hours. Federal law requires 1.5× pay for hours over 40/week for most hourly workers.',
+  otmx:'How much extra you\'re paid per overtime hour, as a multiple of your regular rate.<br><br><b>1.5× (standard)</b> — "Time and a half." The federal minimum for hours over 40/week.<br><br><b>2× (double time)</b> — Some employers pay this for holidays, 7th consecutive workday, or hours beyond a higher daily threshold.<br><br><b>2.5× (holiday)</b> — Less common; some union contracts or specific holidays pay this rate.<br><br>If unsure, leave it on 1.5× — that\'s the legal minimum most workers receive.',
   bsal:'Your regular annual gross salary — needed to calculate your tax bracket for the Aggregate withholding method. If you are unsure, enter 0.',
   bamt:'The full bonus amount before any taxes are taken out. This could be a year-end performance bonus, signing bonus, holiday bonus, or commission payment.',
   bmethod:'<b>Flat 22%</b> — The IRS requires a flat 22% federal withholding on supplemental pay (like bonuses). Simple and predictable. Most employers use this for separate bonus checks.<br><br><b>Aggregate</b> — Your bonus is added to your regular paycheck and taxed at your normal rate. Can result in higher or lower withholding depending on your income level.',
@@ -1147,7 +1150,7 @@ function calcOT(){
   const annualGross=weeklyGross*52;
 
   // Taxes on annual gross
-  const sd=FED_STD[f]||FED_STD.single;
+  const sd=SDED[f]||SDED.single;
   const ti=Math.max(0,annualGross-sd);
   const fedAnn=fedTax(ti,f);
   const ficaAnn=fica(annualGross,f);
@@ -1212,6 +1215,11 @@ document.addEventListener('DOMContentLoaded',()=>{
   // ── ENTER KEY — Raise Simulator (all three raise fields) ──
   ['rCu','rNw','rPc'].forEach(id=>{
     const e=g(id);if(e)e.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();calcR();}});
+  });
+
+  // ── ENTER KEY — Overtime tab (rate + hours fields) ──
+  ['otHr','otRH','otOH'].forEach(id=>{
+    const e=g(id);if(e)e.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();calcOT();}});
   });
   // Load from URL — restores ALL fields when a shared link is opened
   const p=new URLSearchParams(location.search);
