@@ -247,6 +247,7 @@ footer{border-top:1px solid var(--bdr);padding:18px 20px;text-align:center;font-
     <button class="tbtn on" onclick="st('paycheck',this)">💵 Paycheck</button>
     <button class="tbtn" onclick="st('bonus',this)">🎁 Bonus Tax</button>
     <button class="tbtn" onclick="st('raise',this)">📈 Raise Simulator</button>
+    <button class="tbtn" onclick="st('overtime',this)">⏰ Overtime</button>
   </div>
 
   <!-- ▌PAYCHECK TAB -->
@@ -457,6 +458,36 @@ footer{border-top:1px solid var(--bdr);padding:18px 20px;text-align:center;font-
         <div id="rRes" style="display:none">
           <div class="rhero an"><div class="rlbl">Extra Per Paycheck</div><div class="ramt" id="rXA">$0</div><div class="rsub" id="rXS">after taxes</div></div>
           <div class="cmp an" id="rCmp"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ▌OVERTIME TAB -->
+  <div class="tpane" id="tab-overtime">
+    <div class="grid">
+      <div class="card">
+        <div class="clbl">Overtime Pay Calculator</div>
+        <div class="chip">⏰ Federal law requires <b>1.5× your regular rate</b> for any hours over 40 in a workweek (for non-exempt hourly employees). See exactly how much you earn — and keep — with overtime.</div>
+        <div class="fld"><div class="lbl">Regular Hourly Rate <span class="tip" onclick="tip(this,'otreg')">?</span></div><div class="px"><span class="p">$</span><input type="number" id="otHr" placeholder="20.00" step="0.01" oninput="calcOT()"></div></div>
+        <div class="two">
+          <div class="fld"><div class="lbl">Regular Hours/Week <span class="tip" onclick="tip(this,'othrs')">?</span></div><div class="sx"><input type="number" id="otRH" placeholder="40" min="0" max="168" oninput="calcOT()"><span class="s">hrs</span></div></div>
+          <div class="fld"><div class="lbl">Overtime Hours/Week <span class="tip" onclick="tip(this,'ototh')">?</span></div><div class="sx"><input type="number" id="otOH" placeholder="8" min="0" max="128" oninput="calcOT()"><span class="s">hrs</span></div></div>
+        </div>
+        <div class="two">
+          <div class="fld"><div class="lbl">Overtime Multiplier</div><div class="sw"><select id="otMx" onchange="calcOT()"><option value="1.5" selected>1.5× (standard)</option><option value="2.0">2× (double time)</option><option value="2.5">2.5× (holiday)</option></select></div></div>
+          <div class="fld"><div class="lbl">Pay Frequency</div><div class="sw"><select id="otFr" onchange="calcOT()"><option value="52">Weekly</option><option value="26" selected>Bi-weekly</option><option value="24">Semi-monthly</option><option value="12">Monthly</option></select></div></div>
+        </div>
+        <div class="two">
+          <div class="fld"><div class="lbl">State</div><div class="sw"><select id="otSt" onchange="calcOT()"></select></div></div>
+          <div class="fld"><div class="lbl">Filing Status</div><div class="sw"><select id="otFl" onchange="calcOT()"><option value="single">Single</option><option value="married">Married</option><option value="hoh">Head of Household</option></select></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="empty" id="otEm"><div class="eico">⏰</div><div class="etxt">See your overtime take-home pay</div><div class="esub">Enter your hourly rate and overtime hours above</div></div>
+        <div id="otRes" style="display:none">
+          <div class="rhero an"><div class="rlbl">Total Take-Home</div><div class="ramt" id="otNA">$0</div><div class="rsub" id="otNS">this pay period</div></div>
+          <div class="cmp an" id="otCmp"></div>
         </div>
       </div>
     </div>
@@ -788,7 +819,7 @@ function st(nm,btn){
   g('tab-'+nm).classList.add('on');
 }
 function stByName(nm){
-  const idx={paycheck:0,bonus:1,raise:2}[nm];
+  const idx={paycheck:0,bonus:1,raise:2,overtime:3}[nm];
   const btns=document.querySelectorAll('.tbtn');
   if(idx===undefined||!btns[idx])return;
   st(nm,btns[idx]);
@@ -1047,6 +1078,9 @@ const TIPS={
   hsa:'Health Savings Account — the only account that is tax-free going in, growing, AND coming out (for medical costs). Triple tax advantage!<br><br>2026 limits: <b>$4,300</b> individual / <b>$8,550</b> family<br>Requires a high-deductible health plan (HDHP).<br><br>Enter your annual contribution amount in dollars.',
   hi:'The dollar amount deducted from <b>each paycheck</b> for your health insurance premium — this is your share, not the full premium (your employer pays most of it).<br><br>Typical range: $50–$400 per paycheck. Check your pay stub to find the exact amount.',
   other:'Any other pre-tax deductions taken from each paycheck, such as:<br>• Dental or vision insurance<br>• FSA — Flexible Spending Account (2026 limit: $3,400/year)<br>• Commuter/transit benefits<br>• Life insurance premiums<br><br>Enter the combined total per paycheck.',
+  otreg:'Your base hourly pay rate — not including overtime. Enter what you earn for a standard hour of work.',
+  othrs:'How many regular (non-overtime) hours you work each week. Usually 40 for full-time workers.',
+  ototh:'How many hours per week you work beyond your regular hours. Federal law requires 1.5× pay for hours over 40/week for most hourly workers.',
   bsal:'Your regular annual gross salary — needed to calculate your tax bracket for the Aggregate withholding method. If you are unsure, enter 0.',
   bamt:'The full bonus amount before any taxes are taken out. This could be a year-end performance bonus, signing bonus, holiday bonus, or commission payment.',
   bmethod:'<b>Flat 22%</b> — The IRS requires a flat 22% federal withholding on supplemental pay (like bonuses). Simple and predictable. Most employers use this for separate bonus checks.<br><br><b>Aggregate</b> — Your bonus is added to your regular paycheck and taxed at your normal rate. Can result in higher or lower withholding depending on your income level.',
@@ -1096,9 +1130,74 @@ function quickEx(salary,state,filing,freq,workerT,payT){
   setTimeout(()=>calc(),350);
 }
 function populateSt(ids){ids.forEach(id=>{const s=g(id);if(!s)return;ST.forEach(x=>{const o=document.createElement('option');o.value=x.c;o.textContent=x.nt?`${x.n} ✦ No tax`:x.n;if(x.c==='TX')o.selected=true;s.appendChild(o);});});}
+function calcOT(){
+  const hr=parseFloat(g('otHr').value)||0;
+  const rh=parseFloat(g('otRH').value)||40;
+  const oh=parseFloat(g('otOH').value)||0;
+  const mx=parseFloat(g('otMx').value)||1.5;
+  const fr=parseInt(g('otFr').value)||26;
+  const sc=g('otSt').value;
+  const f=g('otFl').value;
+  if(!hr){g('otEm').style.display='flex';g('otRes').style.display='none';return;}
+
+  // Weekly gross with overtime
+  const regPay=rh*hr;
+  const otPay=oh*hr*mx;
+  const weeklyGross=regPay+otPay;
+  const annualGross=weeklyGross*52;
+
+  // Taxes on annual gross
+  const sd=FED_STD[f]||FED_STD.single;
+  const ti=Math.max(0,annualGross-sd);
+  const fedAnn=fedTax(ti,f);
+  const ficaAnn=fica(annualGross,f);
+  const stAnn=stateTax(annualGross,sc);
+  const totalTaxAnn=fedAnn+ficaAnn.tot+stAnn;
+  const netAnn=annualGross-totalTaxAnn;
+
+  // Per period amounts
+  const ppGross=weeklyGross*(52/fr);
+  const ppNet=netAnn/fr;
+  const ppFed=fedAnn/fr;
+  const ppFica=ficaAnn.tot/fr;
+  const ppSt=stAnn/fr;
+
+  // Without overtime comparison
+  const regOnlyAnn=regPay*52;
+  const regTI=Math.max(0,regOnlyAnn-sd);
+  const regFed=fedTax(regTI,f);
+  const regFica=fica(regOnlyAnn,f);
+  const regSt=stateTax(regOnlyAnn,sc);
+  const regNet=regOnlyAnn-regFed-regFica.tot-regSt;
+  const regPP=regNet/fr;
+
+  const extraNet=ppNet-regPP;
+  const otRate=oh>0?otPay*52/fr:0;
+  const keepPct=oh>0&&otPay>0?(extraNet/(otPay*(52/fr))*100):0;
+
+  // Show results
+  g('otEm').style.display='none';g('otRes').style.display='block';
+  aN('otNA',ppNet);
+  g('otNS').textContent=`${fm(ppGross)} gross · ${PL[fr]||'paycheck'}`;
+
+  const si=ST.find(s=>s.c===sc)||{n:sc,nt:true};
+  const otLabel=oh>0?`${oh} overtime hrs @ ${mx}×`:'No overtime this period';
+  g('otCmp').innerHTML=`
+    <div class="br"><div><div class="bn">Regular Pay (${rh} hrs × ${fm(hr,2)})</div><div class="bs">Per ${PL[fr]||'period'}</div></div><div class="bra"><div class="bp n">${fm(regPay*(52/fr))}</div></div></div>
+    <div class="br"><div><div class="bn">Overtime Pay (${otLabel})</div><div class="bs">${mx}× rate = ${fm(hr*mx,2)}/hr</div></div><div class="bra"><div class="bp pos">${fm(otPay*(52/fr))}</div></div></div>
+    <div class="br"><div><div class="bn">Gross Pay</div><div class="bs">Before taxes</div></div><div class="bra"><div class="bp n">${fm(ppGross)}</div></div></div>
+    <div class="br"><div><div class="bn">Federal Income Tax</div><div class="bs">${fp(fedAnn/annualGross*100)} effective rate</div></div><div class="bra"><div class="bp neg">−${fm(ppFed)}</div></div></div>
+    <div class="br"><div><div class="bn">FICA (SS + Medicare)</div><div class="bs">7.65% flat</div></div><div class="bra"><div class="bp neg">−${fm(ppFica)}</div></div></div>
+    <div class="br"><div><div class="bn">${si.n} State Tax</div><div class="bs">${si.nt?'No state income tax 🎉':fp(stAnn/annualGross*100)+' effective rate'}</div></div><div class="bra"><div class="bp neg">${si.nt?'$0.00':'−'+fm(ppSt)}</div></div></div>
+    <div class="br btot"><div><div class="bn">✅ Total Take-Home</div><div class="bs">After all taxes</div></div><div class="bra"><div class="bp pos">${fm(ppNet)}</div></div></div>
+    ${oh>0?`<div class="chip" style="margin-top:12px">💡 Your overtime premium adds <b>${fm(extraNet)}</b> to your take-home this ${PL[fr]||'period'}. You keep <b>${fp(keepPct)}</b> of your overtime gross — taxes take the rest.</div>`:''}
+    <div class="chip" style="margin-top:8px">📊 Without overtime: ${fm(regPP)} take-home. With ${oh} OT hours: ${fm(ppNet)} take-home. Extra per ${PL[fr]||'period'}: <b>${fm(extraNet)}</b></div>
+  `;
+}
+
 document.addEventListener('DOMContentLoaded',()=>{
   if(document.documentElement.getAttribute('data-theme')==='dark')g('tIco').textContent='☀️';
-  populateSt(['stS','bSt','rSt']);
+  populateSt(['stS','bSt','rSt','otSt']);
 
   // ── ENTER KEY — Paycheck tab (all income + deduction fields) ──
   ['salI','hrI','hwI','seI','expI','miI','k4I','hsaI','hiI','otI'].forEach(id=>{
