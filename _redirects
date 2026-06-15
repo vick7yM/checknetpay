@@ -6,8 +6,44 @@
 # ── STATE PAGES — all served by state.html, URL stays clean ──
 /states/*  /state.html  200
 
+# ── BLOG POSTS — clean URLs (no .html) ──
+/blog/what-are-fica-taxes              /blog/what-are-fica-taxes.html              200
+/blog/how-to-read-your-pay-stub        /blog/how-to-read-your-pay-stub.html        200
+/blog/federal-vs-state-income-tax      /blog/federal-vs-state-income-tax.html      200
+/blog/w4-withholding-explained         /blog/w4-withholding-explained.html         200
+/blog/how-much-take-home-75000-texas   /blog/how-much-take-home-75000-texas.html   200
+/blog/salary-vs-hourly                 /blog/salary-vs-hourly.html                 200
+
+# ── BLOG — future blog posts (fallback) ──
+/blog/*    /blog/:splat  200
+
+
+# ── SALARY ARTICLES ──
+/blog/how-much-take-home-100000-new-york                      /blog/how-much-take-home-100000-new-york.html  200
+/blog/how-much-take-home-55000-texas                          /blog/how-much-take-home-55000-texas.html  200
+/blog/how-much-take-home-60000-florida                        /blog/how-much-take-home-60000-florida.html  200
+/blog/how-much-take-home-60000-massachusetts                  /blog/how-much-take-home-60000-massachusetts.html  200
+/blog/how-much-take-home-60000-texas                          /blog/how-much-take-home-60000-texas.html  200
+/blog/how-much-take-home-65000-colorado                       /blog/how-much-take-home-65000-colorado.html  200
+/blog/how-much-take-home-65000-new-york                       /blog/how-much-take-home-65000-new-york.html  200
+/blog/how-much-take-home-70000-georgia                        /blog/how-much-take-home-70000-georgia.html  200
+/blog/how-much-take-home-70000-nevada                         /blog/how-much-take-home-70000-nevada.html  200
+/blog/how-much-take-home-70000-washington                     /blog/how-much-take-home-70000-washington.html  200
+/blog/how-much-take-home-75000-arizona                        /blog/how-much-take-home-75000-arizona.html  200
+/blog/how-much-take-home-75000-florida                        /blog/how-much-take-home-75000-florida.html  200
+/blog/how-much-take-home-75000-illinois                       /blog/how-much-take-home-75000-illinois.html  200
+/blog/how-much-take-home-80000-california                     /blog/how-much-take-home-80000-california.html  200
+/blog/how-much-take-home-80000-texas                          /blog/how-much-take-home-80000-texas.html  200
+/blog/how-much-take-home-80000-washington                     /blog/how-much-take-home-80000-washington.html  200
+/blog/how-much-take-home-85000-north-carolina                 /blog/how-much-take-home-85000-north-carolina.html  200
+/blog/how-much-take-home-90000-california                     /blog/how-much-take-home-90000-california.html  200
+/blog/how-much-take-home-90000-virginia                       /blog/how-much-take-home-90000-virginia.html  200
+/blog/how-much-take-home-95000-texas                          /blog/how-much-take-home-95000-texas.html  200
 # ── COMMON TYPOS / REDIRECTS ──
 /calculator          /             301
 /paycheck-calculator /             301
 /take-home-pay       /             301
 /takehome            /             301
+
+# ── PRIVACY ──
+/privacy             /privacy.html  200
