@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- HOMEPAGE — highest priority -->
-  <url>
-    <loc>https://www.checknetpay.com/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <!-- BLOG INDEX -->
-  <url>
-    <loc>https://www.checknetpay.com/blog</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- BLOG POSTS -->
+  <!-- CORE PAGES -->
+  <url><loc>https://www.checknetpay.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.checknetpay.com/blog</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.checknetpay.com/blog/what-are-fica-taxes</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.checknetpay.com/blog/how-to-read-your-pay-stub</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.checknetpay.com/blog/federal-vs-state-income-tax</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -23,16 +11,78 @@
   <url><loc>https://www.checknetpay.com/blog/how-much-take-home-75000-texas</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.checknetpay.com/blog/salary-vs-hourly</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
-  <!-- STATE PAGES — each one targets a specific keyword -->
+  <!-- SALARY ARTICLES -->
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-100000-new-york</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-55000-texas</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-60000-florida</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-60000-massachusetts</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-60000-texas</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-65000-colorado</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-65000-new-york</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-70000-georgia</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-70000-nevada</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-70000-washington</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-75000-arizona</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-75000-florida</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-75000-illinois</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-80000-california</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-80000-texas</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-80000-washington</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-85000-north-carolina</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-90000-california</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-90000-virginia</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.checknetpay.com/blog/how-much-take-home-95000-texas</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ALL 50 STATE PAGES -->
+  <url><loc>https://www.checknetpay.com/states/alabama-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/alaska-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/arizona-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/arkansas-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.checknetpay.com/states/california-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.checknetpay.com/states/texas-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.checknetpay.com/states/new-york-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/colorado-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/connecticut-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/delaware-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.checknetpay.com/states/florida-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.checknetpay.com/states/illinois-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.checknetpay.com/states/pennsylvania-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.checknetpay.com/states/ohio-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.checknetpay.com/states/georgia-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/hawaii-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/idaho-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/illinois-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/indiana-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/iowa-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/kansas-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/kentucky-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/louisiana-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/maine-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/maryland-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/massachusetts-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/michigan-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/minnesota-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/mississippi-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/missouri-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/montana-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/nebraska-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/nevada-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/new-hampshire-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/new-jersey-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/new-mexico-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/new-york-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.checknetpay.com/states/north-carolina-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/north-dakota-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/ohio-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/oklahoma-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/oregon-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/pennsylvania-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/rhode-island-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/south-carolina-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/south-dakota-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/tennessee-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/texas-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/utah-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/vermont-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/virginia-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.checknetpay.com/states/washington-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/west-virginia-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/wisconsin-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.checknetpay.com/states/wyoming-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
 
 </urlset>
