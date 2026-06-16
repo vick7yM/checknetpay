@@ -274,19 +274,26 @@ function fa(n){return'$'+Math.abs(n).toLocaleString('en-US',{minimumFractionDigi
 // ── GET STATE FROM URL ──
 let currentStateCode='CA';
 function getStateFromURL(){
-  // First check ?state=CA query parameter (works locally + deployed)
+  // First check ?state=CA query parameter
   const params=new URLSearchParams(window.location.search);
   if(params.get('state')) return params.get('state').toUpperCase();
-  // Fallback: read from clean URL path (works on deployed site via _redirects)
-  const path=window.location.pathname;
-  const parts=path.split('/').filter(Boolean);
-  const slug=parts[parts.length-1].replace('.html','');
+  // Extract slug from URL using regex — immune to trailing slashes, double slashes, etc.
+  const href=window.location.href;
+  const m=href.match(/\/states\/([a-z][a-z0-9-]+?)(?:\/|\?|#|$)/);
+  if(m && m[1]){
+    const slug=m[1].replace(/\.html$/,'');
+    if(SLUG_MAP[slug]) return SLUG_MAP[slug];
+  }
+  // Final fallback: split method with filter(Boolean)
+  const parts=window.location.pathname.split('/').filter(Boolean);
+  const slug=parts[parts.length-1].replace(/\.html$/,'');
   return SLUG_MAP[slug]||'CA';
 }
 
 // ── INIT PAGE ──
 function initPage(){
   currentStateCode=getStateFromURL();
+  if(window.location.hostname!=='localhost') console.log('[CNP debug] href='+window.location.href+' | code='+currentStateCode);
   const sd=STATE_DATA[currentStateCode];
   if(!sd){document.title='State Paycheck Calculator — CheckNetPay';return;}
 
