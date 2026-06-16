@@ -279,7 +279,7 @@ function getStateFromURL(){
   if(params.get('state')) return params.get('state').toUpperCase();
   // Fallback: read from clean URL path (works on deployed site via _redirects)
   const path=window.location.pathname;
-  const parts=path.split('/');
+  const parts=path.split('/').filter(Boolean);
   const slug=parts[parts.length-1].replace('.html','');
   return SLUG_MAP[slug]||'CA';
 }
