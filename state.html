@@ -8,7 +8,24 @@
 <title id="pageTitle">State Paycheck Calculator — CheckNetPay</title>
 <meta name="description" id="pageDesc" content="Free 2026 paycheck calculator for any US state. See your exact take-home pay after federal tax, state tax, and FICA.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" id="pageCanon" href="https://www.checknetpay.com/">
+<link rel="canonical" id="pageCanon" href="https://www.checknetpay.com/states/">
+<script>
+// Set canonical to correct state URL as early as possible so crawlers see it
+(function(){
+  try{
+    var slug = window.location.pathname.split('/').pop();
+    if(slug && slug.indexOf('paycheck-calculator') !== -1){
+      document.addEventListener('readystatechange', function f(){
+        if(document.readyState !== 'loading'){
+          var el = document.getElementById('pageCanon');
+          if(el) el.href = 'https://www.checknetpay.com/states/' + slug;
+          document.removeEventListener('readystatechange', f);
+        }
+      });
+    }
+  }catch(e){}
+})();
+</script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CheckNetPay">
 <meta property="og:title" id="ogTitle" content="State Paycheck Calculator — CheckNetPay">
