@@ -157,6 +157,7 @@ footer a{color:var(--acc);text-decoration:none}
 'use strict';
 // ── STATE DATA ──
 const STATE_DATA={
+
   CA:{name:'California',code:'CA',rate:.0725,noTax:false,color:'#1B6B42',nickname:'Golden State',facts:{income:'Up to 13.3%',fica:'7.65%',sdi:'1.1% (CA specific)'},desc:'California has the highest state income tax rate in the US, with a top marginal rate of 13.3% for high earners. Most workers pay an effective rate of 5–9%. California also charges a 1.1% State Disability Insurance (SDI) tax, which is unique to CA.',faq:[{q:'How much is California state income tax?',a:'California uses progressive tax brackets ranging from 1% to 13.3%. Most workers earning $50,000–$100,000 pay an effective state rate of about 5–7%.'},]},
   TX:{name:'Texas',code:'TX',rate:0,noTax:true,facts:{income:'0%',fica:'7.65%',sales:'8.25%'},desc:'Texas has no state income tax — one of only 9 states with this benefit. Every dollar you earn from a salary stays untaxed at the state level. However, Texas makes up for it with higher property taxes and sales tax.',faq:[{q:'Does Texas have state income tax?',a:'No. Texas has zero state income tax. You only pay federal income tax, Social Security (6.2%), and Medicare (1.45%) on your wages.'}]},
   NY:{name:'New York',code:'NY',rate:.0685,noTax:false,facts:{income:'4%–10.9%',fica:'7.65%',nyc:'3.08%–3.88%'},desc:'New York has a progressive income tax with rates from 4% to 10.9%. If you live and work in New York City, you also pay an additional NYC income tax of 3.078%–3.876%. New York is consistently one of the highest-taxed states in the US.',faq:[{q:'How much is New York state income tax?',a:'New York state income tax ranges from 4% to 10.9% depending on your income. NYC residents pay an additional 3–3.9% city tax on top of state tax.'}]},
@@ -273,19 +274,26 @@ function fa(n){return'$'+Math.abs(n).toLocaleString('en-US',{minimumFractionDigi
 // ── GET STATE FROM URL ──
 let currentStateCode='CA';
 function getStateFromURL(){
-  // First check ?state=CA query parameter (works locally + deployed)
+  // First check ?state=CA query parameter
   const params=new URLSearchParams(window.location.search);
   if(params.get('state')) return params.get('state').toUpperCase();
-  // Fallback: read from clean URL path (works on deployed site via _redirects)
-  const path=window.location.pathname;
-  const parts=path.split('/');
-  const slug=parts[parts.length-1].replace('.html','');
+  // Extract slug from URL using regex — immune to trailing slashes, double slashes, etc.
+  const href=window.location.href;
+  const m=href.match(/\/states\/([a-z][a-z0-9-]+?)(?:\/|\?|#|$)/);
+  if(m && m[1]){
+    const slug=m[1].replace(/\.html$/,'');
+    if(SLUG_MAP[slug]) return SLUG_MAP[slug];
+  }
+  // Final fallback: split method with filter(Boolean)
+  const parts=window.location.pathname.split('/').filter(Boolean);
+  const slug=parts[parts.length-1].replace(/\.html$/,'');
   return SLUG_MAP[slug]||'CA';
 }
 
 // ── INIT PAGE ──
 function initPage(){
   currentStateCode=getStateFromURL();
+  if(window.location.hostname!=='localhost') console.log('[CNP debug] href='+window.location.href+' | code='+currentStateCode);
   const sd=STATE_DATA[currentStateCode];
   if(!sd){document.title='State Paycheck Calculator — CheckNetPay';return;}
 
@@ -295,7 +303,18 @@ function initPage(){
   document.title=title;
   document.getElementById('pageTitle').textContent=title;
   document.getElementById('pageDesc').setAttribute('content',desc);
-  document.getElementById('pageCanon').setAttribute('href',`https://www.checknetpay.com/states/${window.location.pathname.split('/').pop()}`);
+  // Build canonical from slug, with fallback via reverse SLUG_MAP
+  (function(){
+    var parts = window.location.pathname.split('/').filter(Boolean);
+    var slug = parts[parts.length-1].replace(/\.html$/, '');
+    if(slug && slug !== 'state' && slug.indexOf('-') !== -1){
+      document.getElementById('pageCanon').setAttribute('href', 'https://www.checknetpay.com/states/' + slug);
+    } else {
+      var code = currentStateCode;
+      var reverseSlug = Object.keys(SLUG_MAP).find(function(k){ return SLUG_MAP[k]===code && k.indexOf('paycheck-calculator')!==-1; });
+      if(reverseSlug) document.getElementById('pageCanon').setAttribute('href', 'https://www.checknetpay.com/states/' + reverseSlug);
+    }
+  })();
   document.getElementById('ogTitle').setAttribute('content',title);
   document.getElementById('ogDesc').setAttribute('content',desc);
 
@@ -327,65 +346,67 @@ function initPage(){
       sd.faq.map(item=>`<div style="margin-bottom:14px;background:var(--sur);border:1px solid var(--bdr);border-radius:12px;padding:14px 16px"><div style="font-size:13.5px;font-weight:600;color:var(--txt);margin-bottom:5px">${item.q}</div><div style="font-size:13px;color:var(--mut);line-height:1.6">${item.a}</div></div>`).join('');
     document.getElementById('stateFAQ').innerHTML=faqHTML;
   }
-  // Build related states links (internal linking for SEO)
-  const ALL_STATES=[
-    {code:'AL',name:'Alabama',slug:'alabama-paycheck-calculator'},
-    {code:'AK',name:'Alaska',slug:'alaska-paycheck-calculator'},
-    {code:'AZ',name:'Arizona',slug:'arizona-paycheck-calculator'},
-    {code:'AR',name:'Arkansas',slug:'arkansas-paycheck-calculator'},
-    {code:'CA',name:'California',slug:'california-paycheck-calculator'},
-    {code:'CO',name:'Colorado',slug:'colorado-paycheck-calculator'},
-    {code:'CT',name:'Connecticut',slug:'connecticut-paycheck-calculator'},
-    {code:'DE',name:'Delaware',slug:'delaware-paycheck-calculator'},
-    {code:'FL',name:'Florida',slug:'florida-paycheck-calculator'},
-    {code:'GA',name:'Georgia',slug:'georgia-paycheck-calculator'},
-    {code:'HI',name:'Hawaii',slug:'hawaii-paycheck-calculator'},
-    {code:'ID',name:'Idaho',slug:'idaho-paycheck-calculator'},
-    {code:'IL',name:'Illinois',slug:'illinois-paycheck-calculator'},
-    {code:'IN',name:'Indiana',slug:'indiana-paycheck-calculator'},
-    {code:'IA',name:'Iowa',slug:'iowa-paycheck-calculator'},
-    {code:'KS',name:'Kansas',slug:'kansas-paycheck-calculator'},
-    {code:'KY',name:'Kentucky',slug:'kentucky-paycheck-calculator'},
-    {code:'LA',name:'Louisiana',slug:'louisiana-paycheck-calculator'},
-    {code:'ME',name:'Maine',slug:'maine-paycheck-calculator'},
-    {code:'MD',name:'Maryland',slug:'maryland-paycheck-calculator'},
-    {code:'MA',name:'Massachusetts',slug:'massachusetts-paycheck-calculator'},
-    {code:'MI',name:'Michigan',slug:'michigan-paycheck-calculator'},
-    {code:'MN',name:'Minnesota',slug:'minnesota-paycheck-calculator'},
-    {code:'MS',name:'Mississippi',slug:'mississippi-paycheck-calculator'},
-    {code:'MO',name:'Missouri',slug:'missouri-paycheck-calculator'},
-    {code:'MT',name:'Montana',slug:'montana-paycheck-calculator'},
-    {code:'NE',name:'Nebraska',slug:'nebraska-paycheck-calculator'},
-    {code:'NV',name:'Nevada',slug:'nevada-paycheck-calculator'},
-    {code:'NH',name:'New Hampshire',slug:'new-hampshire-paycheck-calculator'},
-    {code:'NJ',name:'New Jersey',slug:'new-jersey-paycheck-calculator'},
-    {code:'NM',name:'New Mexico',slug:'new-mexico-paycheck-calculator'},
-    {code:'NY',name:'New York',slug:'new-york-paycheck-calculator'},
-    {code:'NC',name:'North Carolina',slug:'north-carolina-paycheck-calculator'},
-    {code:'ND',name:'North Dakota',slug:'north-dakota-paycheck-calculator'},
-    {code:'OH',name:'Ohio',slug:'ohio-paycheck-calculator'},
-    {code:'OK',name:'Oklahoma',slug:'oklahoma-paycheck-calculator'},
-    {code:'OR',name:'Oregon',slug:'oregon-paycheck-calculator'},
-    {code:'PA',name:'Pennsylvania',slug:'pennsylvania-paycheck-calculator'},
-    {code:'RI',name:'Rhode Island',slug:'rhode-island-paycheck-calculator'},
-    {code:'SC',name:'South Carolina',slug:'south-carolina-paycheck-calculator'},
-    {code:'SD',name:'South Dakota',slug:'south-dakota-paycheck-calculator'},
-    {code:'TN',name:'Tennessee',slug:'tennessee-paycheck-calculator'},
-    {code:'TX',name:'Texas',slug:'texas-paycheck-calculator'},
-    {code:'UT',name:'Utah',slug:'utah-paycheck-calculator'},
-    {code:'VT',name:'Vermont',slug:'vermont-paycheck-calculator'},
-    {code:'VA',name:'Virginia',slug:'virginia-paycheck-calculator'},
-    {code:'WA',name:'Washington',slug:'washington-paycheck-calculator'},
-    {code:'WV',name:'West Virginia',slug:'west-virginia-paycheck-calculator'},
-    {code:'WI',name:'Wisconsin',slug:'wisconsin-paycheck-calculator'},
-    {code:'WY',name:'Wyoming',slug:'wyoming-paycheck-calculator'}
+  // Build related states links — stable canonical list, one entry per state, A→Z
+  // Using a fixed array avoids Object.keys() ordering instability and SLUG_MAP duplicate entries
+  const CANONICAL_STATES=[
+    {code:'AL',slug:'alabama-paycheck-calculator'},
+    {code:'AK',slug:'alaska-paycheck-calculator'},
+    {code:'AZ',slug:'arizona-paycheck-calculator'},
+    {code:'AR',slug:'arkansas-paycheck-calculator'},
+    {code:'CA',slug:'california-paycheck-calculator'},
+    {code:'CO',slug:'colorado-paycheck-calculator'},
+    {code:'CT',slug:'connecticut-paycheck-calculator'},
+    {code:'DE',slug:'delaware-paycheck-calculator'},
+    {code:'FL',slug:'florida-paycheck-calculator'},
+    {code:'GA',slug:'georgia-paycheck-calculator'},
+    {code:'HI',slug:'hawaii-paycheck-calculator'},
+    {code:'ID',slug:'idaho-paycheck-calculator'},
+    {code:'IL',slug:'illinois-paycheck-calculator'},
+    {code:'IN',slug:'indiana-paycheck-calculator'},
+    {code:'IA',slug:'iowa-paycheck-calculator'},
+    {code:'KS',slug:'kansas-paycheck-calculator'},
+    {code:'KY',slug:'kentucky-paycheck-calculator'},
+    {code:'LA',slug:'louisiana-paycheck-calculator'},
+    {code:'ME',slug:'maine-paycheck-calculator'},
+    {code:'MD',slug:'maryland-paycheck-calculator'},
+    {code:'MA',slug:'massachusetts-paycheck-calculator'},
+    {code:'MI',slug:'michigan-paycheck-calculator'},
+    {code:'MN',slug:'minnesota-paycheck-calculator'},
+    {code:'MS',slug:'mississippi-paycheck-calculator'},
+    {code:'MO',slug:'missouri-paycheck-calculator'},
+    {code:'MT',slug:'montana-paycheck-calculator'},
+    {code:'NE',slug:'nebraska-paycheck-calculator'},
+    {code:'NV',slug:'nevada-paycheck-calculator'},
+    {code:'NH',slug:'new-hampshire-paycheck-calculator'},
+    {code:'NJ',slug:'new-jersey-paycheck-calculator'},
+    {code:'NM',slug:'new-mexico-paycheck-calculator'},
+    {code:'NY',slug:'new-york-paycheck-calculator'},
+    {code:'NC',slug:'north-carolina-paycheck-calculator'},
+    {code:'ND',slug:'north-dakota-paycheck-calculator'},
+    {code:'OH',slug:'ohio-paycheck-calculator'},
+    {code:'OK',slug:'oklahoma-paycheck-calculator'},
+    {code:'OR',slug:'oregon-paycheck-calculator'},
+    {code:'PA',slug:'pennsylvania-paycheck-calculator'},
+    {code:'RI',slug:'rhode-island-paycheck-calculator'},
+    {code:'SC',slug:'south-carolina-paycheck-calculator'},
+    {code:'SD',slug:'south-dakota-paycheck-calculator'},
+    {code:'TN',slug:'tennessee-paycheck-calculator'},
+    {code:'TX',slug:'texas-paycheck-calculator'},
+    {code:'UT',slug:'utah-paycheck-calculator'},
+    {code:'VT',slug:'vermont-paycheck-calculator'},
+    {code:'VA',slug:'virginia-paycheck-calculator'},
+    {code:'WA',slug:'washington-paycheck-calculator'},
+    {code:'WV',slug:'west-virginia-paycheck-calculator'},
+    {code:'WI',slug:'wisconsin-paycheck-calculator'},
+    {code:'WY',slug:'wyoming-paycheck-calculator'}
   ];
-  const related=ALL_STATES.filter(s=>s.code!==currentStateCode).slice(0,8);
+  const others=CANONICAL_STATES.filter(s=>s.code!==currentStateCode);
   const relEl=document.getElementById('relatedStates');
   if(relEl){
-    relEl.innerHTML=related.map(s=>
-      `<a href="state.html?state=${s.code}" style="font-size:12px;padding:5px 11px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg);white-space:nowrap">${s.name}</a>`
-    ).join('');
+    relEl.innerHTML=others.map(s=>{
+      const name=(STATE_DATA[s.code]||{name:s.code}).name;
+      return `<a href="/states/${s.slug}" style="font-size:12px;padding:5px 11px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg);white-space:nowrap">${name}</a>`;
+    }).join('');
   }
 }
 function stateCalc(){
