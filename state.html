@@ -343,14 +343,12 @@ function initPage(){
   const ALL_STATES=Object.keys(SLUG_MAP)
     .filter(k=>k.indexOf('paycheck-calculator')!==-1)
     .map(k=>({code:SLUG_MAP[k],name:(STATE_DATA[SLUG_MAP[k]]||{name:k}).name,slug:k}))
-    .filter((v,i,a)=>a.findIndex(x=>x.code===v.code)===i); // dedupe by code
+    .filter((v,i,a)=>a.findIndex(x=>x.code===v.code)===i) // dedupe by code
+    .sort((a,b)=>a.name.localeCompare(b.name)); // stable A→Z order
   const others=ALL_STATES.filter(s=>s.code!==currentStateCode);
-  // Shuffle for variety so different states appear on each page
-  const shuffled=others.slice().sort(()=>0.5-Math.random());
-  const related=shuffled.slice(0,8);
   const relEl=document.getElementById('relatedStates');
   if(relEl){
-    relEl.innerHTML=related.map(s=>
+    relEl.innerHTML=others.map(s=>
       `<a href="/states/${s.slug}" style="font-size:12px;padding:5px 11px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg);white-space:nowrap">${s.name}</a>`
     ).join('');
   }
