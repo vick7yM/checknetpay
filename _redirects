@@ -3,8 +3,13 @@
 # Format: /incoming-url  /actual-file  status-code
 # 200 = serve the file silently (URL stays clean in browser) ← perfect for SEO
 
-# ── STATE PAGES — all served by state.html, URL stays clean ──
-/states/*  /state.html  200
+# ── STATE PAGES — served by _state.html ──
+# _state.html uses underscore prefix so Cloudflare Pages does NOT create a conflicting
+# pretty-URL route at /state — which was causing all state clicks to land on California.
+/states/*  /_state.html  200
+
+# ── LEGACY: redirect old /state pretty-URL to homepage ──
+/state  /  301
 
 # ── COMMON TYPOS / REDIRECTS ──
 /calculator          /             301
