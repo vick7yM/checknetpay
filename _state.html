@@ -408,7 +408,7 @@ function initPage(){
       // Use data-slug + onclick instead of href so history.pushState keeps the URL correct.
       // Plain <a href="/states/slug"> causes Cloudflare to serve /_state at URL /_state
       // (filename stripped of underscore+extension), breaking getStateFromURL()'s regex.
-      return `<a href="/states/${s.slug}" data-slug="${s.slug}" onclick="navigateToState(event,this)" style="font-size:12px;padding:5px 11px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg);white-space:nowrap;cursor:pointer">${name}</a>`;
+      return `<a href="/_state?state=${s.code}" data-code="${s.code}" data-slug="${s.slug}" onclick="navigateToState(event,this)" style="font-size:12px;padding:5px 11px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg);white-space:nowrap;cursor:pointer">${name}</a>`;
     }).join('');
   }
 }
@@ -445,11 +445,13 @@ document.addEventListener('DOMContentLoaded',initPage);
 // Fix: intercept clicks, push the real /states/slug URL via history API, re-run initPage().
 function navigateToState(e, el){
   e.preventDefault();
+  const code = el.getAttribute('data-code');
   const slug = el.getAttribute('data-slug');
-  if(!slug) return;
-  const newURL = '/states/' + slug;
-  // Push the clean URL so the browser bar + getStateFromURL() both see it
-  window.history.pushState({slug: slug}, '', newURL);
+  if(!code) return;
+  // Cloudflare always lands at /_state regardless of the /states/* URL,
+  // so we push /_state?state=XX — getStateFromURL() reads ?state first.
+  const newURL = '/_state?state=' + code;
+  window.history.pushState({state: code, slug: slug}, '', newURL);
   // Reset calculator result so stale numbers from previous state aren't shown
   const res = document.getElementById('sResult');
   if(res) res.style.display = 'none';
