@@ -91,7 +91,7 @@ footer a{color:var(--acc);text-decoration:none}
   </div>
 </header>
 
-<main>
+<main id="stateHero">
   <div class="breadcrumb"><a href="/">Home</a> › <a href="/">Paycheck Calculator</a> › <span id="breadState">State Calculator</span></div>
   <a href="/" class="back-link">← Back to main calculator</a>
 
@@ -405,7 +405,10 @@ function initPage(){
   if(relEl){
     relEl.innerHTML=others.map(s=>{
       const name=(STATE_DATA[s.code]||{name:s.code}).name;
-      return `<a href="/states/${s.slug}" style="font-size:12px;padding:5px 11px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg);white-space:nowrap">${name}</a>`;
+      // Use data-slug + onclick instead of href so history.pushState keeps the URL correct.
+      // Plain <a href="/states/slug"> causes Cloudflare to serve /_state at URL /_state
+      // (filename stripped of underscore+extension), breaking getStateFromURL()'s regex.
+      return `<a href="/states/${s.slug}" data-slug="${s.slug}" onclick="navigateToState(event,this)" style="font-size:12px;padding:5px 11px;border:1px solid var(--bdr);border-radius:100px;color:var(--acc);text-decoration:none;background:var(--acc-bg);white-space:nowrap;cursor:pointer">${name}</a>`;
     }).join('');
   }
 }
@@ -435,6 +438,34 @@ function stateCalc(){
 }
 
 document.addEventListener('DOMContentLoaded',initPage);
+
+// ── SPA-style state navigation ──
+// Cloudflare serves _state.html at URL /_state (strips underscore+extension) when
+// using plain anchor clicks, so getStateFromURL() never sees /states/slug in the path.
+// Fix: intercept clicks, push the real /states/slug URL via history API, re-run initPage().
+function navigateToState(e, el){
+  e.preventDefault();
+  const slug = el.getAttribute('data-slug');
+  if(!slug) return;
+  const newURL = '/states/' + slug;
+  // Push the clean URL so the browser bar + getStateFromURL() both see it
+  window.history.pushState({slug: slug}, '', newURL);
+  // Reset calculator result so stale numbers from previous state aren't shown
+  const res = document.getElementById('sResult');
+  if(res) res.style.display = 'none';
+  // Re-run init with new URL context
+  initPage();
+  // Scroll to top of state header so user sees the new state name
+  const hero = document.getElementById('stateHero') || document.querySelector('main');
+  if(hero) hero.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', function(){
+  const res = document.getElementById('sResult');
+  if(res) res.style.display = 'none';
+  initPage();
+});
 
 function cnpToggleTheme(btn){
   const d=document.documentElement,dk=d.getAttribute('data-theme')==='dark';
