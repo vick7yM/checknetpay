@@ -265,7 +265,7 @@ const SLUG_MAP={
 };
 
 // ── TAX ENGINE (simplified) ──
-const FED={single:[{mn:0,mx:12400,r:.10},{mn:12400,mx:50400,r:.12},{mn:50400,mx:105700,r:.22},{mn:105700,mx:201775,r:.24},{mn:201775,mx:256225,r:.32},{mn:256225,mx:640600,r:.35},{mn:640600,mx:1/0,r:.37}],married:[{mn:0,mx:24800,r:.10},{mn:24800,mx:100800,r:.12},{mn:100800,mx:211400,r:.22},{mn:211400,mx:403550,r:.24},{mn:403550,mx:512450,r:.32},{mn:512450,mx:768700,r:.35},{mn:768700,mx:1/0,r:.37}],hoh:[{mn:0,mx:17700,r:.10},{mn:17700,mx:67050,r:.12},{mn:67050,mx:105700,r:.22},{mn:105700,mx:201775,r:.24},{mn:201775,mx:256225,r:.32},{mn:256225,mx:640600,r:.35},{mn:640600,mx:1/0,r:.37}]};
+const FED={single:[{mn:0,mx:11925,r:.10},{mn:11925,mx:48475,r:.12},{mn:48475,mx:103350,r:.22},{mn:103350,mx:201775,r:.24},{mn:201775,mx:250525,r:.32},{mn:250525,mx:640600,r:.35},{mn:640600,mx:1/0,r:.37}],married:[{mn:0,mx:23850,r:.10},{mn:23850,mx:96950,r:.12},{mn:96950,mx:206700,r:.22},{mn:206700,mx:403550,r:.24},{mn:403550,mx:501050,r:.32},{mn:501050,mx:768700,r:.35},{mn:768700,mx:1/0,r:.37}],hoh:[{mn:0,mx:17000,r:.10},{mn:17000,mx:64650,r:.12},{mn:64650,mx:103350,r:.22},{mn:103350,mx:201775,r:.24},{mn:201775,mx:250525,r:.32},{mn:250525,mx:640600,r:.35},{mn:640600,mx:1/0,r:.37}]};
 const SDED={single:16100,married:32200,hoh:24150};
 function fedTax(ti,f){const b=FED[f]||FED.single;let t=0;for(const x of b){if(ti<=x.mn)break;t+=(Math.min(ti,x.mx)-x.mn)*x.r;}return Math.max(0,t);}
 function fm(n){return'$'+Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
