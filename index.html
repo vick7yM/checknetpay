@@ -580,9 +580,9 @@ footer{border-top:1px solid var(--bdr);padding:18px 20px;text-align:center;font-
 'use strict';
 // ── 2026 FEDERAL DATA ──
 const FED={
-  single: [{mn:0,mx:11925,r:.10},{mn:11925,mx:48475,r:.12},{mn:48475,mx:103350,r:.22},{mn:103350,mx:201775,r:.24},{mn:201775,mx:250525,r:.32},{mn:250525,mx:640600,r:.35},{mn:640600,mx:1/0,r:.37}],
-  married:[{mn:0,mx:23850,r:.10},{mn:23850,mx:96950,r:.12},{mn:96950,mx:206700,r:.22},{mn:206700,mx:403550,r:.24},{mn:403550,mx:501050,r:.32},{mn:501050,mx:768700,r:.35},{mn:768700,mx:1/0,r:.37}],
-  hoh:    [{mn:0,mx:17000,r:.10},{mn:17000,mx:64650,r:.12},{mn:64650,mx:103350,r:.22},{mn:103350,mx:201775,r:.24},{mn:201775,mx:250525,r:.32},{mn:250525,mx:640600,r:.35},{mn:640600,mx:1/0,r:.37}]
+  single: [{mn:0,mx:12400,r:.10},{mn:12400,mx:50400,r:.12},{mn:50400,mx:105700,r:.22},{mn:105700,mx:201775,r:.24},{mn:201775,mx:256225,r:.32},{mn:256225,mx:640600,r:.35},{mn:640600,mx:1/0,r:.37}],
+  married:[{mn:0,mx:24800,r:.10},{mn:24800,mx:100800,r:.12},{mn:100800,mx:211400,r:.22},{mn:211400,mx:403550,r:.24},{mn:403550,mx:512450,r:.32},{mn:512450,mx:768700,r:.35},{mn:768700,mx:1/0,r:.37}],
+  hoh:    [{mn:0,mx:17700,r:.10},{mn:17700,mx:67050,r:.12},{mn:67050,mx:105700,r:.22},{mn:105700,mx:201775,r:.24},{mn:201775,mx:256225,r:.32},{mn:256225,mx:640600,r:.35},{mn:640600,mx:1/0,r:.37}]
 };
 const SDED={single:16100,married:32200,hoh:24150};
 const SS_R=.062,SS_CAP=184500,MC_R=.0145,ADD_MC=.009;
@@ -592,7 +592,7 @@ const SE_R=.153,SE_F=.9235,RET_LIM=24500,HSA_LIM=4300,MILE=.70;
 // ── STATE DATA ──
 const ST=[
   {c:'AL',n:'Alabama',r:.0500},{c:'AK',n:'Alaska',r:0,nt:1},{c:'AZ',n:'Arizona',r:.0250},
-  {c:'AR',n:'Arkansas',r:.0440},{c:'CA',n:'California',r:.0725},{c:'CO',n:'Colorado',r:.0425},
+  {c:'AR',n:'Arkansas',r:.0440},{c:'CA',n:'California',r:.0725},{c:'CO',n:'Colorado',r:0.044},
   {c:'CT',n:'Connecticut',r:.0500},{c:'DE',n:'Delaware',r:.0660},{c:'FL',n:'Florida',r:0,nt:1},
   {c:'GA',n:'Georgia',r:.0539},{c:'HI',n:'Hawaii',r:.0800},{c:'ID',n:'Idaho',r:.0580},
   {c:'IL',n:'Illinois',r:.0495},{c:'IN',n:'Indiana',r:.0300},{c:'IA',n:'Iowa',r:.0380},
@@ -600,7 +600,7 @@ const ST=[
   {c:'ME',n:'Maine',r:.0750},{c:'MD',n:'Maryland',r:.0575},{c:'MA',n:'Massachusetts',r:.0500},
   {c:'MI',n:'Michigan',r:.0425},{c:'MN',n:'Minnesota',r:.0785},{c:'MS',n:'Mississippi',r:.0470},
   {c:'MO',n:'Missouri',r:.0480},{c:'MT',n:'Montana',r:.0590},{c:'NE',n:'Nebraska',r:.0584},
-  {c:'NV',n:'Nevada',r:0,nt:1},{c:'NH',n:'New Hampshire',r:0,nt:1},{c:'NJ',n:'New Jersey',r:.0637},
+  {c:'NV',n:'Nevada',r:0,nt:1},{c:'NH',n:'New Hampshire',r:0,nt:1},{c:'NJ',n:'New Jersey',r:.1075},
   {c:'NM',n:'New Mexico',r:.0590},{c:'NY',n:'New York',r:.0685},{c:'NC',n:'North Carolina',r:.0425},
   {c:'ND',n:'North Dakota',r:.0250},{c:'OH',n:'Ohio',r:.0350},{c:'OK',n:'Oklahoma',r:.0475},
   {c:'OR',n:'Oregon',r:.0990},{c:'PA',n:'Pennsylvania',r:.0307},{c:'RI',n:'Rhode Island',r:.0599},
