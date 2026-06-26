@@ -81,6 +81,33 @@ h1.post-title{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(22px,
 footer{border-top:1px solid var(--bdr);padding:18px 20px;text-align:center;font-size:11.5px;color:var(--mut)}
 footer a{color:var(--acc);text-decoration:none}
 </style>
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "At $80,000, am I in the 22% tax bracket?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Partially. Your taxable income ($63,900 after standard deduction) exceeds the 22% threshold ($50,400) by $13,500. That $13,500 is taxed at 22%. Everything below $50,400 is taxed at lower rates. You are \"in\" the 22% bracket only in the sense that it's your marginal rate \u2014 not that 22% applies to your whole income."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much of a raise would I actually keep on $80,000 in Texas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On any income between $80,000 and $103,350 (where federal taxable income hits $87,250), additional Texas earnings are taxed at 22% federal + 7.65% FICA = 29.65% total. Of every additional $1,000 you earn, you keep approximately $703.50 net. This is the realistic \"raise math\" for negotiations."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <header>
@@ -195,6 +222,17 @@ footer a{color:var(--acc);text-decoration:none}
       <a href="/">Use the Free CheckNetPay Calculator →</a>
     </div>
 
+
+    <h2>Related Salary Guides</h2>
+    <ul>
+      <li><a href="/blog/how-much-take-home-75000-texas">$75,000 in Texas After-Tax Breakdown</a></li>
+      <li><a href="/blog/how-much-take-home-95000-texas">$95,000 in Texas After-Tax Breakdown</a></li>
+      <li><a href="/blog/how-much-take-home-80000-california">$80,000 in California After-Tax Breakdown</a></li>
+      <li><a href="/_state?state=TX">Texas Paycheck Calculator — Any Salary</a></li>
+      <li><a href="/methodology.html">How We Calculate These Numbers</a></li>
+      <li><a href="/blog/">All 2026 Salary Guides →</a></li>
+    </ul>
+
   </div>
 
     <div class="ad-inline">
@@ -204,7 +242,10 @@ footer a{color:var(--acc);text-decoration:none}
   </div>
 </main>
 
-<footer>CheckNetPay.com — Free 2026 US Paycheck Calculator · <a href="/">Home</a> · <a href="/blog/">Blog</a> · <a href="/privacy.html">Privacy</a></footer>
+    <div style="background:var(--sur2);border-top:1px solid var(--bdr);padding:10px 20px;text-align:center;font-size:11.5px;color:var(--mut);line-height:1.5">
+      <strong>Educational use only.</strong> CheckNetPay provides paycheck estimates based on published 2026 tax rates. Results are not tax advice and may differ from your actual paycheck. <a href="/disclaimer.html" style="color:var(--acc)">Full disclaimer →</a>
+    </div>
+<footer>CheckNetPay.com — Free 2026 US Paycheck Calculator &nbsp;·&nbsp; <a href="/">Calculator</a> &nbsp;·&nbsp; <a href="/blog/">Blog</a> &nbsp;·&nbsp; <a href="/about.html">About</a> &nbsp;·&nbsp; <a href="/methodology.html">Methodology</a> &nbsp;·&nbsp; <a href="/sources.html">Sources</a> &nbsp;·&nbsp; <a href="/editorial-policy.html">Editorial Policy</a> &nbsp;·&nbsp; <a href="/disclaimer.html">Disclaimer</a> &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a></footer>
 <script>
 function cnpToggleTheme(btn){
   const d=document.documentElement,dk=d.getAttribute('data-theme')==='dark';

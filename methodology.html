@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script>(function(){try{var t=localStorage.getItem('cnp-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
+<title>How We Calculate Your Paycheck — CheckNetPay Methodology</title>
+<meta name="description" content="Full transparency on how CheckNetPay calculates take-home pay: every formula, IRS source, state tax method, and assumption documented. Updated for 2026.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.checknetpay.com/methodology.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="How We Calculate Your Paycheck — CheckNetPay Methodology">
+<meta property="og:description" content="Full transparency on how CheckNetPay calculates take-home pay: every formula, IRS source, state tax method, and assumption documented. Updated for 2026.">
+<meta property="og:url" content="https://www.checknetpay.com/methodology.html">
+<meta property="og:site_name" content="CheckNetPay">
+<meta property="og:image" content="https://www.checknetpay.com/og-image.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F5F4EF;--sur:#FFF;--sur2:#EDECE7;--bdr:#E2E0D9;--txt:#1A1917;--mut:#82807A;--fnt:#C0BDB6;--acc:#1B6B42;--acc-bg:#EBF4EE}
+[data-theme=dark]{--bg:#111110;--sur:#1C1C1A;--sur2:#242422;--bdr:#2D2D2A;--txt:#EDECEA;--mut:#68675F;--acc:#4DB87A;--acc-bg:#182B20}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;min-height:100vh}
+header{background:var(--sur);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:100}
+.hdr{max-width:760px;margin:0 auto;padding:0 20px;height:52px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:700;letter-spacing:-.3px;color:var(--txt)}
+.logo em{color:var(--acc);font-style:normal}.logo a{color:inherit;text-decoration:none}
+.thm{width:33px;height:33px;border-radius:50%;border:1px solid var(--bdr);background:var(--sur2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px}
+main{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,4vw,34px);font-weight:700;letter-spacing:-.5px;line-height:1.2;margin-bottom:10px}
+h1 span{color:var(--acc)}
+.subtitle{font-size:15px;color:var(--mut);margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--bdr)}
+h2{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:700;margin:32px 0 12px}
+h3{font-size:16px;font-weight:600;margin:22px 0 8px;color:var(--txt)}
+p{font-size:14.5px;color:var(--txt);line-height:1.8;margin-bottom:14px}
+ul,ol{font-size:14.5px;color:var(--txt);line-height:1.8;margin-bottom:14px;padding-left:22px}
+li{margin-bottom:6px}
+strong{font-weight:600}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+.info-box{background:var(--acc-bg);border-left:3px solid var(--acc);border-radius:0 10px 10px 0;padding:14px 16px;margin:20px 0;font-size:14px;line-height:1.6}
+.info-box strong{color:var(--acc)}
+.source-card{background:var(--sur);border:1px solid var(--bdr);border-radius:12px;padding:16px 20px;margin:12px 0}
+.source-card h4{font-size:14px;font-weight:600;margin-bottom:4px}
+.source-card p{font-size:13px;color:var(--mut);margin:0}
+.source-card a{font-size:13px}
+.badge{display:inline-block;background:var(--acc-bg);color:var(--acc);font-size:11px;font-weight:600;padding:2px 8px;border-radius:100px;margin-bottom:8px}
+footer{border-top:1px solid var(--bdr);padding:20px;text-align:center;font-size:12px;color:var(--mut)}
+footer a{color:var(--acc)}
+</style>
+</head>
+<body>
+<header>
+  <div class="hdr">
+    <a href="/" class="logo" style="text-decoration:none">Check<em>Net</em>Pay</a>
+    <div style="display:flex;align-items:center;gap:6px">
+      <a href="/" style="font-size:13px;color:var(--mut);text-decoration:none;font-weight:500;padding:5px 10px;border-radius:8px" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--mut)'">Calculator</a>
+      <a href="/blog/" style="font-size:13px;color:var(--mut);text-decoration:none;font-weight:500;padding:5px 10px;border-radius:8px" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--mut)'">Blog</a>
+      <a href="/about.html" style="font-size:13px;color:var(--mut);text-decoration:none;font-weight:500;padding:5px 10px;border-radius:8px" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--mut)'">About</a>
+      <button class="thm" onclick="cnpToggleTheme(this)">🌙</button>
+    </div>
+  </div>
+</header>
+<main>
+
+<div class="badge">Transparency</div>
+<h1>Our <span>Methodology</span></h1>
+<p class="subtitle">How CheckNetPay calculates your take-home pay — every formula, every data source, every assumption explained. Last updated: June 2026.</p>
+
+<h2>Why We Published This Page</h2>
+<p>A paycheck calculator that doesn't explain its methodology asks you to trust a black box. For a tool that directly affects how people budget, negotiate salaries, and plan their financial lives, that's not good enough. This page documents every calculation we perform, every tax source we use, and every assumption we make — so you can verify our numbers independently if you choose to.</p>
+
+<h2>Data Sources</h2>
+<p>All tax rates and thresholds are sourced directly from official government publications. We do not use third-party rate aggregators as primary sources:</p>
+
+<div class="source-card">
+  <div class="badge">Federal</div>
+  <h4>IRS Revenue Procedure 2025-32</h4>
+  <p>The official IRS document establishing all 2026 federal income tax parameters: bracket thresholds, standard deduction amounts, AMT exemptions, and related figures. Published annually each fall for the following tax year.</p>
+  <a href="https://www.irs.gov/pub/irs-drop/rp-25-32.pdf" target="_blank" rel="noopener">View IRS Rev. Proc. 2025-32 →</a>
+</div>
+
+<div class="source-card">
+  <div class="badge">Federal</div>
+  <h4>IRS Publication 15 (Circular E) — Employer's Tax Guide 2026</h4>
+  <p>The authoritative source for federal income tax withholding tables, FICA rates, and payroll tax procedures. Used to verify our per-paycheck withholding calculations.</p>
+  <a href="https://www.irs.gov/publications/p15" target="_blank" rel="noopener">View IRS Publication 15 →</a>
+</div>
+
+<div class="source-card">
+  <div class="badge">FICA</div>
+  <h4>Social Security Administration — 2026 Fact Sheet</h4>
+  <p>Official source for the 2026 Social Security wage base ($184,500), employee contribution rate (6.2%), and Medicare rate (1.45%). The Additional Medicare Tax rate (0.9% above $200,000 for single filers) is sourced from IRS Notice 2013-45 and confirmed annually.</p>
+  <a href="https://www.ssa.gov/news/press/factsheets/colafacts2026.htm" target="_blank" rel="noopener">SSA 2026 Fact Sheet →</a>
+</div>
+
+<div class="source-card">
+  <div class="badge">State Tax</div>
+  <h4>State Revenue Department Publications</h4>
+  <p>Each state's income tax rates, brackets, and standard deductions are sourced from that state's official Department of Revenue or Department of Taxation. We link to specific state sources on our <a href="/sources.html">Sources page</a>.</p>
+</div>
+
+<div class="source-card">
+  <div class="badge">Benefits</div>
+  <h4>IRS Revenue Procedure 2025-25 — Retirement Plan Limits</h4>
+  <p>Source for 2026 contribution limits: 401(k) elective deferral ($24,500), HSA individual ($4,300), HSA family ($8,550), IRA ($7,000), and catch-up provisions for workers 50+.</p>
+</div>
+
+<h2>Federal Income Tax Calculation</h2>
+<p>We calculate federal income tax using the progressive bracket method — the same method the IRS uses. We do not use simplified flat-rate approximations.</p>
+
+<h3>Step 1: Determine Taxable Income</h3>
+<p>We subtract the applicable standard deduction from gross annual salary:</p>
+<ul>
+  <li><strong>Single filer:</strong> $16,100 standard deduction (2026)</li>
+  <li><strong>Married Filing Jointly:</strong> $32,200 (2026)</li>
+  <li><strong>Head of Household:</strong> $24,150 (2026)</li>
+</ul>
+<p>If the user enters pre-tax deductions (401k, HSA, health insurance), these are subtracted from gross salary before applying the standard deduction, since they reduce adjusted gross income.</p>
+
+<h3>Step 2: Apply 2026 Federal Brackets (Single)</h3>
+<ul>
+  <li>10% on taxable income $0 – $12,400</li>
+  <li>12% on taxable income $12,401 – $50,400</li>
+  <li>22% on taxable income $50,401 – $105,700</li>
+  <li>24% on taxable income $105,701 – $201,775</li>
+  <li>32% on taxable income $201,776 – $256,225</li>
+  <li>35% on taxable income $256,226 – $640,600</li>
+  <li>37% on taxable income above $640,600</li>
+</ul>
+<p>Each bracket rate applies <em>only to the income within that bracket</em> — not to the entire salary. A $75,000 earner does not pay 22% on their whole income; they pay 10% on the first $12,400 of taxable income, 12% on the next $38,000, and 22% only on the $8,500 above the 22% threshold.</p>
+
+<h3>Step 3: Convert to Per-Paycheck Amount</h3>
+<p>Annual federal tax is divided by the number of pay periods selected:</p>
+<ul>
+  <li>Weekly: ÷ 52</li>
+  <li>Bi-weekly: ÷ 26</li>
+  <li>Semi-monthly: ÷ 24</li>
+  <li>Monthly: ÷ 12</li>
+</ul>
+
+<h2>FICA Tax Calculation</h2>
+<h3>Social Security</h3>
+<p>Social Security tax = Gross wages × 6.2%, applied to each paycheck's gross pay, up to an annual wage base of <strong>$184,500</strong> for 2026. Once cumulative 2026 wages exceed $184,500, Social Security withholding stops for the remainder of the year. Our calculator tracks this and stops SS withholding automatically when the cap is reached.</p>
+
+<h3>Medicare</h3>
+<p>Medicare tax = Gross wages × 1.45%, with no annual cap. An <strong>Additional Medicare Tax of 0.9%</strong> applies to wages above $200,000 (single filers) or $250,000 (married filing jointly). We apply this surcharge correctly — a detail many calculators miss for higher-income users.</p>
+
+<h2>State Income Tax Calculation</h2>
+<p>State tax calculations vary significantly by state:</p>
+<ul>
+  <li><strong>No-income-tax states</strong> (Texas, Florida, Nevada, Washington, Wyoming, Alaska, South Dakota, Tennessee, New Hampshire): $0 state income tax on wages.</li>
+  <li><strong>Flat-rate states</strong> (Illinois 4.95%, Pennsylvania 3.07%, Indiana 3.0%, Colorado 4.4%, Arizona 2.5%, etc.): We apply the flat rate to gross wages. Some flat-rate states technically have deductions or exemptions; our calculator uses the effective rate on gross pay as a close approximation for these states.</li>
+  <li><strong>Progressive states</strong> (California, New York, Virginia, etc.): We apply full progressive bracket calculations using each state's official thresholds and standard deductions.</li>
+</ul>
+<p>California calculations include the 1.1% State Disability Insurance (SDI) deduction, which many calculators omit.</p>
+
+<h2>Pre-Tax Deductions</h2>
+<p>When users enter pre-tax deductions, we reduce gross income before calculating both federal income tax and state income tax (for states that conform to federal AGI treatment, which most do). Pre-tax deductions do <strong>not</strong> reduce Social Security or Medicare taxes — FICA applies to gross wages regardless of pre-tax benefit elections, with limited exceptions (Section 125 cafeteria plans reduce FICA in some configurations; our calculator uses the standard W-2 treatment).</p>
+
+<h2>1099 / Self-Employment Mode</h2>
+<p>For self-employed workers, we calculate:</p>
+<ul>
+  <li><strong>Self-employment tax:</strong> 15.3% on 92.35% of net self-employment income (the 92.35% factor accounts for the employer-equivalent deduction). This covers both the employee and employer halves of Social Security (12.4%) and Medicare (2.9%).</li>
+  <li><strong>SE tax deduction:</strong> Half of self-employment tax is deductible from federal (and most state) taxable income.</li>
+  <li><strong>Quarterly estimated payments:</strong> We calculate the IRS Safe Harbor amount (100% of prior year tax, or 110% if prior year AGI exceeded $150,000).</li>
+</ul>
+
+<h2>Bonus Tax Calculation</h2>
+<p>We offer two federal methods for bonus withholding:</p>
+<ul>
+  <li><strong>Flat rate (25% / aggregate):</strong> The IRS permits a flat 22% supplemental wage withholding rate for bonuses up to $1,000,000, or 37% for amounts above $1,000,000.</li>
+  <li><strong>Aggregate method:</strong> We annualize the bonus plus regular pay and calculate the marginal tax on the combined income — this often produces a different withholding than the flat rate method and can result in a refund or balance due at filing time.</li>
+</ul>
+
+<h2>What Our Calculator Does NOT Account For</h2>
+<p>In the interest of transparency, here are the limitations of our calculations:</p>
+<ul>
+  <li><strong>Itemized deductions:</strong> We use the standard deduction. Workers who itemize (mortgage interest, charitable contributions, state and local taxes) may have lower taxable income than we calculate.</li>
+  <li><strong>Tax credits:</strong> Child Tax Credit, Earned Income Credit, Child and Dependent Care Credit, and other credits reduce final tax liability. We do not calculate credits — only pre-credit tax liability.</li>
+  <li><strong>Local/city income taxes:</strong> New York City, Philadelphia, Columbus, Detroit, and many other cities levy local income taxes. Our main calculator does not include local taxes (though our NYC-specific content notes the additional NYC income tax).</li>
+  <li><strong>Alternative Minimum Tax (AMT):</strong> Not calculated. AMT typically affects higher earners with significant deductions.</li>
+  <li><strong>Multiple jobs:</strong> If you have two or more jobs, each employer withholds independently. The combined withholding may be insufficient if the combined income crosses bracket thresholds. We calculate based on a single income source.</li>
+  <li><strong>Social Security benefit offsets:</strong> We do not project future Social Security benefits based on earnings history.</li>
+</ul>
+
+<h2>Update Schedule</h2>
+<p>We update all tax parameters annually in November or December, when the IRS publishes Revenue Procedures for the following year. State tax rates are updated as states publish changes, typically before January 1 of the effective year. Every update is date-stamped and the methodology page is revised to reflect current parameters.</p>
+<p>If you spot an error in our calculations, please email <a href="mailto:hello@checknetpay.com">hello@checknetpay.com</a> with the specific salary, state, and filing status that produced the unexpected result. We investigate and correct all reported errors within 48 hours.</p>
+
+<div class="info-box">
+  <strong>📋 Current tax year parameters:</strong> All calculations on CheckNetPay use 2026 tax parameters unless otherwise noted. Federal brackets per IRS Rev. Proc. 2025-32. SS wage base $184,500. Standard deductions: single $16,100, MFJ $32,200, HOH $24,150. 401(k) limit $24,500. HSA individual limit $4,300.
+</div>
+</main>
+<footer>CheckNetPay.com — Free 2026 US Paycheck Calculator &nbsp;·&nbsp; <a href="/">Calculator</a> &nbsp;·&nbsp; <a href="/blog/">Blog</a> &nbsp;·&nbsp; <a href="/about.html">About</a> &nbsp;·&nbsp; <a href="/methodology.html">Methodology</a> &nbsp;·&nbsp; <a href="/sources.html">Sources</a> &nbsp;·&nbsp; <a href="/editorial-policy.html">Editorial Policy</a> &nbsp;·&nbsp; <a href="/disclaimer.html">Disclaimer</a> &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a></footer>
+<script>
+function cnpToggleTheme(btn){
+  const d=document.documentElement,dk=d.getAttribute('data-theme')==='dark';
+  const nt=dk?'light':'dark';
+  d.setAttribute('data-theme',nt);btn.textContent=dk?'☀️':'🌙';
+  try{localStorage.setItem('cnp-theme',nt);}catch(e){}
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  if(document.documentElement.getAttribute('data-theme')==='dark'){
+    const b=document.querySelector('.thm');if(b)b.textContent='☀️';
+  }
+});
+</script>
+</body>
+</html>
