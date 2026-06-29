@@ -85,4 +85,40 @@
   <url><loc>https://www.checknetpay.com/states/wisconsin-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.checknetpay.com/states/wyoming-paycheck-calculator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
 
+  <url>
+    <loc>https://www.checknetpay.com/about.html</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.checknetpay.com/privacy.html</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.checknetpay.com/methodology.html</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.checknetpay.com/sources.html</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.checknetpay.com/editorial-policy.html</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.checknetpay.com/disclaimer.html</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
 </urlset>
