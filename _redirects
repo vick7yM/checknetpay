@@ -16,12 +16,3 @@
 /paycheck-calculator /             301
 /take-home-pay       /             301
 /takehome            /             301
-
-# ── TRUST & POLICY PAGES — clean URLs without .html ──
-/methodology        /methodology.html        200
-/sources            /sources.html            200
-/editorial-policy   /editorial-policy.html   200
-/disclaimer         /disclaimer.html         200
-/about              /about.html              200
-/privacy            /privacy.html            200
-/blog               /blog/index.html         200
