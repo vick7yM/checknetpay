@@ -16,3 +16,13 @@
 /paycheck-calculator /             301
 /take-home-pay       /             301
 /takehome            /             301
+
+# ── TRUST & POLICY PAGES ──
+# NOTE: Cloudflare Pages auto-generates pretty-URL routes for any top-level
+# .html file (about.html -> /about, privacy.html -> /privacy, etc.) BEFORE
+# this file is even read. Adding explicit rules for those same paths here
+# creates a routing loop with Cloudflare's own auto-route (ERR_TOO_MANY_REDIRECTS).
+# No rules needed below — /about, /privacy, /methodology, /sources,
+# /editorial-policy, and /disclaimer already work automatically via
+# Cloudflare's built-in pretty-URL behavior. Do not add explicit redirects
+# for these paths.
